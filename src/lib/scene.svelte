@@ -4,6 +4,7 @@
   import * as THREE from "three";
   import { Water } from "three/addons/objects/Water.js";
   import { Sky } from "three/addons/objects/Sky.js";
+  import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
@@ -95,12 +96,22 @@
     camera.updateProjectionMatrix();
   };
 
+  const controlCamera = () => {
+    const controls = new OrbitControls(camera, document.body);
+    controls.maxPolarAngle = Math.PI * 0.495;
+    controls.target.set(0, 10, 0);
+    controls.minDistance = 40.0;
+    controls.maxDistance = 200.0;
+    controls.update();
+  };
+
   export const createScene = (canvas_name) => {
     renderer = new THREE.WebGLRenderer({
       antialias: true,
       canvas: canvas_name,
       alpha: true,
     });
+    controlCamera();
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     resize();
     updateSun();
