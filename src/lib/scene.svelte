@@ -7,12 +7,12 @@
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
-    75,
+    55,
     window.innerWidth / window.innerHeight,
-    0.1,
-    1000
+    1,
+    20000
   );
-  camera.position.z = 5;
+  camera.position.set(30, 30, 100);
 
   let sun;
   sun = new THREE.Vector3();
