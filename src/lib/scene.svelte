@@ -1,4 +1,6 @@
 <script context="module">
+  // @ts-nocheck
+
   import * as THREE from "three";
 
   const scene = new THREE.Scene();
