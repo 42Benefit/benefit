@@ -59,11 +59,11 @@
   skyUniforms["mieCoefficient"].value = 0.005;
   skyUniforms["mieDirectionalG"].value = 0.8;
 
-  const updateSun = () => {
+  const updateSun = (elevation, azimuth) => {
     let renderTarget;
     const parameters = {
-      elevation: 2,
-      azimuth: 180,
+      elevation,
+      azimuth,
     };
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     const phi = THREE.MathUtils.degToRad(90 - parameters.elevation);
@@ -88,7 +88,6 @@
     cube.rotation.y += 0.01;
     cube.position.y = Math.sin(time) * 15 + 5;
     water.material.uniforms["time"].value += 1.0 / 60.0;
-    updateSun();
     renderer.render(scene, camera);
   };
 
@@ -117,6 +116,7 @@
     controlCamera();
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     resize();
+    updateSun(2, 100);
     animate();
   };
 
