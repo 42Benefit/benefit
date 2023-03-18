@@ -89,6 +89,7 @@
     cube.position.y = Math.sin(time) * 15 + 5;
     water.material.uniforms["time"].value += 1.0 / 60.0;
     renderer.render(scene, camera);
+    controlCamera();
   };
 
   const resize = () => {
@@ -104,6 +105,7 @@
     controls.target.set(0, 10, 0);
     controls.minDistance = 40.0;
     controls.maxDistance = 200.0;
+    controls.autoRotate = true;
     controls.update();
   };
 
@@ -113,7 +115,6 @@
       canvas: canvas_name,
       alpha: true,
     });
-    controlCamera();
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     resize();
     updateSun(1, -142);
