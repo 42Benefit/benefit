@@ -88,6 +88,7 @@
     cube.rotation.y += 0.01;
     cube.position.y = Math.sin(time) * 15 + 5;
     water.material.uniforms["time"].value += 1.0 / 60.0;
+    updateSun();
     renderer.render(scene, camera);
   };
 
@@ -116,7 +117,6 @@
     controlCamera();
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     resize();
-    updateSun();
     animate();
   };
 
