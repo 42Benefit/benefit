@@ -116,7 +116,7 @@
     controlCamera();
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     resize();
-    updateSun(1, 180);
+    updateSun(1, -142);
     animate();
   };
 
