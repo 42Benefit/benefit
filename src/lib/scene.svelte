@@ -70,24 +70,14 @@
     const theta = THREE.MathUtils.degToRad(parameters.azimuth);
 
     sun.setFromSphericalCoords(1, phi, theta);
-
     sky.material.uniforms["sunPosition"].value.copy(sun);
     water.material.uniforms["sunDirection"].value.copy(sun).normalize();
-
-    if (renderTarget !== undefined) renderTarget.dispose();
-
+    if (renderTarget !== undefined) {
+      renderTarget.dispose();
+    }
     renderTarget = pmremGenerator.fromScene(sky);
-
     scene.environment = renderTarget.texture;
   };
-
-  const directionalLight = new THREE.DirectionalLight(0x9090aa);
-  directionalLight.position.set(-10, 10, -10).normalize();
-  scene.add(directionalLight);
-
-  const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444);
-  hemisphereLight.position.set(1, 1, 1);
-  scene.add(hemisphereLight);
 
   let renderer;
 
