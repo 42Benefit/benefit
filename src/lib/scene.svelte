@@ -116,9 +116,7 @@
     controlCamera();
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     resize();
-    const realTime = (new Date().getHours() / 23) * Math.PI;
-    const sunElevation = Math.sin(realTime);
-    updateSun(sunElevation, 180);
+    updateSun(1, 180);
     animate();
   };
 
