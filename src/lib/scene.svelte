@@ -106,6 +106,7 @@
     controls.minDistance = 40.0;
     controls.maxDistance = 200.0;
     controls.autoRotate = true;
+    controls.dispose();
     controls.update();
   };
 
