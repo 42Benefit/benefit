@@ -48,6 +48,7 @@
 	}
 
 	footer {
+		color: white;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -56,6 +57,7 @@
 	}
 
 	footer a {
+		color: wheat;
 		font-weight: bold;
 	}
 
