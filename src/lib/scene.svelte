@@ -82,9 +82,11 @@
   let renderer;
 
   const animate = () => {
+    const time = performance.now() * 0.001;
     requestAnimationFrame(animate);
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
+    cube.position.y = Math.sin(time) * 15 + 5;
     water.material.uniforms["time"].value += 1.0 / 60.0;
     renderer.render(scene, camera);
   };
