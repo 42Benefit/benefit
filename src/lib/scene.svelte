@@ -32,7 +32,7 @@
     textureWidth: 512,
     textureHeight: 512,
     waterNormals: new THREE.TextureLoader().load(
-      "https://threejs.org/examples/textures/waternormals.jpg",
+      "src/lib/images/waternormals.jpeg",
       function (texture) {
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
       }
@@ -108,6 +108,7 @@
   };
 
   export const createScene = (canvas_name) => {
+    console.log(new Date().getHours());
     renderer = new THREE.WebGLRenderer({
       antialias: true,
       canvas: canvas_name,
@@ -116,7 +117,7 @@
     controlCamera();
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     resize();
-    updateSun(2, 100);
+    updateSun(1, 180);
     animate();
   };
 
