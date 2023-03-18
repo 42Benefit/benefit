@@ -19,6 +19,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"scroll-out": "^2.2.12",
 		"three": "^0.150.1"
 	}
 }
