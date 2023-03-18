@@ -108,7 +108,6 @@
   };
 
   export const createScene = (canvas_name) => {
-    console.log(new Date().getHours());
     renderer = new THREE.WebGLRenderer({
       antialias: true,
       canvas: canvas_name,
@@ -117,7 +116,9 @@
     controlCamera();
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     resize();
-    updateSun(1, 180);
+    const realTime = (new Date().getHours() / 23) * Math.PI;
+    const sunElevation = Math.sin(realTime);
+    updateSun(sunElevation, 180);
     animate();
   };
 
