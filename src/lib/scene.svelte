@@ -101,6 +101,7 @@
       canvas: canvas_name,
       alpha: true,
     });
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
     resize();
     updateSun();
     animate();
