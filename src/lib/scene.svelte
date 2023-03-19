@@ -109,7 +109,7 @@
     controls.dispose();
     controls.update();
   };
-
+  // TODO: 여행가는 느낌이 가게 앞으로 가는 느낌으로 수정
   export const createScene = (canvas_name) => {
     renderer = new THREE.WebGLRenderer({
       antialias: true,
