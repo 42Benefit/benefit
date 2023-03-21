@@ -47,9 +47,7 @@
 		<section class="benefit" data-scroll>
 			<h1>회사명 : {benefit.company}</h1>
 			<h1>혜택 : {benefit.benefit}</h1>
-			<h1>
-				혜택기간: {benefit.start_date} ~ {benefit.end_date}
-			</h1>
+			<h1>혜택기간: {benefit.start_date} ~ {benefit.end_date}</h1>
 		</section>
 	{/each}
 </div>
@@ -59,7 +57,6 @@
 		background-color: red;
 		overflow-y: scroll;
 		height: 80vh;
-		visibility: hidden;
 	}
 	.benefit {
 		display: flex;
