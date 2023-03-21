@@ -27,7 +27,7 @@
   const cube = new THREE.Mesh(geometry, material);
   scene.add(cube);
 
-  const waterGeometry = new THREE.PlaneGeometry(10000, 10000);
+  const waterGeometry = new THREE.PlaneGeometry(5000, 5000);
   const waterMaterial = {
     textureWidth: 512,
     textureHeight: 512,
@@ -86,10 +86,10 @@
     requestAnimationFrame(animate);
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
-    cube.position.y = Math.sin(time) * 15 + 5;
+    cube.position.y = Math.sin(time) * 15 + 25;
     water.material.uniforms["time"].value += 1.0 / 60.0;
-    renderer.render(scene, camera);
     controlCamera();
+    renderer.render(scene, camera);
   };
 
   const resize = () => {
@@ -101,15 +101,13 @@
 
   const controlCamera = () => {
     const controls = new OrbitControls(camera, document.body);
-    controls.maxPolarAngle = Math.PI * 0.495;
     controls.target.set(0, 10, 0);
-    controls.minDistance = 40.0;
-    controls.maxDistance = 200.0;
     controls.autoRotate = true;
     controls.dispose();
     controls.update();
   };
   // TODO: 여행가는 느낌이 가게 앞으로 가는 느낌으로 수정
+  // TODO: 밤에는 달이 보이게 하기 idea
   export const createScene = (canvas_name) => {
     renderer = new THREE.WebGLRenderer({
       antialias: true,
@@ -121,6 +119,5 @@
     updateSun(1, -142);
     animate();
   };
-
   window.addEventListener("resize", resize);
 </script>
