@@ -21,5 +21,9 @@
 	"dependencies": {
 		"scroll-out": "^2.2.12",
 		"three": "^0.150.1"
-	}
+	},
+	"contributors": [
+		"YeonSeong-Lee <yeonseong.dev@gmail.com> (https://github.com/YeonSeong-Lee)",
+		"SeungWoonSong<susong@student.42seoul.kr> (https://github.com/SeungWoonSong)"
+	]
 }
