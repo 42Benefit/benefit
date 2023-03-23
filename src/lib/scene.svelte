@@ -80,6 +80,7 @@
   };
 
   let renderer;
+  let mouse = new THREE.Vector2();
 
   const animate = () => {
     const time = performance.now() * 0.001;
@@ -106,6 +107,35 @@
     controls.dispose();
     controls.update();
   };
+
+  const onDocumentMouseDown = (event) => {
+    event.preventDefault();
+    let ray = new THREE.Raycaster();
+    ray.setFromCamera(mouse, camera);
+    let intersects = ray.intersectObjects(scene.children);
+    if (intersects.length > 0 && intersects[0].object.name === "cube") {
+      intersects[0].object.material.color.setHex(0xff0000);
+    } else {
+      scene.getObjectByName("cube").material.color.setHex(0x00ff00);
+    }
+  };
+
+  const onDocumentMouseMove = (event) => {
+    event.preventDefault();
+    const gapX = event.clientX - event.offsetX;
+    const gapY = event.clientY - event.offsetY;
+    mouse.x = ((event.clientX - gapX) / window.innerWidth) * 2 - 1;
+    mouse.y = -((event.clientY - gapY) / window.innerHeight) * 2 + 1;
+    let ray = new THREE.Raycaster();
+    ray.setFromCamera(mouse, camera);
+    let intersects = ray.intersectObjects(scene.children);
+    if (intersects.length > 0 && intersects[0].object.name === "cube") {
+      document.body.style.cursor = "pointer";
+    } else {
+      document.body.style.cursor = "auto";
+    }
+  };
+
   // TODO: 여행가는 느낌이 가게 앞으로 가는 느낌으로 수정
   // TODO: 밤에는 달이 보이게 하기 idea
   export const createScene = (canvas_name) => {
@@ -120,4 +150,6 @@
     animate();
   };
   window.addEventListener("resize", resize);
+  window.addEventListener("mousemove", onDocumentMouseMove);
+  window.addEventListener("mousedown", onDocumentMouseDown);
 </script>
