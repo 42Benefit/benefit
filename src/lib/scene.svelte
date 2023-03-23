@@ -25,6 +25,7 @@
     roughness: 0,
   });
   const cube = new THREE.Mesh(geometry, material);
+  cube.name = "cube";
   scene.add(cube);
 
   const waterGeometry = new THREE.PlaneGeometry(5000, 5000);
