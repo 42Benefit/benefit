@@ -15,9 +15,6 @@
   );
   camera.position.set(30, 30, 100);
 
-  let sun;
-  sun = new THREE.Vector3();
-
   const geometry = new THREE.BoxGeometry(30, 30, 30);
   const material = new THREE.MeshStandardMaterial({
     color: 0x00ff00,
@@ -60,6 +57,8 @@
   skyUniforms["mieCoefficient"].value = 0.005;
   skyUniforms["mieDirectionalG"].value = 0.8;
 
+  let sun;
+  sun = new THREE.Vector3();
   const updateSun = (elevation, azimuth) => {
     let renderTarget;
     const parameters = {
