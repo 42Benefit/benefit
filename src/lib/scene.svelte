@@ -16,22 +16,15 @@
   );
   camera.position.set(30, 30, 100);
 
-  const geometry = new THREE.BoxGeometry(30, 30, 30);
-  const material = new THREE.MeshStandardMaterial({
-    color: 0x00ff00,
-    metalness: 0.13,
-    roughness: 0,
-  });
-  const cube = new THREE.Mesh(geometry, material);
-  cube.name = "cube";
-  //scene.add(cube);
   const loader = new GLTFLoader();
   loader.load(
     "src/lib/models/message_in_a_bottle.glb",
     (gltf) => {
-      gltf.scene.rotation.x = -Math.PI / 2;
-      gltf.scene.scale.set(22, 22, 22);
-      scene.add(gltf.scene);
+      let object = gltf.scene;
+      object.rotation.x = -Math.PI / 2;
+      object.scale.set(22, 22, 22);
+      object.name = "message_in_a_bottle";
+      scene.add(object);
     },
     (xhr) => {
       console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
@@ -101,11 +94,10 @@
   const animate = () => {
     const time = performance.now() * 0.001;
     requestAnimationFrame(animate);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    cube.position.y = Math.sin(time) * 15 + 25;
     water.material.uniforms["time"].value += 1.0 / 60.0;
     controlCamera();
+    scene.getObjectByName("message_in_a_bottle").position.y =
+      Math.sin(time) * 2;
     renderer.render(scene, camera);
   };
 
@@ -129,10 +121,14 @@
     let ray = new THREE.Raycaster();
     ray.setFromCamera(mouse, camera);
     let intersects = ray.intersectObjects(scene.children);
-    if (intersects.length > 0 && intersects[0].object.name === "cube") {
-      intersects[0].object.material.color.setHex(0xff0000);
+    if (
+      intersects.length > 0 &&
+      intersects[0].object.name === "defaultMaterial_1"
+    ) {
+      // 병 클릭시
+      updateSun(12, -142);
     } else {
-      scene.getObjectByName("cube").material.color.setHex(0x00ff00);
+      updateSun(1, -142);
     }
   };
 
@@ -145,7 +141,10 @@
     let ray = new THREE.Raycaster();
     ray.setFromCamera(mouse, camera);
     let intersects = ray.intersectObjects(scene.children);
-    if (intersects.length > 0 && intersects[0].object.name === "cube") {
+    if (
+      intersects.length > 0 &&
+      intersects[0].object.name === "defaultMaterial_1"
+    ) {
       document.body.style.cursor = "pointer";
     } else {
       document.body.style.cursor = "auto";
