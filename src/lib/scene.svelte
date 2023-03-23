@@ -5,6 +5,7 @@
   import { Water } from "three/addons/objects/Water.js";
   import { Sky } from "three/addons/objects/Sky.js";
   import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+  import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
@@ -23,7 +24,22 @@
   });
   const cube = new THREE.Mesh(geometry, material);
   cube.name = "cube";
-  scene.add(cube);
+  //scene.add(cube);
+  const loader = new GLTFLoader();
+  loader.load(
+    "src/lib/models/message_in_a_bottle.glb",
+    (gltf) => {
+      gltf.scene.rotation.x = -Math.PI / 2;
+      gltf.scene.scale.set(22, 22, 22);
+      scene.add(gltf.scene);
+    },
+    (xhr) => {
+      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+    },
+    (error) => {
+      console.error(error);
+    }
+  );
 
   const waterGeometry = new THREE.PlaneGeometry(5000, 5000);
   const waterMaterial = {
