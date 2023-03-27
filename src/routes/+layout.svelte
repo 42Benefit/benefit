@@ -1,5 +1,6 @@
 <script>
 	import Header from "./Header.svelte";
+	import Loading from "./Loading.svelte";
 	import { onMount } from "svelte";
 	import { createScene } from "../lib/scene.svelte";
 
@@ -14,7 +15,7 @@
 
 <div class="app">
 	<Header />
-
+	<Loading />
 	<main>
 		<slot />
 	</main>

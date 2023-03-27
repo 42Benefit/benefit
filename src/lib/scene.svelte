@@ -25,10 +25,9 @@
       object.scale.set(22, 22, 22);
       object.name = "message_in_a_bottle";
       scene.add(object);
+      document.querySelector(".loading-container").style.display = "none";
     },
-    (xhr) => {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-    },
+    undefined,
     (error) => {
       console.error(error);
     }
@@ -92,13 +91,14 @@
   let mouse = new THREE.Vector2();
 
   const animate = () => {
-    const time = performance.now() * 0.001;
     requestAnimationFrame(animate);
+
+    const time = performance.now() * 0.001;
     water.material.uniforms["time"].value += 1.0 / 60.0;
     controlCamera();
+    renderer.render(scene, camera);
     scene.getObjectByName("message_in_a_bottle").position.y =
       Math.sin(time) * 2;
-    renderer.render(scene, camera);
   };
 
   const resize = () => {
