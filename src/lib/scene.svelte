@@ -126,9 +126,10 @@
       intersects[0].object.name === "defaultMaterial_1"
     ) {
       // 병 클릭시
-      updateSun(12, -142);
-    } else {
       updateSun(1, -142);
+      document.querySelector(".benefits_wrapper").style.display = "block";
+    } else {
+      updateSun(12, -142);
     }
   };
 

@@ -40,6 +40,10 @@
 		},
 	];
 	// TODO: load benefit from google sheet api
+	const closeModel = () => {
+		// @ts-ignore
+		document.querySelector(".benefits_wrapper").style.display = "none";
+	};
 </script>
 
 <div class="benefits_wrapper">
@@ -50,6 +54,7 @@
 			<h1>혜택기간: {benefit.start_date} ~ {benefit.end_date}</h1>
 		</section>
 	{/each}
+	<button on:click|preventDefault={closeModel}>close</button>
 </div>
 
 <style>
@@ -57,7 +62,9 @@
 		background-color: red;
 		overflow-y: scroll;
 		height: 80vh;
+		display: none;
 	}
+
 	.benefit {
 		display: flex;
 		flex-direction: column;
