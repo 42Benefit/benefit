@@ -91,14 +91,16 @@
   let mouse = new THREE.Vector2();
 
   const animate = () => {
-    requestAnimationFrame(animate);
-
     const time = performance.now() * 0.001;
+
+    requestAnimationFrame(animate);
     water.material.uniforms["time"].value += 1.0 / 60.0;
     controlCamera();
     renderer.render(scene, camera);
-    scene.getObjectByName("message_in_a_bottle").position.y =
-      Math.sin(time) * 2;
+    const position = scene?.getObjectByName("message_in_a_bottle")?.position;
+    if (position) {
+      position.y = Math.sin(time) * 2;
+    }
   };
 
   const resize = () => {
