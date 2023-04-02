@@ -18,7 +18,7 @@
 
   const loader = new GLTFLoader();
   loader.load(
-    "src/lib/models/message_in_a_bottle.glb",
+    "/models/message_in_a_bottle.glb",
     (gltf) => {
       let object = gltf.scene;
       object.rotation.x = -Math.PI / 2;
@@ -38,7 +38,7 @@
     textureWidth: 512,
     textureHeight: 512,
     waterNormals: new THREE.TextureLoader().load(
-      "src/lib/images/waternormals.jpeg",
+      "/images/waternormals.jpeg",
       function (texture) {
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
       }
