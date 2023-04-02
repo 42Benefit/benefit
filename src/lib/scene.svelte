@@ -117,8 +117,20 @@
     controls.dispose();
     controls.update();
   };
+  
+  const isMouseOverBenefitsWrapper = (event) => {
+    const benefitsWrapper = document.querySelector(".benefits_wrapper");
+    const rect = benefitsWrapper.getBoundingClientRect();
+    return (
+      event.clientX >= rect.left &&
+      event.clientX <= rect.right &&
+      event.clientY >= rect.top &&
+      event.clientY <= rect.bottom
+    );
+  };
 
   const onDocumentMouseDown = (event) => {
+
     event.preventDefault();
     let ray = new THREE.Raycaster();
     ray.setFromCamera(mouse, camera);
@@ -130,7 +142,12 @@
       // 병 클릭시
       updateSun(1, -142);
       document.querySelector(".benefits_wrapper").style.display = "block";
-    } else {
+    } else if(isMouseOverBenefitsWrapper(event) === false){
+      // 병 외부 클릭시
+      updateSun(12, -142);
+      document.querySelector(".benefits_wrapper").style.display = "none";
+    }
+    else {
       updateSun(12, -142);
     }
   };
@@ -144,7 +161,8 @@
     let intersects = ray.intersectObjects(scene.children);
     if (
       intersects.length > 0 &&
-      intersects[0].object.name === "defaultMaterial_1"
+      intersects[0].object.name === "defaultMaterial_1" &&
+      isMouseOverBenefitsWrapper(event) === false
     ) {
       document.body.style.cursor = "pointer";
     } else {
