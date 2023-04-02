@@ -137,10 +137,8 @@
 
   const onDocumentMouseMove = (event) => {
     event.preventDefault();
-    const gapX = event.clientX - event.offsetX;
-    const gapY = event.clientY - event.offsetY;
-    mouse.x = ((event.clientX - gapX) / window.innerWidth) * 2 - 1;
-    mouse.y = -((event.clientY - gapY) / window.innerHeight) * 2 + 1;
+    mouse.x = ((event.clientX) / window.innerWidth) * 2 - 1;
+    mouse.y = -((event.clientY) / window.innerHeight) * 2 + 1;
     let ray = new THREE.Raycaster();
     ray.setFromCamera(mouse, camera);
     let intersects = ray.intersectObjects(scene.children);
