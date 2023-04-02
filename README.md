@@ -22,7 +22,9 @@ benefit는 42서울 카뎃들을 위한 혜택들을 모아놓은 사이트입�
 
 ## 라이센스
 
-이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하십시오. 3D 모델의 라이센스 [CC Attribution](https://sketchfab.com/3d-models/message-in-a-bottle-2e738dfccbf34ec4bfbaf2c1d1203911)를 따르고 있습니다.
+이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하십시오. 
+
+rollthebryce에 만들어진 [Message in a Bottle](https://skfb.ly/6YYwn)는 [Creative Commons Attribution](http://creativecommons.org/licenses/by/4.0/)을 따르고 있습니다.
 
 ## 개발자
 
