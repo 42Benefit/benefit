@@ -8,15 +8,15 @@
   import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
   import { onMount } from "svelte"; // For GoogleGA
 
-  onMount(() => {
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "page_view", {
-        page_location: window.location.href,
-        page_path: "/",
-        page_title: "Main Page",
-      });
-    }
-  });
+  // onMount(() => {
+  //   if (typeof window !== "undefined" && window.gtag) {
+  //     window.gtag("event", "page_view", {
+  //       page_location: window.location.href,
+  //       page_path: "/",
+  //       page_title: "Main Page",
+  //     });
+  //   }
+  // });
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
