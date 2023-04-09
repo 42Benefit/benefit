@@ -2,6 +2,7 @@
 	import { page } from "$app/stores";
 	import logo from "$lib/images/42logo.svg";
 	import github from "$lib/images/github.svg";
+	import SerachBar from "./SerachBar.svelte";
 </script>
 
 <header>
@@ -12,7 +13,7 @@
 	</div>
 
 	<div class="corner">
-
+		<SerachBar />
 	</div>
 </header>
 
