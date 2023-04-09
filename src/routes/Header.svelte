@@ -11,31 +11,8 @@
 		</a>
 	</div>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === "/" ? "page" : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li
-				aria-current={$page.url.pathname === "/about"
-					? "page"
-					: undefined}
-			>
-				<a href="/about">About</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
 	<div class="corner">
-		<a href="https://github.com/YeonSeong-Lee/benefit">
-			<img src={github} alt="GitHub" />
-		</a>
+
 	</div>
 </header>
 
@@ -48,8 +25,8 @@
 	}
 
 	.corner {
-		width: 3em;
-		height: 3em;
+		width: 6rem;
+		height: 5rem;
 	}
 
 	.corner a {
@@ -61,8 +38,8 @@
 	}
 
 	.corner img {
-		width: 2em;
-		height: 2em;
+		width: 5rem;
+		height: 5rem;
 		object-fit: contain;
 	}
 
@@ -128,5 +105,18 @@
 
 	a:hover {
 		color: var(--color-theme-1);
+	}
+
+	@media (max-width: 768px) {
+		.corner {
+			width: 3.5rem;
+			height: 3rem;
+		}
+
+		.corner img {
+			width: 3rem;
+			height: 3rem;
+			object-fit: contain;
+		}	
 	}
 </style>
