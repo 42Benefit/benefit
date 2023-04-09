@@ -12,7 +12,23 @@
 	onMount(() => {
 		createScene(canvas_name);
 	});
+
 </script>
+
+<svelte:head>
+	<title>42 Benefit</title>
+	<meta name="description" content="42Seoul 카뎃들을 위한 Benefit 사이트입니다." />
+	<meta property="og:image" content="/images/42logo.svg">
+	<meta property="og:title" content="42 Benefit">
+	<meta property="og:description" content="42Seoul 카뎃들을 위한 Benefit 사이트입니다.">
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-6B12EVGK5N"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-6B12EVGK5N');
+	</script>
+</svelte:head>
 
 <div class="app">
 	<Header />
