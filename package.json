@@ -18,13 +18,17 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"dotenv": "^16.0.3",
+		"googleapis": "^114.0.0",
 		"scroll-out": "^2.2.12",
 		"three": "^0.150.1"
 	},
-  	"licenses": [{
-   	 	"type": "MIT",
-    	"url": "https://github.com/caolan/async/raw/master/LICENSE"
-  	}],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/caolan/async/raw/master/LICENSE"
+		}
+	],
 	"contributors": [
 		"YeonSeong-Lee <yeonseong.dev@gmail.com> (https://github.com/YeonSeong-Lee)",
 		"SeungWoonSong<susong@student.42seoul.kr> (https://github.com/SeungWoonSong)"
