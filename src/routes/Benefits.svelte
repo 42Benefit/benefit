@@ -54,7 +54,6 @@
 			<h1>혜택기간: {benefit.start_date} ~ {benefit.end_date}</h1>
 		</section>
 	{/each}
-	<button on:click|preventDefault={closeModel}>close</button>
 </div>
 
 <style>
