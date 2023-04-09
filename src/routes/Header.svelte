@@ -12,7 +12,7 @@
 		</a>
 	</div>
 
-	<div class="corner">
+	<div class="corner search" >
 		<SerachBar />
 	</div>
 </header>
@@ -36,6 +36,12 @@
 		justify-content: center;
 		width: 100%;
 		height: 100%;
+	}
+
+	.search {
+		width: 20rem;
+		margin-right: 2rem;
+		/* opacity: 0.42; */
 	}
 
 	.corner img {
@@ -118,6 +124,10 @@
 			width: 3rem;
 			height: 3rem;
 			object-fit: contain;
-		}	
+		}
+		.search {
+			width: 15rem;
+			margin-right: 1rem;
+		}
 	}
 </style>
