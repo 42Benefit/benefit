@@ -1,61 +1,85 @@
 <script>
   let searchValue = "";
-  let onSearch = () => {};
-  let searchResults = ["hello", "world"];
+  /**
+   * @type {string[]}
+   */
+  let searchResults = [];
 
-  function search() {
-    // 검색 로직 구현
-    // searchResults = ...
+  const search = () => {
+    // TODO: 검색 로직 구현
+    let results = [];
+    if (searchValue === "42") {
+      results.push("answer to life the universe and everything");
+    }
+    if (searchValue === "answer to life the universe and everything") {
+      results.push("42");
+    }
+    searchResults = [...results];
+  };
+
+  const submit = () => {
+    /**
+     * @type {HTMLElement | null}
+     */
+    const result = document.getElementById("search-result");
+    if (result) {
+      result.style.opacity = "1";
+      result.focus();
+    }
   }
 
-  $: search();
+  /**
+   * @param {KeyboardEvent} e
+   */
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      submit();
+    }
+  }
 </script>
 
 <div class="search-bar">
-  <input  bind:value={searchValue} />
-  <button on:click={onSearch}>search</button>
+  <input placeholder="search the benefit for you" bind:value={searchValue} on:input={search} on:keypress={onKeyPress} />
 </div>
 
 <div class="search-results">
-    <ul>
-    {#each searchResults as result}
-      <li>{result}</li>
-    {/each}
-  </ul>
+  {#each searchResults as result}
+    <p id="search-result">{result}</p>
+  {/each}
 </div>
 
 <style>
-.search-bar {
-  display: flex;
-  align-items: center;
-  height: 2.5rem;
-  width: 100%;
-}
+  .search-bar {
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    width: 100%;
+  }
 
-.search-bar input {
-  flex: 1;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: none;
-  outline: none;
-  transition: opacity 0.2s ease-in-out;
-  opacity: 0.42;
-}
+  .search-bar input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0.42;
+  }
 
-.search-bar button {
-  margin-left: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: rgb(7, 85, 29);
-  border: none;
-  color: white;
-  cursor: pointer;
-  transition: opacity 0.2s ease-in-out;
-  opacity: 0.42;
-}
+  .search-results p {
+    opacity: 0.42;
+    margin: 0.42rem;
+  }
 
-.search-bar :focus{
-  opacity: 1;
-}
+  .search-results p:hover {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+  }
 
+  #search-result:focus {
+    opacity: 1;
+  }
+  .search-bar :focus {
+    opacity: 1;
+  }
 </style>
