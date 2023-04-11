@@ -5,6 +5,8 @@
 	import { onMount } from "svelte";
 	import { createScene } from "../lib/scene.svelte";
 
+	// for easter egg
+	console.log("Don't Panic!")
 	/**
 	 * @type {HTMLCanvasElement}
 	 */
