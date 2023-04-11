@@ -130,7 +130,6 @@
   };
 
   const onDocumentMouseDown = (event) => {
-    // event.preventDefault();
     let ray = new THREE.Raycaster();
     ray.setFromCamera(mouse, camera);
     let intersects = ray.intersectObjects(scene.children);
@@ -152,7 +151,6 @@
   };
 
   const onDocumentMouseMove = (event) => {
-    event.preventDefault();
     mouse.x = ((event.clientX) / window.innerWidth) * 2 - 1;
     mouse.y = -((event.clientY) / window.innerHeight) * 2 + 1;
     let ray = new THREE.Raycaster();
