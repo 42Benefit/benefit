@@ -44,6 +44,7 @@
 
 	footer p:hover {
 		opacity: 0.42;
+		transition: opacity 0.42s ease-in-out;
 	}
 
 	@media (min-width: 480px) {
