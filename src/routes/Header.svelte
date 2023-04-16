@@ -7,7 +7,7 @@
 
 <header>
 	<div class="corner">
-		<a href="https://github.com/YeonSeong-Lee/benefit">
+		<a href="https://benefit.42seoul.link/">
 			<img src={logo} alt="42logo" />
 		</a>
 	</div>

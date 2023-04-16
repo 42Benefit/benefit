@@ -5,7 +5,7 @@
 	</p>
 	<p>
 		Source code available on <a
-			href="https://github.com/YeonSeong-Lee/benefit/">GitHub</a
+			href="https://github.com/42Benefit/benefit/">GitHub</a
 		>
 	</p>
 	<p>
