@@ -98,8 +98,13 @@
     controlCamera();
     renderer.render(scene, camera);
     const position = scene?.getObjectByName("message_in_a_bottle")?.position;
+    const rotation = scene?.getObjectByName("message_in_a_bottle")?.rotation;
     if (position) {
-      position.y = Math.sin(time) * 2;
+      position.y = Math.sin(time) * 4;
+    }
+    if (rotation) {
+      rotation.x = Math.sin(time) * 0.42;
+      rotation.z = Math.sin(2 * time) * 0.042;
     }
   };
 
