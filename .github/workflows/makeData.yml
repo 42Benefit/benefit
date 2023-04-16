@@ -1,8 +1,12 @@
 name: Update Repository if Data Changed
 
 on:
-  schedule:
-    - cron: '* * * * *' # 매시간마다 실행
+  push:
+    branches:
+      - main
+
+#   schedule:
+#     - cron: '*/30 * * * *' # 매시간마다 실행
 
 jobs:
   run_make_data:
