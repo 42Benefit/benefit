@@ -1,5 +1,4 @@
 [
-<<<<<<< Updated upstream
     {
         "companyName": "seongyle",
         "companyDescription": "구름은 ‘모두가 개발자가 된다’라는 비전으로 언제 어디서 AI∙SW 개발을 배우고, 원하는 결과물을 구현할 수 있도록 ‘개발자 성장 중심’의 생태계를 만들어 나가고 있습니다. 42 SEOUL 교육생 대상 파격 혜택! 놓치지 마세요!",
@@ -160,26 +159,4 @@
     {
         "companyName": "BGF네트웍스"
     }
-=======
-		{
-			"companyName": "seongyle EDU",
-			"companyDescription": "구름은 ‘모두가 개발자가 된다’라는 비전으로 언제 어디서 AI∙SW 개발을 배우고, 원하는 결과물을 구현할 수 있도록 ‘개발자 성장 중심’의 생태계를 만들어 나가고 있습니다. 42 SEOUL 교육생 대상 파격 혜택! 놓치지 마세요!",
-			"logo": "https://nimble-ceder-40b.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F14d8f237-a8be-4c92-9f5a-576a5ac7f026%2F%25EA%25B5%25AC%25EB%25A6%2584.png?id=6a3b12cb-de06-4d20-b1c2-7793aae5a3cf&table=block&spaceId=b8e95917-8fcd-4c50-aca8-218afb8d471a&width=480&userId=&cache=v2",
-			"category": "교육",
-			"content": "01. 42 SEOUL 교육생 전용 채널 내 프로그래밍 강좌 무료!",
-			"method": "01. 42 SEOUL 교육생 전용 채널로 가입 신청 02. 슬랙 42seoul_staff_     pedagogy 채널을 통해 승인 요청",
-			"startDate": "2020.05.06",
-			"endDate": ""
-		},
-		{
-			"companyName": "구름EDU",
-			"companyDescription": "구름은 ‘모두가 개발자가 된다’라는 비전으로 언제 어디서 AI∙SW 개발을 배우고, 원하는 결과물을 구현할 수 있도록 ‘개발자 성장 중심’의 생태계를 만들어 나가고 있습니다. 42 SEOUL 교육생 대상 파격 혜택! 놓치지 마세요!",
-			"logo": "",
-			"category": "교육",
-			"content": "01. 42 SEOUL 교육생 전용 채널 내 프로그래밍 강좌 무료!",
-			"method": "01. 42 SEOUL 교육생 전용 채널로 가입 신청 02. 슬랙 42seoul_staff_pedagogy 채널을 통해 승인 요청",
-			"startDate": "2020.05.06",
-			"endDate": ""
-		}
->>>>>>> Stashed changes
 ]
