@@ -1,18 +1,19 @@
 [
     {
-        "companyName": "seongyle",
+        "companyName": "구름EDU",
         "companyDescription": "구름은 ‘모두가 개발자가 된다’라는 비전으로 언제 어디서 AI∙SW 개발을 배우고, 원하는 결과물을 구현할 수 있도록 ‘개발자 성장 중심’의 생태계를 만들어 나가고 있습니다. 42 SEOUL 교육생 대상 파격 혜택! 놓치지 마세요!",
         "logo": "",
         "category": "교육",
         "content": "42 SEOUL 교육생 전용 채널 내 프로그래밍 강좌 무료!",
         "method": [
+            "42 SEOUL 교육생 전용 채널로 가입 신청",
             "슬랙 42seoul_staff_pedagogy 채널을 통해 승인 요청"
         ],
         "startDate": "2020.05.06",
         "endDate": ""
     },
     {
-        "companyName": "susong",
+        "companyName": "메가존 아이티평생교육원",
         "companyDescription": "메가존아이티평생교육원은 클라우드&호스팅, 디지털 마케팅, 디지털에이전시 전문 그룹 메가존의 교육기관으로서 다년간의 경험과 노하우를 바탕으로 최적의 교육서비스를 제공합니다.",
         "logo": "",
         "category": "교육",
