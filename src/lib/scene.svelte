@@ -20,7 +20,7 @@
   loader.load(
     "/models/message_in_a_bottle.glb",
     (model) => {
-      let object =(model).scene;
+      let object = model.scene;
       object.rotation.x = -Math.PI / 2;
       object.scale.set(22, 22, 22);
       object.name = "message_in_a_bottle";
@@ -117,7 +117,7 @@
     controls.dispose();
     controls.update();
   };
-  
+
   const isMouseOverBenefitsWrapper = (event) => {
     const benefitsWrapper = document.querySelector(".benefits_wrapper");
     const rect = benefitsWrapper.getBoundingClientRect();
@@ -140,19 +140,18 @@
       // 병 클릭시
       updateSun(1, -142);
       document.querySelector(".benefits_wrapper").style.display = "block";
-    } else if(isMouseOverBenefitsWrapper(event) === false){
+    } else if (isMouseOverBenefitsWrapper(event) === false) {
       // 병 외부 클릭시
       updateSun(12, -142);
       document.querySelector(".benefits_wrapper").style.display = "none";
-    }
-    else {
+    } else {
       updateSun(12, -142);
     }
   };
 
   const onDocumentMouseMove = (event) => {
-    mouse.x = ((event.clientX) / window.innerWidth) * 2 - 1;
-    mouse.y = -((event.clientY) / window.innerHeight) * 2 + 1;
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     let ray = new THREE.Raycaster();
     ray.setFromCamera(mouse, camera);
     let intersects = ray.intersectObjects(scene.children);
@@ -162,9 +161,27 @@
       isMouseOverBenefitsWrapper(event) === false
     ) {
       document.body.style.cursor = "pointer";
+      addSpotLight();
     } else {
       document.body.style.cursor = "auto";
+      removeSpotLight();
     }
+  };
+
+  let spotLight = null;
+  const addSpotLight = () => {
+    if (spotLight === null) {
+      spotLight = new THREE.SpotLight(0xffffff, 42);
+      spotLight.position.set(0, 42, -10);
+      spotLight.castShadow = true;
+      scene.add(spotLight);
+    }
+  };
+
+  const removeSpotLight = () => {
+    if (spotLight === null) return;
+    scene.remove(spotLight);
+    spotLight = null;
   };
 
   // TODO: 여행가는 느낌이 가게 앞으로 가는 느낌으로 수정
