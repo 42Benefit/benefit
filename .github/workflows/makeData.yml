@@ -41,15 +41,17 @@ jobs:
           cp src/data/now.json src/data/data.json
 
           # 변경 사항 커밋 및 푸시
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
           git add src/data/data.json
           git commit -m "UPDATE: data.json with new data"
           git push
+          
         else
           echo "Data is the same. No changes."
         fi
       env:
         CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+        SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }} 
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
