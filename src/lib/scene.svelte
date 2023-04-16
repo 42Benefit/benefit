@@ -19,8 +19,8 @@
   const loader = new GLTFLoader();
   loader.load(
     "/models/message_in_a_bottle.glb",
-    (gltf) => {
-      let object = gltf.scene;
+    (model) => {
+      let object =(model).scene;
       object.rotation.x = -Math.PI / 2;
       object.scale.set(22, 22, 22);
       object.name = "message_in_a_bottle";
