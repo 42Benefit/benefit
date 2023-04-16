@@ -1,0 +1,51 @@
+name: Update Repository if Data Changed
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' # 매시간마다 실행
+
+jobs:
+  run_make_data:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r src/requirements.txt
+
+    - name: Run make-data.py
+      run: |
+        python src/make-data.py
+        # 새로 생성된 데이터 불러오기
+        NEW_DATA=$(cat static/data/now.json)
+
+        # 저장된 데이터 불러오기
+        STORED_DATA=$(cat static/data/data.json)
+
+        # 새로 생성된 데이터와 저장된 데이터 비교
+        if [ "$NEW_DATA" != "$STORED_DATA" ]; then
+          echo "Data has changed. Updating the repository..."
+          cp static/data/now.json static/data/data.json
+
+          # 변경 사항 커밋 및 푸시
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add static/data/data.json
+          git commit -m "Update data.json with new data"
+          git push
+        else
+          echo "Data is the same. No changes."
+        fi
+      env:
+        CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
