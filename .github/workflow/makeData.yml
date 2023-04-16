@@ -2,7 +2,7 @@ name: Update Repository if Data Changed
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # 매시간마다 실행
+    - cron: '* * * * *' # 매시간마다 실행
 
 jobs:
   run_make_data:
