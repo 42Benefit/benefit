@@ -36,7 +36,7 @@ keys = ["companyName", "companyDescription", "logo", "category", "content", "met
 for values in data[1:]:
     length = len(values)
     for index in range(length):
-        values[index] = values[index].replace('/', '').replace('\r', '')
+        values[index] = values[index].replace('\\', '')
         pattern = r'\[\d+\]'
         values[index] = re.sub(pattern, '', values[index])
         if (index == 6 or index == 7):
@@ -53,5 +53,9 @@ for values in data[1:]:
 company_data = [dict(zip(keys, values)) for values in data[1:]]
 
 # JSON 파일에 데이터 저장
-with open('src/data/now.json', 'w', encoding='utf-8') as json_file:
+with open('/Users/nouswong/goinfre/benefit/src/data/now.json', 'w', encoding='utf-8') as json_file:
     json.dump(company_data, json_file, ensure_ascii=False, indent=4)
+
+# JSON 파일에 데이터 저장
+# with open('src/data/now.json', 'w', encoding='utf-8') as json_file:
+#     json.dump(company_data, json_file, ensure_ascii=False, indent=4)
