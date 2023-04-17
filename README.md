@@ -28,6 +28,6 @@ rollthebryce에 의해 만들어진 [Message in a Bottle](https://skfb.ly/6YYwn)
 
 ## 개발자
 
-<a href="https://github.com/YeonSeong-Lee/benefit/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=YeonSeong-Lee/benefit" />
+<a href="https://github.com/42Benefit/benefit/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=42Benefit/benefit" />
 </a>

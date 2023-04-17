@@ -133,7 +133,7 @@
       event.clientY <= rect.bottom
     );
   };
-
+  // TODO: 추후 이벤트 핸들러 분리
   const onDocumentMouseDown = (event) => {
     let ray = new THREE.Raycaster();
     ray.setFromCamera(mouse, camera);
