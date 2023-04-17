@@ -2,16 +2,21 @@
 	import benefits from "../data/data.json";
 	import ftLogo from "$lib/images/42logo.svg";
 
-	const closeModel = () => {
-		// @ts-ignore
-		document.querySelector(".benefits_wrapper").style.display = "none";
+	const displayDate = (/** @type {string | number | Date | undefined} */ input) => {
+		console.log(input);
+		if (input === null || input === undefined || input === "")
+		{
+			return "";
+		}
+		const date = new Date(input);
+		const year = date.getFullYear();
+		const month = ('0' + (date.getMonth() + 1)).slice(-2);
+		const day = ('0' + date.getDate()).slice(-2);
+		return `${year}.${month}.${day}`;
 	};
 </script>
 
 <div class="benefits_wrapper">
-	{#if benefits.length === 0}
-		<h1>No benefits</h1>
-	{/if}
 	<div class="category">
 		<p id="education">교육</p>
 		<p id="cooperation">협업</p>
@@ -19,16 +24,19 @@
 	</div>
 	{#each benefits as benefit}
 		<section class="benefit" data-scroll>
-			<h1>{benefit.companyName}</h1>
-			<h1>{benefit.companyDescription}</h1>
-			<h1>{benefit.category}</h1>
-			<h1>{benefit.content}</h1>
-			<h1>{benefit.method}</h1>
-			<h1><img src={benefit.logo ?? ftLogo} alt="company logo" /></h1>
-			<h1>{benefit.startDate} ~ {benefit.endDate ?? ""}</h1>
+			{benefit.companyName || ""}
+			{benefit.companyDescription || ""}
+			{benefit.category || ""}
+			{benefit.content || ""}
+			{#each benefit.method || [] as element}
+				<li>{element}</li>
+			{/each}
+			<img src={benefit.logo || ftLogo} alt="company logo" />
+			{displayDate(benefit.startDate)} ~ {displayDate(benefit.endDate)}
 		</section>
+	{:else}
+		<p>등록된 혜택이 없습니다.</p>
 	{/each}
-	<button on:click={closeModel}>Close</button>
 </div>
 
 <style>
