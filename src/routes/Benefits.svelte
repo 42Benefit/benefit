@@ -3,7 +3,6 @@
 	import ftLogo from "$lib/images/42logo.svg";
 
 	const displayDate = (/** @type {string | number | Date | undefined} */ input) => {
-		console.log(input);
 		if (input === null || input === undefined || input === "")
 		{
 			return "";
