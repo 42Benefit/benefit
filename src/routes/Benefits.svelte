@@ -2,6 +2,7 @@
 	import benefits from "../data/data.json";
 	import ftLogo from "$lib/images/42logo.svg";
 
+	//TODO: Refactor this code, separate into modules
 	const displayDate = (
 		/** @type {string | number | Date | undefined} */ input
 	) => {
