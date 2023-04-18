@@ -2,35 +2,124 @@
 	import benefits from "../data/data.json";
 	import ftLogo from "$lib/images/42logo.svg";
 
-	const displayDate = (/** @type {string | number | Date | undefined} */ input) => {
-		if (input === null || input === undefined || input === "")
-		{
+	const displayDate = (
+		/** @type {string | number | Date | undefined} */ input
+	) => {
+		if (input === null || input === undefined || input === "") {
 			return "";
 		}
 		const date = new Date(input);
 		const year = date.getFullYear();
-		const month = ('0' + (date.getMonth() + 1)).slice(-2);
-		const day = ('0' + date.getDate()).slice(-2);
+		const month = ("0" + (date.getMonth() + 1)).slice(-2);
+		const day = ("0" + date.getDate()).slice(-2);
 		return `${year}.${month}.${day}`;
 	};
+
+	/**
+	 *  @param {MouseEvent & { currentTarget: HTMLButtonElement}} e
+	 */
+	const changeCategory = (e) => {
+		const category = e.currentTarget.id;
+		if (category === "education") {
+			toggleCategory("education");
+		} else if (category === "cooperation") {
+			toggleCategory("cooperation");
+		} else {
+			toggleCategory("etc");
+		}
+	};
+
+	// @ts-ignore
+	const sortBenefitsListFunction = (a, b) => {
+		if (a.startDate === undefined || b.startDate === undefined) {
+			return 0;
+		}
+		if (a.startDate < b.startDate) {
+			return 1;
+		} else if (a.startDate > b.startDate) {
+			return -1;
+		} else {
+			return 0;
+		}
+	};
+	const toggleCategory = (/** @type {string} */ category) => {
+		const education = document.getElementById("education");
+		const cooperation = document.getElementById("cooperation");
+		const etc = document.getElementById("etc");
+		if (category === "education" && education) {
+			if (education.classList.contains("show")) {
+				education.classList.remove("show");
+				education.classList.add("no_show");
+				showBenefits = showBenefits.filter(
+					(benefit) => benefit.category !== "교육"
+				);
+			} else {
+				education.classList.remove("no_show");
+				education.classList.add("show");
+				showBenefits = [...showBenefits, ...educationBenefits].sort(sortBenefitsListFunction);
+			}
+		} else if (category === "cooperation" && cooperation) {
+			if (cooperation.classList.contains("show")) {
+				cooperation.classList.remove("show");
+				cooperation.classList.add("no_show");
+				showBenefits = showBenefits.filter(
+					(benefit) => benefit.category !== "협업"
+				);
+			} else {
+				cooperation.classList.remove("no_show");
+				cooperation.classList.add("show");
+				showBenefits = [...showBenefits, ...cooperationBenefits].sort(sortBenefitsListFunction);
+			}
+		} else if (category === "etc" && etc) {
+			if (etc.classList.contains("show")) {
+				etc.classList.remove("show");
+				etc.classList.add("no_show");
+				showBenefits = showBenefits.filter(
+					(benefit) =>
+						!(
+							benefit.category !== "교육" &&
+							benefit.category !== "협업"
+						)
+				);
+			} else {
+				etc.classList.remove("no_show");
+				etc.classList.add("show");
+				showBenefits = [...showBenefits, ...etcBenefits].sort(sortBenefitsListFunction);
+			}
+		}
+	};
+	let showBenefits = benefits.filter((benefit) => benefit.category).sort(sortBenefitsListFunction);
+	const educationBenefits = showBenefits.filter(
+		(benefit) => benefit.category === "교육"
+	);
+	const cooperationBenefits = showBenefits.filter(
+		(benefit) => benefit.category === "협업"
+	);
+	const etcBenefits = showBenefits.filter(
+		(benefit) => benefit.category !== "교육" && benefit.category !== "협업"
+	);
 </script>
 
 <div class="benefits_wrapper">
 	<div class="category">
-		<p id="education">교육</p>
-		<p id="cooperation">협업</p>
-		<p id="etc">기타</p>
+		<button class="show" id="education" on:click={changeCategory}
+			>교육</button
+		>
+		<button class="show" id="cooperation" on:click={changeCategory}
+			>협업</button
+		>
+		<button class="show" id="etc" on:click={changeCategory}>기타</button>
 	</div>
-	{#each benefits as benefit}
+	{#each showBenefits as benefit}
 		<section class="benefit" data-scroll>
 			{benefit.companyName || ""}
+			<img src={benefit.logo || ftLogo} alt="company logo" />
 			{benefit.companyDescription || ""}
 			{benefit.category || ""}
 			{benefit.content || ""}
 			{#each benefit.method || [] as element}
 				<li>{element}</li>
 			{/each}
-			<img src={benefit.logo || ftLogo} alt="company logo" />
 			{displayDate(benefit.startDate)} ~ {displayDate(benefit.endDate)}
 		</section>
 	{:else}
@@ -64,8 +153,20 @@
 		margin: 1rem;
 	}
 
-	.category p {
+	.category button {
 		margin: 0.42rem;
-		opacity: 1;
+	}
+
+	.category button:hover {
+		cursor: pointer;
+	}
+
+	.show {
+		opacity: 0.9;
+		background-color: green;
+	}
+
+	.no_show {
+		opacity: 0.42;
 	}
 </style>
