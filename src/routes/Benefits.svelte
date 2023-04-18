@@ -130,11 +130,13 @@
 
 <style>
 	.benefits_wrapper {
-		background-color: red;
 		overflow-y: scroll;
 		height: 80vh;
 		display: none;
 		margin: 2rem;
+		background-color: rgba(0,0,0,0.42);
+		border-radius: 0.5rem;
+		color: white;
 	}
 
 	.benefit {
@@ -143,7 +145,11 @@
 		justify-content: center;
 		align-items: center;
 		margin: 1rem;
-		background-color: blue;
+	}
+
+	.benefit img {
+		width: 4rem;
+		height: 4rem;
 	}
 
 	.category {
@@ -155,6 +161,7 @@
 	}
 
 	.category button {
+		all: unset;
 		margin: 0.42rem;
 	}
 
@@ -164,10 +171,9 @@
 
 	.show {
 		opacity: 0.9;
-		background-color: green;
 	}
 
 	.no_show {
-		opacity: 0.42;
+		opacity: 0.2;
 	}
 </style>
