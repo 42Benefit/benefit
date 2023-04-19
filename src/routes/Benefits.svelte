@@ -49,32 +49,28 @@
 		const etc = document.getElementById("etc");
 		if (category === "education" && education) {
 			if (education.classList.contains("show")) {
-				education.classList.remove("show");
-				education.classList.add("no_show");
 				showBenefits = showBenefits.filter(
 					(benefit) => benefit.category !== "교육"
 				);
 			} else {
-				education.classList.remove("no_show");
-				education.classList.add("show");
-				showBenefits = [...showBenefits, ...educationBenefits].sort(sortBenefitsListFunction);
+				showBenefits = [...showBenefits, ...educationBenefits].sort(
+					sortBenefitsListFunction
+				);
 			}
+			education.classList.toggle("show");
 		} else if (category === "cooperation" && cooperation) {
 			if (cooperation.classList.contains("show")) {
-				cooperation.classList.remove("show");
-				cooperation.classList.add("no_show");
 				showBenefits = showBenefits.filter(
 					(benefit) => benefit.category !== "협업"
 				);
 			} else {
-				cooperation.classList.remove("no_show");
-				cooperation.classList.add("show");
-				showBenefits = [...showBenefits, ...cooperationBenefits].sort(sortBenefitsListFunction);
+				showBenefits = [...showBenefits, ...cooperationBenefits].sort(
+					sortBenefitsListFunction
+				);
 			}
+			cooperation.classList.toggle("show");
 		} else if (category === "etc" && etc) {
 			if (etc.classList.contains("show")) {
-				etc.classList.remove("show");
-				etc.classList.add("no_show");
 				showBenefits = showBenefits.filter(
 					(benefit) =>
 						!(
@@ -83,13 +79,16 @@
 						)
 				);
 			} else {
-				etc.classList.remove("no_show");
-				etc.classList.add("show");
-				showBenefits = [...showBenefits, ...etcBenefits].sort(sortBenefitsListFunction);
+				showBenefits = [...showBenefits, ...etcBenefits].sort(
+					sortBenefitsListFunction
+				);
 			}
+			etc.classList.toggle("show");
 		}
 	};
-	let showBenefits = benefits.filter((benefit) => benefit.category).sort(sortBenefitsListFunction);
+	let showBenefits = benefits
+		.filter((benefit) => benefit.category)
+		.sort(sortBenefitsListFunction);
 	const educationBenefits = showBenefits.filter(
 		(benefit) => benefit.category === "교육"
 	);
@@ -134,7 +133,7 @@
 		height: 80vh;
 		display: none;
 		margin: 2rem;
-		background-color: rgba(0,0,0,0.42);
+		background-color: rgba(0, 0, 0, 0.42);
 		border-radius: 0.5rem;
 		color: white;
 	}
@@ -163,6 +162,7 @@
 	.category button {
 		all: unset;
 		margin: 0.42rem;
+		opacity: 0.42;
 	}
 
 	.category button:hover {
@@ -170,10 +170,6 @@
 	}
 
 	.show {
-		opacity: 0.9;
-	}
-
-	.no_show {
-		opacity: 0.2;
+		opacity: 0.9 !important;
 	}
 </style>
