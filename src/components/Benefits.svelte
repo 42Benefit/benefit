@@ -103,7 +103,7 @@
 		if (e.key === "Escape") {
 			document.getElementsByClassName(
 				"benefits_wrapper"
-			// @ts-ignore
+				// @ts-ignore
 			)[0].style.display = "none";
 		}
 	});
@@ -121,24 +121,24 @@
 	</div>
 	{#each showBenefits as benefit}
 		<section class="benefit" data-scroll>
-			{benefit.companyName || ""}
-			<img src={benefit.logo || ftLogo} alt="company logo" />
-			{benefit.companyDescription || ""}
-			{benefit.category || ""}
-			{benefit.content || ""}
-			{#each benefit.method || [] as element}
-				<li>{element}</li>
-			{/each}
+			<h1 class="company" title={benefit.companyDescription || ""}>
+				<img src={benefit.logo || ftLogo} alt="company logo" />
+				{benefit.companyName || ""}
+			</h1>
+			<div>
+				{benefit.content || ""}
+			</div>
+			<div>
+				{#each benefit.method || [] as element}
+					<li>{element}</li>
+				{/each}
+			</div>
 			{displayDate(benefit.startDate)} ~ {displayDate(benefit.endDate)}
 		</section>
 	{:else}
 		<section class="benefit">
-			<p>
-				여행은 언제나 고독한 법이죠...
-			</p>
-			<p>
-				베네핏 없이도 항해를 이어나갈 당신을 응원합니다.
-			</p>
+			<p>여행은 언제나 고독한 법이죠...</p>
+			<p>베네핏 없이도 항해를 이어나갈 당신을 응원합니다.</p>
 		</section>
 	{/each}
 </div>
@@ -163,7 +163,7 @@
 	}
 
 	.benefit img {
-		width: 4rem;
+		width: 5rem;
 		height: 4rem;
 	}
 
