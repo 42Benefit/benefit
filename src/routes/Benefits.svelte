@@ -133,7 +133,12 @@
 		</section>
 	{:else}
 		<section class="benefit">
-			<p>등록된 혜택이 없습니다.</p>
+			<p>
+				여행은 언제나 고독한 법이죠...
+			</p>
+			<p>
+				베네핏 없이도 항해를 이어나갈 당신을 응원합니다.
+			</p>
 		</section>
 	{/each}
 </div>
@@ -160,6 +165,11 @@
 	.benefit img {
 		width: 4rem;
 		height: 4rem;
+	}
+
+	.benefit p {
+		margin: 0.42rem;
+		font-style: italic;
 	}
 
 	.category {
