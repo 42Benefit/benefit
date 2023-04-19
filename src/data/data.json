@@ -101,7 +101,7 @@
     {
         "companyName": "러닝스푼즈",
         "companyDescription": "러닝스푼즈는 업무 역량을 확장하고 싶은 의지를 가진 사람들을 위해, 끊임없이 성장하고 싶은 인재들을 위해,직무 교육 성장을 돕는 콘텐츠를 제공하는 플랫폼입니다.",
-        "logo": "https://drive.google.com/uc?export=view&id=13FCgji69InK7fYRwwsSlMVm7vW_v3hrR",
+        "logo": "https://drive.google.com/uc?export=view&id=1FqUUsLBzxdHEwP1jbCZPpdbdDeUwBWYf/view?usp=sharing",
         "category": "교육",
         "content": "온오프라인 클래스 15% 할인",
         "method": [
@@ -116,45 +116,142 @@
     },
     {
         "companyName": "멋쟁이사자처럼",
-        "companyDescription": "당신의 내일과 가장 가까운 오늘을 만듭니다. 꿈꾸는 자들을 위한 디지털 전문 교육에서 출발해 LIKELION만의 독보적 기술력을 바탕으로 Web3 생태계와 커뮤니티를 만들어 갑니다."
+        "companyDescription": "당신의 내일과 가장 가까운 오늘을 만듭니다. 꿈꾸는 자들을 위한 디지털 전문 교육에서 출발해 LIKELION만의 독보적 기술력을 바탕으로 Web3 생태계와 커뮤니티를 만들어 갑니다.",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "KxCoding"
+        "companyName": "KxCoding",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "솔트룩스"
+        "companyName": "솔트룩스",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "인프런"
+        "companyName": "인프런",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "패스트캠퍼스"
+        "companyName": "패스트캠퍼스",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "레노버코리아"
+        "companyName": "레노버코리아",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "잔디"
+        "companyName": "잔디",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "포엠아이"
+        "companyName": "포엠아이",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "쉐어니도"
+        "companyName": "쉐어니도",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "필리(pilly)"
+        "companyName": "필리(pilly)",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "준오헤어"
+        "companyName": "준오헤어",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "켄싱턴호텔&리조트"
+        "companyName": "켄싱턴호텔&리조트",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "GOTO 피트니스"
+        "companyName": "GOTO 피트니스",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     },
     {
-        "companyName": "BGF네트웍스"
+        "companyName": "BGF네트웍스",
+        "companyDescription": "",
+        "logo": "",
+        "category": "",
+        "content": "",
+        "method": "",
+        "startDate": "",
+        "endDate": ""
     }
 ]
