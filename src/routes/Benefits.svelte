@@ -101,9 +101,10 @@
 	// close modal when press escape key
 	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape") {
+			document.getElementsByClassName(
+				"benefits_wrapper"
 			// @ts-ignore
-			document.getElementsByClassName("benefits_wrapper")[0].style.display =
-				"none";
+			)[0].style.display = "none";
 		}
 	});
 </script>
