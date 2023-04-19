@@ -1,7 +1,7 @@
 <script>
-	import Header from "./Header.svelte";
-	import Footer from "./Footer.svelte";
-	import Loading from "./Loading.svelte";
+	import Header from "../components/Header.svelte";
+	import Footer from "../components/Footer.svelte";
+	import Loading from "../components/Loading.svelte";
 	import { onMount } from "svelte";
 	import { createScene } from "../lib/scene.svelte";
 

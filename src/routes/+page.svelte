@@ -1,5 +1,5 @@
 <script>
-	import Benefits from "./Benefits.svelte";
+	import Benefits from "../components/Benefits.svelte";
 </script>
 
 <Benefits />
