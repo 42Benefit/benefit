@@ -98,6 +98,14 @@
 	const etcBenefits = showBenefits.filter(
 		(benefit) => benefit.category !== "교육" && benefit.category !== "협업"
 	);
+	// close modal when press escape key
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") {
+			// @ts-ignore
+			document.getElementsByClassName("benefits_wrapper")[0].style.display =
+				"none";
+		}
+	});
 </script>
 
 <div class="benefits_wrapper">
@@ -123,7 +131,9 @@
 			{displayDate(benefit.startDate)} ~ {displayDate(benefit.endDate)}
 		</section>
 	{:else}
-		<p>등록된 혜택이 없습니다.</p>
+		<section class="benefit">
+			<p>등록된 혜택이 없습니다.</p>
+		</section>
 	{/each}
 </div>
 
