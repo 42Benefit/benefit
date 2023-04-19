@@ -149,8 +149,6 @@
       // 병 외부 클릭시
       updateSun(12, -142);
       document.querySelector(".benefits_wrapper").style.display = "none";
-    } else {
-      updateSun(12, -142);
     }
   };
 
@@ -189,8 +187,6 @@
     spotLight = null;
   };
 
-  // TODO: 여행가는 느낌이 가게 앞으로 가는 느낌으로 수정
-  // TODO: 밤에는 달이 보이게 하기 idea
   export const createScene = (canvas_name) => {
     renderer = new THREE.WebGLRenderer({
       antialias: true,

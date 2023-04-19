@@ -1,12 +1,10 @@
 <script>
-    import moment from "moment";
+	import moment from "moment";
 	import benefits from "../data/data.json";
 	import ftLogo from "$lib/images/42logo.svg";
 
 	//TODO: Refactor this code, separate into modules
-	const displayDate = (
-		/** @type {string | undefined} */ input
-	) => {
+	const displayDate = (/** @type {string | undefined} */ input) => {
 		if (input === null || input === undefined || input === "") {
 			return "";
 		}
@@ -119,11 +117,11 @@
 	</div>
 	{#each showBenefits as benefit}
 		<section class="benefit" data-scroll>
-			<h1 class="company" title={benefit.companyDescription || ""}>
+			<h1 id="company" title={benefit.companyDescription || ""}>
 				<img src={benefit.logo || ftLogo} alt="company logo" />
 				{benefit.companyName || ""}
 			</h1>
-			<div>
+			<div id="content">
 				{benefit.content || ""}
 			</div>
 			<div>
@@ -144,19 +142,23 @@
 <style>
 	.benefits_wrapper {
 		overflow-y: scroll;
-		height: 80vh;
+		max-height: 80vh;
 		display: none;
 		margin: 2rem;
-		background-color: rgba(0, 0, 0, 0.42);
-		border-radius: 0.5rem;
 		color: white;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
 	}
 
+	.benefits_wrapper::-webkit-scrollbar {
+		display: none;
+	}
+	
 	.benefit {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		background-color: rgba(0, 0, 0, 0.42);
+		border-radius: 0.5rem;
 		margin: 1rem;
 	}
 
@@ -165,8 +167,20 @@
 		height: 4rem;
 	}
 
+	.benefit #company {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin: 1rem;
+	}
+
+	.benefit #content {
+		margin: 1rem;
+	}
+
 	.benefit p {
-		margin: 0.42rem;
+		margin: 1rem;
 		font-style: italic;
 	}
 
