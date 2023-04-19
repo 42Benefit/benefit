@@ -14,6 +14,9 @@
     if (searchValue === "answer to life the universe and everything") {
       results.push("42");
     }
+    if (searchValue.length > 0) {
+      results.push("검색기능을 열심히 만들고 있습니다. 조금만 기다려주세요.🚧");
+    }
     searchResults = [...results];
   };
 
@@ -26,7 +29,7 @@
       result.style.opacity = "1";
       result.focus();
     }
-  }
+  };
 
   /**
    * @param {KeyboardEvent} e
@@ -35,11 +38,16 @@
     if (e.key === "Enter") {
       submit();
     }
-  }
+  };
 </script>
 
 <div class="search-bar">
-  <input placeholder="search the benefit for you" bind:value={searchValue} on:input={search} on:keypress={onKeyPress} />
+  <input
+    placeholder="search the benefit for you"
+    bind:value={searchValue}
+    on:input={search}
+    on:keypress={onKeyPress}
+  />
 </div>
 
 <div class="search-results">
