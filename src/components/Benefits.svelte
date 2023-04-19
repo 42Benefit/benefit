@@ -5,7 +5,7 @@
 
 	//TODO: Refactor this code, separate into modules
 	const displayDate = (
-		/** @type {string} */ input
+		/** @type {string | undefined} */ input
 	) => {
 		if (input === null || input === undefined || input === "") {
 			return "";
