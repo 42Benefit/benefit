@@ -42,7 +42,7 @@ for values in data[1:]:
         if (index == 6 or index == 7):
             continue
         if index == 2:
-            values[index] = values[index].replace("https://drive.google.com/file/d/", "https://drive.google.com/uc?export=view&id=")
+            values[index] = values[index].replace("https://drive.google.com/file/d/", "https://drive.google.com/uc?export=view&id=").replace("/view?usp=share_link", "")
         pattern = r'\d+\.'
         values[index] = re.sub(pattern, '', values[index]).strip()
         if values[index].count('\n') > 0 and (index == 0 or index == 1):
