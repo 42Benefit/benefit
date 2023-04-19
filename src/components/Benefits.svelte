@@ -1,19 +1,17 @@
 <script>
+    import moment from "moment";
 	import benefits from "../data/data.json";
 	import ftLogo from "$lib/images/42logo.svg";
 
 	//TODO: Refactor this code, separate into modules
 	const displayDate = (
-		/** @type {string | number | Date | undefined} */ input
+		/** @type {string} */ input
 	) => {
 		if (input === null || input === undefined || input === "") {
 			return "";
 		}
-		const date = new Date(input);
-		const year = date.getFullYear();
-		const month = ("0" + (date.getMonth() + 1)).slice(-2);
-		const day = ("0" + date.getDate()).slice(-2);
-		return `${year}.${month}.${day}`;
+		input = input.replaceAll(".", "/");
+		return moment(input).format("YYYY.MM.DD");
 	};
 
 	/**
