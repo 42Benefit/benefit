@@ -124,17 +124,25 @@
 			<div id="content">
 				{benefit.content || ""}
 			</div>
-			<div>
-				{#each benefit.method || [] as element}
-					<li>{element}</li>
-				{/each}
+			<div id="method">
+				<p>
+					신청방법
+				</p>
+				<ol>
+					{#each benefit.method || [] as element}
+						<li>{element}</li>
+					{/each}
+				</ol>
 			</div>
-			{displayDate(benefit.startDate)} ~ {displayDate(benefit.endDate)}
+			<div id="date">
+				{displayDate(benefit.startDate)} ~
+				{displayDate(benefit.endDate)}
+			</div>
 		</section>
 	{:else}
 		<section class="benefit">
-			<p>여행은 언제나 고독한 법이죠...</p>
-			<p>베네핏 없이도 항해를 이어나갈 당신을 응원합니다.</p>
+			<i>여행은 언제나 고독한 법이죠...</i>
+			<i>베네핏 없이도 항해를 이어나갈 당신을 응원합니다.</i>
 		</section>
 	{/each}
 </div>
@@ -153,7 +161,7 @@
 	.benefits_wrapper::-webkit-scrollbar {
 		display: none;
 	}
-	
+
 	.benefit {
 		display: flex;
 		flex-direction: column;
@@ -167,6 +175,10 @@
 		height: 4rem;
 	}
 
+	.benefit ol {
+		margin: 0;
+		list-style-type: decimal;
+	}
 	.benefit #company {
 		display: flex;
 		flex-direction: row;
@@ -177,11 +189,28 @@
 
 	.benefit #content {
 		margin: 1rem;
+		font-size: x-large;
 	}
 
-	.benefit p {
+	.benefit #method {
+		margin: 1rem;
+		margin-bottom: 0;
+	}
+
+	#method p {
+		margin: 0;
+		margin-bottom: 0.42rem;
+		font-size: large;
+	}
+
+	.benefit #date {
+		margin-top: 0;
 		margin: 1rem;
 		font-style: italic;
+	}
+
+	.benefit i {
+		margin: 1rem;
 	}
 
 	.category {
