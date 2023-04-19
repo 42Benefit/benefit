@@ -32,7 +32,7 @@ data = response['values']
 keys = ["companyName", "companyDescription", "logo", "category", "content", "method", "startDate", "endDate"]
 
 
-
+# print(data)
 for values in data[1:]:
     length = len(values)
     for index in range(length):
@@ -41,6 +41,8 @@ for values in data[1:]:
         values[index] = re.sub(pattern, '', values[index])
         if (index == 6 or index == 7):
             continue
+        if index == 2:
+            values[index] = values[index].replace("https://drive.google.com/file/d/", "https://drive.google.com/uc?export=view&id=")
         pattern = r'\d+\.'
         values[index] = re.sub(pattern, '', values[index]).strip()
         if values[index].count('\n') > 0 and (index == 0 or index == 1):
@@ -52,6 +54,12 @@ for values in data[1:]:
         
 company_data = [dict(zip(keys, values)) for values in data[1:]]
 
+
 # JSON 파일에 데이터 저장
+# DEBUG시 주석처리
 with open('src/data/now.json', 'w', encoding='utf-8') as json_file:
     json.dump(company_data, json_file, ensure_ascii=False, indent=4)
+
+# Local Check 
+# with open('./data/now.json', 'w', encoding='utf-8') as json_file:
+#     json.dump(company_data, json_file, ensure_ascii=False, indent=4)
