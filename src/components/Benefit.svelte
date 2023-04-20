@@ -64,7 +64,7 @@
 
 	.benefit ol {
 		margin: 0;
-		list-style-type: decimal;
+		list-style-type: decimal-leading-zero;
 	}
 
 	.benefit #company {
