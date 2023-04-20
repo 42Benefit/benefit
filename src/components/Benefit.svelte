@@ -61,6 +61,7 @@
 		margin: 0;
 		list-style-type: decimal;
 	}
+
 	.benefit #company {
 		display: flex;
 		flex-direction: row;
@@ -79,7 +80,7 @@
 		margin-bottom: 0;
 	}
 
-	#method p {
+	.benefit #method p {
 		margin: 0;
 		margin-bottom: 0.42rem;
 		font-size: large;

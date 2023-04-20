@@ -1,11 +1,10 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	import benefits from "../data/data.json";
-    import Benefit from "./Benefit.svelte";
+	import Benefit from "./Benefit.svelte";
 
 	//TODO: Refactor this code, separate into modules
-
 
 	/**
 	 *  @param {MouseEvent & { currentTarget: HTMLButtonElement}} e
@@ -110,7 +109,7 @@
 		<button class="show" id="etc" on:click={changeCategory}>기타</button>
 	</div>
 	{#each showBenefits as benefit}
-	<Benefit benefit={benefit} />
+		<Benefit {benefit} />
 	{:else}
 		<section class="no_benefit">
 			<i>여행은 언제나 고독한 법이죠...</i>
@@ -132,6 +131,14 @@
 
 	.benefits_wrapper::-webkit-scrollbar {
 		display: none;
+	}
+
+	.no_benefit {
+		display: flex;
+		flex-direction: column;
+		background-color: rgba(0, 0, 0, 0.42);
+		border-radius: 0.5rem;
+		margin: 1rem;
 	}
 
 	.no_benefit i {
