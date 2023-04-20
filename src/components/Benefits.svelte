@@ -1,22 +1,11 @@
 <script>
-	import dateFormat from "dateformat";
+// @ts-nocheck
+
 	import benefits from "../data/data.json";
-	import ftLogo from "$lib/images/42logo.svg";
+    import Benefit from "./Benefit.svelte";
 
 	//TODO: Refactor this code, separate into modules
 
-	/**
-	 * @summary show consistent date format
-	 * @info formattedInput is for safari
-	 * @param {string | undefined} input
-	 */
-	const displayDate = (/** @type {string | undefined} */ input) => {
-		if (input === null || input === undefined || input === "") {
-			return "";
-		}
-		const formattedInput = input.replace(/(\.)|-/g, "/");
-		return dateFormat(formattedInput, "yyyy.mm.dd");
-	};
 
 	/**
 	 *  @param {MouseEvent & { currentTarget: HTMLButtonElement}} e
@@ -32,7 +21,6 @@
 		}
 	};
 
-	// @ts-ignore
 	const sortBenefitsListFunction = (a, b) => {
 		if (a.startDate === undefined || b.startDate === undefined) {
 			return 0;
@@ -122,29 +110,9 @@
 		<button class="show" id="etc" on:click={changeCategory}>기타</button>
 	</div>
 	{#each showBenefits as benefit}
-		<section class="benefit" data-scroll>
-			<h1 id="company" title={benefit.companyDescription || ""}>
-				<img src={benefit.logo || ftLogo} alt="company logo" />
-				{benefit.companyName || ""}
-			</h1>
-			<div id="content">
-				{benefit.content || ""}
-			</div>
-			<div id="method">
-				<p>신청방법</p>
-				<ol>
-					{#each benefit.method || [] as element}
-						<li>{element}</li>
-					{/each}
-				</ol>
-			</div>
-			<div id="date">
-				{displayDate(benefit.startDate)} ~
-				{displayDate(benefit.endDate)}
-			</div>
-		</section>
+	<Benefit benefit={benefit} />
 	{:else}
-		<section class="benefit">
+		<section class="no_benefit">
 			<i>여행은 언제나 고독한 법이죠...</i>
 			<i>베네핏 없이도 항해를 이어나갈 당신을 응원합니다.</i>
 		</section>
@@ -166,54 +134,7 @@
 		display: none;
 	}
 
-	.benefit {
-		display: flex;
-		flex-direction: column;
-		background-color: rgba(0, 0, 0, 0.42);
-		border-radius: 0.5rem;
-		margin: 1rem;
-	}
-
-	.benefit img {
-		width: 5rem;
-		height: 4rem;
-	}
-
-	.benefit ol {
-		margin: 0;
-		list-style-type: decimal;
-	}
-	.benefit #company {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		margin: 1rem;
-	}
-
-	.benefit #content {
-		margin: 1rem;
-		font-size: x-large;
-	}
-
-	.benefit #method {
-		margin: 1rem;
-		margin-bottom: 0;
-	}
-
-	#method p {
-		margin: 0;
-		margin-bottom: 0.42rem;
-		font-size: large;
-	}
-
-	.benefit #date {
-		margin-top: 0;
-		margin: 1rem;
-		font-style: italic;
-	}
-
-	.benefit i {
+	.no_benefit i {
 		margin: 1rem;
 	}
 
@@ -242,17 +163,6 @@
 	@media (max-width: 768px) {
 		.benefits_wrapper {
 			margin: 0;
-			margin-top: 1rem;
-		}
-
-		.benefit {
-			margin-left: 0;
-			margin-right: 0;
-			margin-top: 1rem;
-		}
-
-		.benefit #content {
-			font-size: large;
 		}
 	}
 </style>

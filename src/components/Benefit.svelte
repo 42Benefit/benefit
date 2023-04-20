@@ -1,0 +1,105 @@
+<script>
+	import dateFormat from "dateformat";
+	import ftLogo from "$lib/images/42logo.svg";
+
+	/**
+	 * @summary show consistent date format
+	 * @info formattedInput is for safari
+	 * @param {string | undefined} input
+	 */
+	const displayDate = (/** @type {string | undefined} */ input) => {
+		if (input === null || input === undefined || input === "") {
+			return "";
+		}
+		const formattedInput = input.replace(/(\.)|-/g, "/");
+		return dateFormat(formattedInput, "yyyy.mm.dd");
+	};
+
+	/**
+	 * @type {{companyName: string, companyDescription: string, logo: string, category: string, content: string, method: string[], startDate: string, endDate: string}}
+	 */
+	export let benefit;
+</script>
+
+<section class="benefit" data-scroll>
+	<h1 id="company" title={benefit.companyDescription || ""}>
+		<img src={benefit.logo || ftLogo} alt="company logo" />
+		{benefit.companyName || ""}
+	</h1>
+	<div id="content">
+		{benefit.content || ""}
+	</div>
+	<div id="method">
+		<p>신청방법</p>
+		<ol>
+			{#each benefit.method || [] as element}
+				<li>{element}</li>
+			{/each}
+		</ol>
+	</div>
+	<div id="date">
+		{displayDate(benefit.startDate)} ~
+		{displayDate(benefit.endDate)}
+	</div>
+</section>
+
+<style>
+	.benefit {
+		display: flex;
+		flex-direction: column;
+		background-color: rgba(0, 0, 0, 0.42);
+		border-radius: 0.5rem;
+		margin: 1rem;
+	}
+
+	.benefit img {
+		width: 5rem;
+		height: 4rem;
+	}
+
+	.benefit ol {
+		margin: 0;
+		list-style-type: decimal;
+	}
+	.benefit #company {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin: 1rem;
+	}
+
+	.benefit #content {
+		margin: 1rem;
+		font-size: x-large;
+	}
+
+	.benefit #method {
+		margin: 1rem;
+		margin-bottom: 0;
+	}
+
+	#method p {
+		margin: 0;
+		margin-bottom: 0.42rem;
+		font-size: large;
+	}
+
+	.benefit #date {
+		margin-top: 0;
+		margin: 1rem;
+		font-style: italic;
+	}
+
+	@media (max-width: 768px) {
+		.benefit {
+			margin-left: 0;
+			margin-right: 0;
+			margin-top: 1rem;
+		}
+
+		.benefit #content {
+			font-size: large;
+		}
+	}
+</style>
