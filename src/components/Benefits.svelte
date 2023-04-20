@@ -87,7 +87,9 @@
 	const etcBenefits = showBenefits.filter(
 		(benefit) => benefit.category !== "교육" && benefit.category !== "협업"
 	);
-	// close modal when press escape key
+	/**
+	 @summary close modal when press escape key
+	*/
 	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape") {
 			document.getElementsByClassName(
