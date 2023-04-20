@@ -22,9 +22,14 @@
 </script>
 
 <section class="benefit" data-scroll>
-	<h1 id="company" title={benefit.companyDescription || ""}>
+	<h1 id="company">
 		<img src={benefit.logo || ftLogo} alt="company logo" />
-		{benefit.companyName || ""}
+		<div class="tooltip">
+			{benefit.companyName || ""}
+			<p class="tooltip-text">
+				{benefit.companyDescription || ""}
+			</p>
+		</div>
 	</h1>
 	<div id="content">
 		{benefit.content || ""}
@@ -90,6 +95,31 @@
 		margin-top: 0;
 		margin: 1rem;
 		font-style: italic;
+	}
+
+	.tooltip {
+		position: relative;
+		display: inline-block;
+		justify-content: center;
+	}
+
+	.tooltip-text {
+		min-width: 200px;
+		visibility: hidden;
+		background-color: white;
+		opacity: 0.95;
+		color: black;
+		border-radius: 0.5rem;
+		position: absolute;
+		z-index: 1;
+		font-size: small;
+		padding: 0.42rem;
+		top: -42%;
+		right: 105%;
+	}
+
+	.tooltip:hover .tooltip-text {
+		visibility: visible;
 	}
 
 	@media (max-width: 768px) {
