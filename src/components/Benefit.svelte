@@ -58,8 +58,8 @@
 	}
 
 	.benefit img {
+		object-fit: scale-down;
 		width: 5rem;
-		height: 4rem;
 	}
 
 	.benefit ol {
@@ -83,6 +83,7 @@
 	.benefit #method {
 		margin: 1rem;
 		margin-bottom: 0;
+		margin-top: 0;
 	}
 
 	.benefit #method p {
