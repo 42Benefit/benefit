@@ -1,15 +1,22 @@
 <script>
-	import moment from "moment";
+	import dateFormat from "dateformat";
 	import benefits from "../data/data.json";
 	import ftLogo from "$lib/images/42logo.svg";
 
 	//TODO: Refactor this code, separate into modules
+
+	/**
+	 * @summary show consistent date format
+	 * @info formattedInput is for safari
+	 * @param {string | undefined} input
+	 */
 	const displayDate = (/** @type {string | undefined} */ input) => {
 		if (input === null || input === undefined || input === "") {
 			return "";
 		}
-		input = input.replaceAll(".", "/");
-		return moment(input).format("YYYY.MM.DD");
+		const formattedInput = input.replace(/(\.)|-/g, "/");
+		console.log(formattedInput);
+		return dateFormat(formattedInput, "yyyy.mm.dd");
 	};
 
 	/**
