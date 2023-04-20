@@ -101,7 +101,6 @@
 	.tooltip {
 		position: relative;
 		display: inline-block;
-		justify-content: center;
 	}
 
 	.tooltip-text {
@@ -132,6 +131,11 @@
 
 		.benefit #content {
 			font-size: large;
+		}
+
+		.tooltip-text {
+			top: -42%;
+			right: 0%;
 		}
 	}
 </style>
