@@ -15,7 +15,6 @@
 			return "";
 		}
 		const formattedInput = input.replace(/(\.)|-/g, "/");
-		console.log(formattedInput);
 		return dateFormat(formattedInput, "yyyy.mm.dd");
 	};
 
@@ -132,9 +131,7 @@
 				{benefit.content || ""}
 			</div>
 			<div id="method">
-				<p>
-					신청방법
-				</p>
+				<p>신청방법</p>
 				<ol>
 					{#each benefit.method || [] as element}
 						<li>{element}</li>
@@ -240,5 +237,9 @@
 
 	.show {
 		opacity: 0.9 !important;
+	}
+
+	@media (max-width: 768px) {
+
 	}
 </style>
