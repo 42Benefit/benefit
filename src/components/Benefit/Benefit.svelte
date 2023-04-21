@@ -154,12 +154,6 @@
 		visibility: visible;
 	}
 
-	/* for scroll animation */
-	.scroll {
-		opacity: 0.1;
-		transition: all 1s;
-	}
-
 	@media (max-width: 768px) {
 		.benefit {
 			margin-left: 0;
