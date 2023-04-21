@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
 
-	import benefits from "../data/data.json";
+	import benefits from "../../data/data.json";
 	import Benefit from "./Benefit.svelte";
 
 	//TODO: Refactor this code, separate into modules
