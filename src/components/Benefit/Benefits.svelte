@@ -165,7 +165,7 @@
 		cursor: pointer;
 	}
 
-	.show {
+	:global(.show) {
 		opacity: 0.9 !important;
 	}
 

@@ -1,4 +1,6 @@
 <script>
+	// @ts-nocheck
+	import { afterUpdate } from "svelte";
 	import dateFormat from "dateformat";
 	import ftLogo from "$lib/images/42logo.svg";
 
@@ -15,13 +17,38 @@
 		return dateFormat(formattedInput, "yyyy.mm.dd");
 	};
 
+	const showElement = (entries, observer) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add("show");
+			}
+			else {
+				entry.target.classList.remove("show");
+				entry.target.style.scale = 0.95
+			}
+		});
+	};
+	afterUpdate(async () => {
+		const options = {
+			root: document.querySelector(".benefit_wrapper"),
+			rootMargin: "0px",
+			threshold: 0.4,
+		};
+		const observer = new IntersectionObserver(showElement, options);
+		const scrollElements = document.querySelectorAll(".scroll");
+		if (scrollElements) {
+			scrollElements.forEach((element) => {
+				observer.observe(element);
+			});
+		}
+	});
 	/**
 	 * @type {{companyName: string, companyDescription: string, logo: string, category: string, content: string, method: string[], startDate: string, endDate: string}}
 	 */
 	export let benefit;
 </script>
 
-<section class="benefit" data-scroll>
+<section class="benefit scroll">
 	<h1 id="company">
 		<img src={benefit.logo || ftLogo} alt="company logo" />
 		<div class="tooltip">
@@ -55,6 +82,11 @@
 		background-color: rgba(0, 0, 0, 0.42);
 		border-radius: 0.5rem;
 		margin: 1rem;
+	}
+
+	.scroll {
+		opacity: 0.1;
+		transition: all 1s ease-in-out;
 	}
 
 	.benefit img {
@@ -120,6 +152,12 @@
 
 	.tooltip:hover .tooltip-text {
 		visibility: visible;
+	}
+
+	/* for scroll animation */
+	.scroll {
+		opacity: 0.1;
+		transition: all 1s;
 	}
 
 	@media (max-width: 768px) {
