@@ -86,7 +86,7 @@
 
 	.scroll {
 		opacity: 0.1;
-		transition: all 1s ease-in-out;
+		transition: all 1.5s ease-in-out;
 	}
 
 	.benefit img {
