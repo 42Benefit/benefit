@@ -34,6 +34,10 @@
 	<div id="content">
 		{benefit.content || ""}
 	</div>
+	<div id="date">
+		{displayDate(benefit.startDate)} ~
+		{displayDate(benefit.endDate)}
+	</div>
 	<div id="method">
 		<p>신청방법</p>
 		<ol>
@@ -41,10 +45,6 @@
 				<li>{element}</li>
 			{/each}
 		</ol>
-	</div>
-	<div id="date">
-		{displayDate(benefit.startDate)} ~
-		{displayDate(benefit.endDate)}
 	</div>
 </section>
 
@@ -77,24 +77,24 @@
 
 	.benefit #content {
 		margin: 1rem;
+		margin-bottom: 0.42rem;
 		font-size: x-large;
 	}
 
 	.benefit #method {
 		margin: 1rem;
-		margin-bottom: 0;
-		margin-top: 0;
 	}
 
 	.benefit #method p {
-		margin: 0;
 		margin-bottom: 0.42rem;
 		font-size: large;
 	}
 
 	.benefit #date {
-		margin-top: 0;
 		margin: 1rem;
+		margin-top: 0;
+		margin-bottom: 0;
+		color: rgb(200, 200, 200);
 		font-style: italic;
 	}
 
