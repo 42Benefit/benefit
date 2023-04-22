@@ -5,6 +5,7 @@ import os
 from google.oauth2 import service_account
 import re
 import urllib.request
+import base64
 
 # 환경 변수에서 값을 가져옵니다.
 client_email = os.environ.get('CLIENT_EMAIL')
@@ -58,9 +59,11 @@ company_data = [dict(zip(keys, values)) for values in data[1:]]
 for index, link in enumerate(company_data):
     if link["logo"]:
         file_path = "src/data/images/" + link["companyName"]
-        if not os.path.isfile(file_path):
-            urllib.request.urlretrieve(link["logo"], file_path) # 링크에서 파일 다운로드
-        company_data[index]["logo"] = file_path
+        urllib.request.urlretrieve(link["logo"], file_path) # 링크에서 파일 다운로드
+        with open(file_path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+        company_data[index]["logo"] = "data:image/png;base64," + encoded_string
+        
             
             
 # JSON 파일에 데이터 저장
