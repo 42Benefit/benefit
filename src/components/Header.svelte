@@ -2,7 +2,7 @@
 	import { page } from "$app/stores";
 	import logo from "$lib/images/42logo.svg";
 	import github from "$lib/images/github.svg";
-	import SerachBar from "./SerachBar.svelte";
+	import SearchBar from "./SearchBar.svelte";
 </script>
 
 <header>
@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="corner search" >
-		<SerachBar />
+		<SearchBar />
 	</div>
 </header>
 
