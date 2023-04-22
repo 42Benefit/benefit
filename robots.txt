@@ -1,0 +1,7 @@
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Naverbot
+Disallow:
+
+User-agent: *
+Disallow: /
