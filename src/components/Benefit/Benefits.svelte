@@ -94,14 +94,13 @@
 		if (e.key === "Escape") {
 			document.getElementsByClassName(
 				"benefits_wrapper"
-				// @ts-ignore
 			)[0].style.display = "none";
 		}
 	});
 </script>
 
 <div class="benefits_wrapper">
-	<div class="category">
+	<header class="category">
 		<button class="show" id="education" on:click={changeCategory}
 			>교육</button
 		>
@@ -109,29 +108,36 @@
 			>협업</button
 		>
 		<button class="show" id="etc" on:click={changeCategory}>기타</button>
+	</header>
+	<div class="benefits_list">
+		{#each showBenefits as benefit}
+			<Benefit {benefit} />
+		{:else}
+			<section class="no_benefit">
+				<i>여행은 언제나 고독한 법이죠...</i>
+				<i>베네핏 없이도 항해를 이어나갈 당신을 응원합니다.</i>
+			</section>
+		{/each}
 	</div>
-	{#each showBenefits as benefit}
-		<Benefit {benefit} />
-	{:else}
-		<section class="no_benefit">
-			<i>여행은 언제나 고독한 법이죠...</i>
-			<i>베네핏 없이도 항해를 이어나갈 당신을 응원합니다.</i>
-		</section>
-	{/each}
 </div>
 
 <style>
 	.benefits_wrapper {
-		overflow-y: scroll;
-		max-height: 80vh;
+		margin: 1rem;
 		display: none;
-		margin: 2rem;
 		color: white;
+	}
+	
+	.benefits_list {
+		margin: 0;
+		padding: 0;
+		max-height: 80vh;
+		overflow-y: scroll;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 	}
 
-	.benefits_wrapper::-webkit-scrollbar {
+	.benefits_list::-webkit-scrollbar {
 		display: none;
 	}
 
@@ -148,11 +154,12 @@
 	}
 
 	.category {
+		font-size: large;
 		display: flex;
 		flex-direction: row;
 		justify-content: right;
-		align-items: right;
-		margin: 1rem;
+		margin: 0;
+		margin-top: 0.42rem;
 	}
 
 	.category button {

@@ -24,7 +24,7 @@
 			}
 			else {
 				entry.target.classList.remove("show");
-				entry.target.style.scale = 0.95
+				entry.target.style.scale = 0.98;
 			}
 		});
 	};
@@ -32,7 +32,7 @@
 		const options = {
 			root: document.querySelector(".benefit_wrapper"),
 			rootMargin: "0px",
-			threshold: 0.4,
+			threshold: 0.42,
 		};
 		const observer = new IntersectionObserver(showElement, options);
 		const scrollElements = document.querySelectorAll(".scroll");
@@ -81,12 +81,13 @@
 		flex-direction: column;
 		background-color: rgba(0, 0, 0, 0.62);
 		border-radius: 0.5rem;
-		margin: 1rem;
+		margin: 0.42rem;
+		margin-bottom: 1.78rem;
 	}
 
 	.scroll {
 		opacity: 0.1;
-		transition: all 1.5s ease-in-out;
+		transition: all 1s ease-in-out;
 	}
 
 	.benefit img {
