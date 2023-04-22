@@ -79,7 +79,7 @@
 	.benefit {
 		display: flex;
 		flex-direction: column;
-		background-color: rgba(0, 0, 0, 0.42);
+		background-color: rgba(0, 0, 0, 0.62);
 		border-radius: 0.5rem;
 		margin: 1rem;
 	}
