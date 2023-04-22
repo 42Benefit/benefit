@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 * * * *' # 매 시간마다 실행
+    - cron: '0 */4 * * *' # 매 4시간마다 실행
 
 
 jobs:
