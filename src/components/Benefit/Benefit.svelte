@@ -98,6 +98,7 @@
 	.benefit ol {
 		margin: 0;
 		list-style-type: decimal-leading-zero;
+		line-height: 1.42rem;
 	}
 
 	.benefit #company {
