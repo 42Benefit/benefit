@@ -106,6 +106,7 @@
 		justify-content: space-between;
 		align-items: center;
 		margin: 1rem;
+		font-size: xx-large;
 	}
 
 	.benefit #content {
