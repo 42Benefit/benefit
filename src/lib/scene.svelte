@@ -1,5 +1,6 @@
 <script context="module">
   // @ts-nocheck
+  // TODO: refactor this code for better readability and performance
 
   import * as THREE from "three";
   import { Water } from "three/addons/objects/Water.js";
@@ -115,12 +116,39 @@
     camera.updateProjectionMatrix();
   };
 
-  const controlCamera = () => {
-    const controls = new OrbitControls(camera, document.body);
+  const controls = new OrbitControls(camera, document.body);
+
+  const initControls = (controls) => {
     controls.target.set(0, 10, 0);
     controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.42;
     controls.dispose();
+  };
+
+  initControls(controls);
+
+  const controlCamera = () => {
     controls.update();
+  };
+
+  /**
+   * @summary - change autoRotate to parameter `input` , which is used to rotate camera automatically
+   * @param bool {boolean} - true: rotate camera automatically, false: stop rotating camera automatically
+   */
+  const changeAutoRotate = (input) => {
+    controls.autoRotate = input;
+  };
+
+  const openModal = () => {
+    updateSun(12, -142);
+    document.querySelector(".benefits_wrapper").style.display = "block";
+    changeAutoRotate(false);
+  };
+
+  const closeModal = () => {
+    document.querySelector(".benefits_wrapper").style.display = "none";
+    updateSun(1, -142);
+    changeAutoRotate(true);
   };
 
   const isMouseOverBenefitsWrapper = (event) => {
@@ -143,12 +171,10 @@
       intersects[0].object.name === "defaultMaterial_1"
     ) {
       // 병 클릭시
-      updateSun(12, -142);
-      document.querySelector(".benefits_wrapper").style.display = "block";
+      openModal();
     } else if (isMouseOverBenefitsWrapper(event) === false) {
       // 병 외부 클릭시
-      updateSun(1, -142);
-      document.querySelector(".benefits_wrapper").style.display = "none";
+      closeModal();
     }
   };
 
@@ -170,18 +196,6 @@
       removeSpotLight();
     }
   };
-
-	/**
-	 @summary close modal when press escape key
-	*/
-	document.addEventListener("keydown", (e) => {
-		if (e.key === "Escape") {
-			document.getElementsByClassName(
-				"benefits_wrapper"
-			)[0].style.display = "none";
-      updateSun(1, -142);
-		}
-	});
 
   let spotLight = null;
   const addSpotLight = () => {
@@ -211,6 +225,11 @@
     animate();
   };
   window.addEventListener("resize", resize);
-  window.addEventListener("mousemove", onDocumentMouseMove);
-  window.addEventListener("mousedown", onDocumentMouseDown);
+  document.addEventListener("mousemove", onDocumentMouseMove);
+  document.addEventListener("mousedown", onDocumentMouseDown);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeModal();
+    }
+  });
 </script>
