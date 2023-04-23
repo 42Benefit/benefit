@@ -39,11 +39,11 @@
 
 	footer p {
 		margin: 0.24rem;
-		opacity: 0.1;
+		opacity: 0.42;
 	}
 
 	footer p:hover {
-		opacity: 0.42;
+		opacity: 0.8;
 		transition: opacity 0.42s ease-in-out;
 	}
 
