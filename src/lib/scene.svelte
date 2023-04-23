@@ -143,11 +143,11 @@
       intersects[0].object.name === "defaultMaterial_1"
     ) {
       // 병 클릭시
-      updateSun(1, -142);
+      updateSun(12, -142);
       document.querySelector(".benefits_wrapper").style.display = "block";
     } else if (isMouseOverBenefitsWrapper(event) === false) {
       // 병 외부 클릭시
-      updateSun(12, -142);
+      updateSun(1, -142);
       document.querySelector(".benefits_wrapper").style.display = "none";
     }
   };
@@ -170,6 +170,18 @@
       removeSpotLight();
     }
   };
+
+	/**
+	 @summary close modal when press escape key
+	*/
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") {
+			document.getElementsByClassName(
+				"benefits_wrapper"
+			)[0].style.display = "none";
+      updateSun(1, -142);
+		}
+	});
 
   let spotLight = null;
   const addSpotLight = () => {
