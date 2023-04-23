@@ -137,6 +137,7 @@
 		background-color: rgba(0, 0, 0, 0.62);
 		border-radius: 0.5rem;
 		margin: 1rem;
+		box-shadow: 0px 0.42rem 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 	}
 
 	.no_benefit i {

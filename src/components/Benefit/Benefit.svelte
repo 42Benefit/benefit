@@ -92,8 +92,8 @@
 		flex-direction: column;
 		background-color: rgba(0, 0, 0, 0.8);
 		border-radius: 0.5rem;
-		margin: 0;
 		margin-bottom: 1.78rem;
+		box-shadow: 0px 0.42rem 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 	}
 
 	.scroll {
@@ -212,8 +212,6 @@
 
 	@media (max-width: 768px) {
 		.benefit {
-			margin-left: 0;
-			margin-right: 0;
 			margin-top: 0.1rem;
 		}
 
