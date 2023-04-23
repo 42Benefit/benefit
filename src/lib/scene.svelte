@@ -141,18 +141,18 @@
 
   const openModal = () => {
     updateSun(12, -142);
-    document.querySelector(".benefits_wrapper").style.display = "block";
+    document.querySelector(".benefits-wrapper").style.display = "block";
     changeAutoRotate(false);
   };
 
   const closeModal = () => {
-    document.querySelector(".benefits_wrapper").style.display = "none";
+    document.querySelector(".benefits-wrapper").style.display = "none";
     updateSun(1, -142);
     changeAutoRotate(true);
   };
 
   const isMouseOverBenefitsWrapper = (event) => {
-    const benefitsWrapper = document.querySelector(".benefits_wrapper");
+    const benefitsWrapper = document.querySelector(".benefits-wrapper");
     const rect = benefitsWrapper.getBoundingClientRect();
     return (
       event.clientX >= rect.left &&

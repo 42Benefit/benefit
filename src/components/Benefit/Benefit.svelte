@@ -30,7 +30,7 @@
 	};
 	afterUpdate(async () => {
 		const options = {
-			root: document.querySelector(".benefit_wrapper"),
+			root: document.querySelector("benefits-wrapper"),
 			rootMargin: "0px",
 			threshold: 0.42,
 		};

@@ -89,7 +89,7 @@
 	);
 </script>
 
-<div class="benefits_wrapper">
+<div class="benefits-wrapper">
 	<header class="category">
 		<button class="show" id="education" on:click={changeCategory}
 			>교육</button
@@ -112,7 +112,7 @@
 </div>
 
 <style>
-	.benefits_wrapper {
+	.benefits-wrapper {
 		margin: 0;
 		display: none;
 	}
