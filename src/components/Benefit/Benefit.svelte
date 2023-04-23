@@ -50,13 +50,13 @@
 
 <section class="benefit scroll">
 	<h1 id="company">
-		<img src={benefit.logo || ftLogo} alt="company logo" />
 		<div class="tooltip">
 			{benefit.companyName || ""}
 			<p class="tooltip-text">
 				{benefit.companyDescription || ""}
 			</p>
 		</div>
+		<img src={benefit.logo || ftLogo} alt="company logo" />
 	</h1>
 	<div id="content">
 		{benefit.content || ""}
@@ -148,7 +148,7 @@
 		font-size: small;
 		padding: 0.42rem;
 		top: -42%;
-		right: 105%;
+		left: 105%;
 	}
 
 	.tooltip:hover .tooltip-text {
@@ -168,7 +168,7 @@
 
 		.tooltip-text {
 			top: -42%;
-			right: 0%;
+			left: 0%;
 		}
 	}
 </style>
