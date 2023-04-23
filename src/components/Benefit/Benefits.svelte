@@ -113,7 +113,7 @@
 
 <style>
 	.benefits-wrapper {
-		margin: 0;
+		margin: 1rem;
 		display: none;
 	}
 	

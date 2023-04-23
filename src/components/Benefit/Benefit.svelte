@@ -93,6 +93,7 @@
 		background-color: rgba(0, 0, 0, 0.8);
 		border-radius: 0.5rem;
 		margin: 1rem;
+		margin-bottom: 1.42rem;
 		box-shadow: 0px 0.42rem 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
 	}
 
@@ -213,7 +214,7 @@
 	@media (max-width: 768px) {
 		.benefit {
 			margin: 0.42rem;
-			margin-top: 1rem;
+			margin-top: 1.2rem;
 		}
 
 		.benefit #content {
