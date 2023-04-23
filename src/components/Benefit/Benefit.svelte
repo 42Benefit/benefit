@@ -3,6 +3,7 @@
 	import { afterUpdate } from "svelte";
 	import dateFormat from "dateformat";
 	import ftLogo from "$lib/images/42logo.svg";
+	import Page from "../../routes/+page.svelte";
 
 	/**
 	 * @summary show consistent date format
@@ -27,6 +28,16 @@
 			}
 		});
 	};
+
+	const toggleMethod = (e) => {
+		const methodList = e.target.parentElement.nextElementSibling;
+		const triangle = e.target.parentElement.lastElementChild;
+		if (methodList && triangle) {
+			methodList.classList.toggle("active");
+			triangle.classList.toggle("active--triangle");
+		}
+	};
+
 	afterUpdate(async () => {
 		const options = {
 			root: document.querySelector("benefits-wrapper"),
@@ -65,8 +76,11 @@
 		{displayDate(benefit.endDate)}
 	</div>
 	<div id="method">
-		<p>신청방법</p>
-		<ol>
+		<button class="method-toggle" on:click={toggleMethod}>
+			<p>신청방법</p>
+			<p class="triangle" />
+		</button>
+		<ol class="method-list">
 			{#each benefit.method || [] as element}
 				<li>{element}</li>
 			{/each}
@@ -111,17 +125,20 @@
 
 	.benefit #content {
 		margin: 1rem;
+		margin-top: 0;
 		margin-bottom: 0.42rem;
 		font-size: x-large;
 	}
 
 	.benefit #method {
 		margin: 1rem;
+		margin-top: 0;
+		color: rgb(200, 200, 200);
+		font-size: medium;
 	}
 
 	.benefit #method p {
-		margin-bottom: 0.42rem;
-		font-size: large;
+		font-size: medium;
 	}
 
 	.benefit #date {
@@ -129,7 +146,46 @@
 		margin-top: 0;
 		margin-bottom: 0;
 		color: rgb(200, 200, 200);
+		font-size: small;
 		font-style: italic;
+	}
+
+	.method-toggle {
+		display: flex;
+		margin: 0;
+		font-size: small;
+	}
+
+	.method-toggle p {
+		margin-bottom: 0;
+	}
+
+	button {
+		all: unset;
+	}
+
+	.triangle {
+		width: 0px;
+		height: 0px;
+		border-left: 0.8rem solid rgb(200, 200, 200);
+		border-top: 0.5rem solid transparent;
+		border-bottom: 0.5rem solid transparent;
+		margin-left: 0.42rem;
+		scale: 0.7;
+		transition: all 0.2s ease-in-out;
+	}
+
+	.method-list {
+		display: none;
+	}
+
+	:global(.active) {
+		display: block !important;
+		transition: all;
+	}
+
+	:global(.active--triangle) {
+		transform: rotate(90deg);
 	}
 
 	.tooltip {
