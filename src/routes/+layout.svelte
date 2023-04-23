@@ -54,6 +54,7 @@
 		width: 100%;
 		max-width: 64rem;
 		margin: 0 auto;
+		padding: 0;
 		box-sizing: border-box;
 	}
 

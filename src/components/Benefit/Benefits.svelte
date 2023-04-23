@@ -113,9 +113,8 @@
 
 <style>
 	.benefits_wrapper {
-		margin: 1rem;
+		margin: 0;
 		display: none;
-		color: white;
 	}
 	
 	.benefits_list {
@@ -125,6 +124,7 @@
 		overflow-y: scroll;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
+		color: white;
 	}
 
 	.benefits_list::-webkit-scrollbar {
@@ -149,7 +149,8 @@
 		flex-direction: row;
 		justify-content: right;
 		margin: 0;
-		margin-top: 0.42rem;
+		margin-right: 1rem;
+		color: black;
 	}
 
 	.category button {
@@ -164,12 +165,5 @@
 
 	:global(.show) {
 		opacity: 0.9 !important;
-	}
-
-	@media (max-width: 768px) {
-		.benefits_wrapper {
-			margin: 0;
-			margin-top: 1rem;
-		}
 	}
 </style>

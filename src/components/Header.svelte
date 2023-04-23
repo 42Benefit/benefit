@@ -9,7 +9,6 @@
 			<img src={logo} alt="42logo" />
 		</a>
 	</div>
-
 	<div class="corner search" >
 		<SearchBar />
 	</div>
@@ -17,7 +16,6 @@
 
 <style>
 	header {
-		position: fixed;
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
@@ -39,7 +37,6 @@
 	.search {
 		width: 20rem;
 		margin-right: 2rem;
-		/* opacity: 0.42; */
 	}
 
 	.corner img {
