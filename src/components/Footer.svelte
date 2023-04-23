@@ -8,11 +8,6 @@
 			href="https://github.com/42Benefit/benefit/">GitHub</a
 		>
 	</p>
-	<p>
-		Content also available on <a href="https://www.notion.so/example"
-			>Notion</a
-		>
-	</p>
 </footer>
 
 <style>
