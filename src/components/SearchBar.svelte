@@ -62,6 +62,7 @@
     align-items: center;
     height: 2.5rem;
     width: 100%;
+    margin: 0;
   }
 
   .search-bar input {
@@ -76,7 +77,6 @@
 
   .search-results p {
     opacity: 0.42;
-    margin: 0.42rem;
   }
 
   .search-results p:hover {

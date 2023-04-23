@@ -36,7 +36,7 @@
 
 	.search {
 		width: 20rem;
-		margin-right: 2rem;
+		margin-right: 1rem;
 	}
 
 	.corner img {
@@ -62,7 +62,7 @@
 		}
 		.search {
 			width: 15rem;
-			margin-right: 1rem;
+			margin-right: 0.42rem;
 		}
 	}
 </style>
