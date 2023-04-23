@@ -21,8 +21,7 @@
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
 				entry.target.classList.add("show");
-			}
-			else {
+			} else {
 				entry.target.classList.remove("show");
 				entry.target.style.scale = 0.98;
 			}
@@ -81,7 +80,7 @@
 		flex-direction: column;
 		background-color: rgba(0, 0, 0, 0.8);
 		border-radius: 0.5rem;
-		margin: 0.42rem;
+		margin: 0;
 		margin-bottom: 1.78rem;
 	}
 
@@ -160,7 +159,7 @@
 		.benefit {
 			margin-left: 0;
 			margin-right: 0;
-			margin-top: 1rem;
+			margin-top: 0.1rem;
 		}
 
 		.benefit #content {
