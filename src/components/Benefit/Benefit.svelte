@@ -23,7 +23,6 @@
 				entry.target.classList.add("show");
 			} else {
 				entry.target.classList.remove("show");
-				entry.target.style.scale = 0.98;
 			}
 		});
 	};
