@@ -99,7 +99,7 @@
 		>
 		<button class="show" id="etc" on:click={changeCategory}>기타</button>
 	</header>
-	<div class="benefits_list">
+	<div class="benefits-list">
 		{#each showBenefits as benefit}
 			<Benefit {benefit} />
 		{:else}
@@ -117,7 +117,7 @@
 		display: none;
 	}
 	
-	.benefits_list {
+	.benefits-list {
 		margin: 0;
 		padding: 0;
 		max-height: 80vh;
@@ -127,7 +127,7 @@
 		color: white;
 	}
 
-	.benefits_list::-webkit-scrollbar {
+	.benefits-list::-webkit-scrollbar {
 		display: none;
 	}
 
