@@ -3,7 +3,6 @@
 	import { afterUpdate } from "svelte";
 	import dateFormat from "dateformat";
 	import ftLogo from "$lib/images/42logo.svg";
-	import Page from "../../routes/+page.svelte";
 
 	/**
 	 * @summary show consistent date format
