@@ -159,6 +159,10 @@
 		margin-bottom: 0;
 	}
 
+	.method-toggle:hover {
+		cursor: pointer;
+	}
+
 	button {
 		all: unset;
 	}
