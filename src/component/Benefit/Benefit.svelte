@@ -184,7 +184,6 @@
 
 	:global(.active) {
 		display: block !important;
-		transition: all;
 	}
 
 	:global(.active--triangle) {
