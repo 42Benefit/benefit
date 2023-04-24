@@ -47,6 +47,7 @@
 				);
 			}
 			education.classList.toggle("show");
+			education.classList.toggle("text-underlined");
 		} else if (category === "cooperation" && cooperation) {
 			if (cooperation.classList.contains("show")) {
 				showBenefits = showBenefits.filter(
@@ -58,6 +59,7 @@
 				);
 			}
 			cooperation.classList.toggle("show");
+			cooperation.classList.toggle("text-underlined");
 		} else if (category === "etc" && etc) {
 			if (etc.classList.contains("show")) {
 				showBenefits = showBenefits.filter(
@@ -73,6 +75,7 @@
 				);
 			}
 			etc.classList.toggle("show");
+			etc.classList.toggle("text-underlined");
 		}
 	};
 	let showBenefits = benefits
@@ -91,13 +94,13 @@
 
 <div class="benefits-wrapper">
 	<header class="category">
-		<button class="show" id="education" on:click={changeCategory}
+		<button class="show text-underlined" id="education" on:click={changeCategory}
 			>교육</button
 		>
-		<button class="show" id="cooperation" on:click={changeCategory}
+		<button class="show text-underlined" id="cooperation" on:click={changeCategory}
 			>협업</button
 		>
-		<button class="show" id="etc" on:click={changeCategory}>기타</button>
+		<button class="show text-underlined" id="etc" on:click={changeCategory}>기타</button>
 	</header>
 	<div class="benefits-list">
 		{#each showBenefits as benefit}
@@ -167,4 +170,12 @@
 	:global(.show) {
 		opacity: 0.9 !important;
 	}
+
+		
+	:global(.text-underlined) {
+		text-decoration: underline !important;
+		text-underline-offset: 0.2rem !important;
+		text-decoration-thickness: 0.1rem !important;
+	}
+
 </style>
