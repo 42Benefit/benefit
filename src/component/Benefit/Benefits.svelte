@@ -151,9 +151,9 @@
 		font-size: large;
 		display: flex;
 		flex-direction: row;
-		justify-content: right;
+		justify-content: left;
 		margin: 0;
-		margin-right: 1rem;
+		margin-left: 1rem;
 		color: black;
 	}
 
