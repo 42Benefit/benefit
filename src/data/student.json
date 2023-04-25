@@ -1,0 +1,411 @@
+[
+    {
+    "companyName": "Microsoft Azure",
+    "companyDescription": "Microsoft Azure는 클라우드 서비스 및 학습 자료에 대한 접근을 제공하며 신용카드가 필요하지 않습니다.",
+    "logo": "",
+    "category": "교육",
+    "content": "18세 이상의 학생들을 위한 25개 이상의 Microsoft Azure 클라우드 서비스 무료 접근 및 $100 Azure 크레딧 제공.",
+    "method": [
+    "GitHub 계정을 Microsoft Azure에 연결하여 접근",
+    "Microsoft Azure 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "GitHub",
+    "companyDescription": "GitHub는 강력한 협업, 코드 검토 및 코드 관리 기능을 제공합니다.",
+    "logo": "",
+    "category": "교육",
+    "content": "학생인 동안 무료로 GitHub Pro를 사용하세요.",
+    "method": [
+    "GitHub 웹사이트에서 바로 접근",
+    "GitHub 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+
+    {
+    "companyName": "DataCamp",
+    "companyDescription": "DataCamp는 회사와 개인이 데이터를 더 잘 활용할 수 있도록 돕습니다. 사용자는 세계 최고의 데이터 과학자들로부터 데이터 능력을 키우며 학습합니다.",
+    "logo": "",
+    "category": "기타",
+    "content": "학생을 위한 무료 3개월 개별 구독.",
+    "method": [
+    "GitHub 계정을 DataCamp에 연결하여 접근",
+    "DataCamp 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+
+    {
+    "companyName": "Microsoft Visual Studio Dev Essentials",
+    "companyDescription": "Microsoft에서 제공하는 무료 개발자 도구, 클라우드 서비스 및 교육.",
+    "logo": "",
+    "category": "교육",
+    "content": "Visual Studio Community, Visual Studio Community for Mac, Pluralsight 교육 접근, 첫 달에 $200 크레딧이 포함된 Azure 서비스 1년 무료 등.",
+    "method": [
+    "Microsoft Visual Studio Dev Essentials 웹사이트에서 바로 접근",
+    "Microsoft Visual Studio Dev Essentials 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Deepnote",
+    "companyDescription": "Deepnote는 협업을 위해 개발된 새로운 종류의 데이터 노트북으로, Jupyter와 호환되며 클라우드에서 마법처럼 작동하고 링크를 전송하는 것만큼 쉽게 공유할 수 있습니다.",
+    "logo": "",
+    "category": "협업",
+    "content": "학생인 동안 Deepnote 팀 플랜의 무료 사용이 포함됩니다. Deepnote 팀 플랜에는 무제한 팀원 및 프로젝트, 30일 버전 이력, 최대 5GB RAM 및 2vCPU를 갖춘 무제한 기본 머신, 프리미엄 통합(Snowflake, SQL Server, BigQuery, Redshift 등) 및 30일 수정 이력이 포함됩니다.",
+    "method": [
+    "Deepnote 웹사이트에서 바로 접근",
+    "Deepnote 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Termius",
+    "companyDescription": "데스크톱과 모바일에서 작동하는 SSH 클라이언트입니다. Termius는 모든 기기에서 데이터를 안전하게 동기화합니다.",
+    "logo": "",
+    "category": "기타",
+    "content": "학생인 동안 프리미엄 플랜에 무료로 액세스할 수 있습니다.",
+    "method": [
+    "GitHub 계정과 Termius 연결하여 액세스",
+    "Termius 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Icons8",
+    "companyDescription": "Icons8은 프로젝트를 업그레이드할 수 있는 디자인 리소스를 제공합니다: 아이콘, UI 일러스트, 사진 및 소프트웨어.",
+    "logo": "",
+    "category": "교육",
+    "content": "아이콘, 사진, 일러스트, 음악이 포함된 3개월 All Access 구독.",
+    "method": [
+    "GitHub 계정과 Icons8 연결하여 액세스",
+    "Icons8 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Datadog",
+    "companyDescription": "클라우드 기반 인프라 모니터링.",
+    "logo": "",
+    "category": "기타",
+    "content": "2년 동안 10개의 서버를 포함한 프로 계정.",
+    "method": [
+    "GitHub 계정과 Datadog 연결하여 액세스",
+    "Datadog 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "AlgoExpert",
+    "companyDescription": "코딩 인터뷰를 준비하기 위한 궁극적인 리소스입니다. AlgoExpert에서는 한 스트림라인 플랫폼에서 필요한 모든 것을 제공합니다.",
+    "logo": "",
+    "category": "교육",
+    "content": "AlgoExpert의 20개 코딩 인터뷰 질문에 대한 무료 액세스 및 AlgoExpert 제품 전체에 대한 10% 할인.",
+    "method": [
+    "AlgoExpert 웹사이트에서 바로 접근",
+    "AlgoExpert 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "IconScout",
+    "companyDescription": "IconScout은 490만 개 이상의 아이콘, 일러스트, 3D 자산, Lottie 애니메이션을 포함하는 디자인 리소스 마켓입니다.",
+    "logo": "",
+    "category": "교육",
+    "content": "선택한 기여자로부터 매월 60개의 프리미엄 아이콘을 1년 동안 무료로 이용하세요.",
+    "method": [
+    "GitHub 계정과 IconScout 연결하여 이용할 수 있습니다" 
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Octicons",
+    "companyDescription": "Octicons는 GitHub의 UI를 위해 특별히 개발된 오픈 소스 라이브러리입니다.",
+    "logo": "",
+    "category": "기타",
+    "content": "Figma 디자인을 사용하여 Octicons 아이콘 라이브러리 구축",
+    "method": [
+    "Octicons 웹사이트에서 바로 접근",
+    "Octicons 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Polypane",
+    "companyDescription": "Polypane은 개발자와 디자이너가 더 나은 웹사이트와 웹앱을 더 빠르게 만들 수 있도록 도와주는 강력한 브라우저 및 개발자 도구입니다.",
+    "logo": "",
+    "category": "기타",
+    "content": "1년 동안 Polypane을 무료로 이용하세요.",
+    "method": [
+    "GitHub 계정과 Polypane 연결하여 액세스",
+    "Polypane 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Visme",
+    "companyDescription": "Visme은 흥미롭고 인터랙티브한 프레젠테이션, 시각적 문서, 데이터 시각화, 짧은 비디오 등 브랜드 콘텐츠를 자랑스럽게 만들 수 있는 올인원 플랫폼입니다.",
+    "logo": "",
+    "category": "협업",
+    "content": "Visme의 Starter 플랜에 3개월 동안 무료로 액세스하세요.",
+    "method": [
+    "Visme 웹사이트에서 바로 접근",
+    "Visme 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Testmail",
+    "companyDescription": "강력한 API를 사용하여 이메일 테스트를 자동화하기 위해 무제한 이메일 주소 및 메일함을 받으세요.",
+    "logo": "",
+    "category": "교육",
+    "content": "학생인 동안 Essential 플랜에 무료로 액세스하세요.",
+    "method": [
+    "GitHub 계정과 Testmail 연결하여 액세스",
+    "Testmail 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "FrontendMasters",
+    "companyDescription": "자바스크립트, Node.js 및 프론트엔드 엔지니어링 과정을 통해 실력을 향상시키세요.",
+    "logo": "",
+    "category": "교육",
+    "content": "모든 코스와 워크샵에 대한 6개월 무료 액세스.",
+    "method": [
+    "GitHub 계정과 FrontendMasters 연결하여 액세스",
+    "FrontendMasters 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "MongoDB",
+    "companyDescription": "현대 애플리케이션 개발자와 클라우드 시대를 위해 만들어진 문서 기반의 분산 데이터베이스.",
+    "logo": "",
+    "category": "교육",
+    "content": "MongoDB Atlas 크레딧 $50, MongoDB Compass 및 MongoDB University 액세스 포함하여 무료 인증(가치 $150).",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Namecheap",
+    "companyDescription": "저렴한 등록, 호스팅 및 도메인 관리.",
+    "logo": "",
+    "category": "교육",
+    "content": [
+    ".me TLD에서 1년 도메인 이름 등록.",
+    "1년 동안 무료 SSL 인증서."
+    ],
+    "method": [
+    "GitHub 계정과 Namecheap 연결하여 액세스",
+    "Namecheap 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "JetBrains",
+    "companyDescription": "전문 데스크톱 IDE: IntelliJ IDEA, PyCharm 등.",
+    "logo": "",
+    "category": "교육",
+    "content": "학생을 위한 무료 구독, 매년 갱신.",
+    "method": ["@student.42seoul.kr 로 로그인 후 학생 혜택 요청"],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Bootstrap Studio",
+    "companyDescription": "Bootstrap Studio는 Bootstrap 프레임워크를 사용하여 반응형 웹사이트를 만들 수 있는 강력한 데스크톱 앱입니다.",
+    "logo": "",
+    "category": "교육",
+    "content": "학생인 동안 Bootstrap Studio 라이선스 무료.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Twilio",
+    "companyDescription": "Twilio는 통신 개발자 플랫폼입니다. 소프트웨어 팀은 Twilio API를 사용하여 음성, 비디오, 메시징 기능을 애플리케이션에 추가합니다.",
+    "logo": "",
+    "category": "교육",
+    "content": "Twilio API 크레딧 $50. 크레딧은 새 Twilio 계정에만 적용됩니다.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Mailgun",
+    "companyDescription": "메일을 쉽게 보내고, 받고, 추적할 수 있게 해주는 강력한 API.",
+    "logo": "",
+    "category": "교육",
+    "content": "매달 20,000개의 무료 이메일과 최대 12개월 동안 매달 100개의 무료 이메일 유효성 검사.",
+    "method": [
+    "GitHub 계정과 Mailgun 연결하여 액세스",
+    "Mailgun 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "InterviewCake",
+    "companyDescription": "코딩 인터뷰를 위한 최고의 리소스. 하나의 통합된 플랫폼에서 필요한 모든 것을 제공합니다.",
+    "logo": "",
+    "category": "교육",
+    "content": "3주간의 전체 코딩 인터뷰 준비 코스 액세스.",
+    "method": [
+    "InterviewCake 웹사이트에서 직접 액세스",
+    "InterviewCake 지원에서 도움 받기"
+    ],
+    "startDate": "",
+    "endDate": ""
+    },
+   {
+    "companyName": "Stripe",
+    "companyDescription": "개발자를 위한 웹 및 모바일 결제.",
+    "logo": "",
+    "category": "교육",
+    "content": "처리된 처음 $1000의 수수료 면제.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Arduino",
+    "companyDescription": "창의적인 STEM 프로그램으로 미래의 과학자와 예술가를 지원합니다.",
+    "logo": "",
+    "category": "교육",
+    "content": "6개월 동안 무료로 Arduino Create Maker 플랜과 선택된 하드웨어 할인 제공.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "PopSQL",
+    "companyDescription": "팀을 위한 현대적이고 협업 가능한 SQL 에디터 - 쿼리 작성, 데이터 시각화 및 결과 공유.",
+    "logo": "",
+    "category": "교육",
+    "content": "학생 기간 동안 PopSQL의 무료 프리미엄 구독.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Dashlane",
+    "companyDescription": "클라우드 기반 암호 관리자.",
+    "logo": "",
+    "category": "교육",
+    "content": "Dashlane Premium 6개월 무료.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Zyte",
+    "companyDescription": "Zyte의 Scrapy Cloud는 웹 크롤러를 실행하기 위한 검증된 클라우드 플랫폼입니다. 대규모로 웹 스파이더를 관리하고 자동화하세요.",
+    "logo": "",
+    "category": "교육",
+    "content": "1 Free Forever Scrapy Cloud Unit - 무제한 팀 멤버, 프로젝트 또는 요청. 무제한 크롤 시간과 120일 데이터 보존.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Themeisle",
+    "companyDescription": "Neve의 모바일 우선 접근 방식, AMP 및 인기있는 페이지 빌더와의 호환성으로 웹사이트 구축을 모두에게 쉽게 만들어줍니다.",
+    "logo": "",
+    "category": "교육",
+    "content": "학생 전용 Neve 에이전시 워드프레스 테마 1년 무료.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Blackfire",
+    "companyDescription": "코드 성능 측정 도구. 병목 현상을 찾고 수정하세요.",
+    "logo": "",
+    "category": "교육",
+    "content": "학생 및 교직원을 위한 무료 프로파일러 구독.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Travis CI",
+    "companyDescription": "오픈 소스와 비공개 프로젝트를 위한 지속적인 통합 플랫폼",
+    "logo": "",
+    "category": "교육",
+    "content": "학생 기간 동안 무료로 비공개 빌드를 제공합니다.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Sentry",
+    "companyDescription": "모든 언어, 프레임워크 및 라이브러리에서 오류 추적.",
+    "logo": "",
+    "category": "교육",
+    "content": "학생 혜택: 50K 오류, 100K 트랜잭션, 1GB 첨부 파일,500 재생, 팀 기능, 1년 제한 (갱신 가능), 요청 시 사용 중지",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "LambdaTest",
+    "companyDescription": "2000개 이상의 실제 브라우저와 운영체제에서 자동화 및 실시간 상호 작용 크로스 브라우저 테스트를 수행하세요.",
+    "logo": "",
+    "category": "교육",
+    "content": "1년 동안 무료 LambdaTest 라이브 플랜.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "CARTO",
+    "companyDescription": "공간 데이터 분석, 시각화 및 응용 프로그램 생성을 위한 개방적이고 강력한 플랫폼.",
+    "logo": "",
+    "category": "교육",
+    "content": "2년 동안 데이터 저장소 증가, 실시간 데이터, 위치 데이터 서비스 크레딧 및 프리미엄 기능을 포함한 무료 계정 업그레이드.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "SimpleAnalytics",
+    "companyDescription": "간단한 인터페이스와 API를 가진 개인 정보 친화적인 분석.",
+    "logo": "",
+    "category": "교육",
+    "content": "1년 동안 무료로 시작할 수 있는 플랜, 매월 100k 페이지 조회수 포함.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    },
+    {
+    "companyName": "Honeybadger",
+    "companyDescription": "웹 개발자의 비밀 무기: 오류, 가동 시간 및 크론 모니터링이 너무 멋져서 사이트에 더 많은 오류가 있으면 좋겠다고 생각할 것입니다.",
+    "logo": "",
+    "category": "교육",
+    "content": "1년 동안 무료로 사용할 수 있는 작은 계정.",
+    "method": [],
+    "startDate": "",
+    "endDate": ""
+    }
+
+]
