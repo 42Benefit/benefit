@@ -60,7 +60,7 @@
 		const colorThief = new ColorThief();
 		const img = document.getElementById(`${benefit.companyName}-logo`);
 		if (img.complete) {
-			const color = await colorThief.getColor(img);
+			const color = await colorThief.getColor(img, 25);
 			const invertedColor = color.map((c) => 255 - c);
     		const gradient = `linear-gradient(242deg ,
 					rgba(${invertedColor[0]}, ${invertedColor[1]}, ${invertedColor[2]}, 0.8) 0%, 
