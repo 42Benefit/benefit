@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
   let searchValue = "";
   /**
    * @type {string[]}
@@ -8,11 +10,9 @@
   const search = () => {
     // TODO: 검색 로직 구현
     let results = [];
-    if (searchValue === "42") {
-      results.push("answer to life the universe and everything");
-    }
-    if (searchValue === "answer to life the universe and everything") {
-      results.push("42");
+    if (easterEgg(searchValue))
+    {
+      results.push(easterEgg(searchValue));
     }
     if (searchValue.length > 0) {
       results.push("검색기능을 열심히 만들고 있습니다. 조금만 기다려주세요.🚧");
@@ -20,6 +20,16 @@
     searchResults = [...results];
   };
 
+  const easterEgg = (/** @type {string} */ searchValue) => {
+    let result = undefined;
+    if (searchValue === "42") {
+      result = "answer to life the universe and everything";
+    }
+    if (searchValue === "answer to life the universe and everything") {
+      result = "42";
+    }
+    return result;
+  };
   const submit = () => {
     /**
      * @type {HTMLElement | null}
