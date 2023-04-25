@@ -32,6 +32,7 @@
 			return 0;
 		}
 	};
+
 	const toggleCategory = (/** @type {string} */ category) => {
 		const education = document.getElementById("education");
 		const cooperation = document.getElementById("cooperation");
