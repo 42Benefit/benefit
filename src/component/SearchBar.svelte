@@ -1,5 +1,13 @@
 <script>
-// @ts-nocheck
+  // @ts-nocheck
+  import benefits from "../data/data.json";
+  import studentBenefits from "../data/student.json";
+  import { openModal } from "../lib/scene.svelte";
+
+  // TODO: Refactor this code, using svelte store
+  let showBenefits = [...benefits, ...studentBenefits].filter(
+    (benefit) => benefit.category
+  );
 
   let searchValue = "";
   /**
@@ -8,14 +16,17 @@
   let searchResults = [];
 
   const search = () => {
-    // TODO: 검색 로직 구현
     let results = [];
-    if (easterEgg(searchValue))
-    {
+    if (easterEgg(searchValue)) {
       results.push(easterEgg(searchValue));
     }
+    // TODO: companyName이외에도 다른 내용들도 검색되게 하기
     if (searchValue.length > 0) {
-      results.push("검색기능을 열심히 만들고 있습니다. 조금만 기다려주세요.🚧");
+      showBenefits.forEach((benefit) => {
+        if (benefit.companyName.toLowerCase().includes(searchValue.toLowerCase())) {
+          results.push(benefit.companyName);
+        }
+      });
     }
     searchResults = [...results];
   };
@@ -30,6 +41,7 @@
     }
     return result;
   };
+
   const submit = () => {
     /**
      * @type {HTMLElement | null}
@@ -62,7 +74,7 @@
 
 <div class="search-results">
   {#each searchResults as result}
-    <p id="search-result">{result}</p>
+    <a href="#{result}" on:click={openModal} id="search-result">{result}</a>
   {/each}
 </div>
 
@@ -85,11 +97,14 @@
     opacity: 0.42;
   }
 
-  .search-results p {
+  .search-results a {
+    all: unset;
+    display: flex;
+    margin: 0.42rem;
     opacity: 0.42;
   }
 
-  .search-results p:hover {
+  .search-results a:hover {
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
   }
