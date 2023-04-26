@@ -1,4 +1,14 @@
 <script>
+  // @ts-nocheck
+  import benefits from "../data/data.json";
+  import studentBenefits from "../data/student.json";
+  import { openModal } from "../lib/scene.svelte";
+
+  // TODO: Refactor this code, using svelte store
+  let showBenefits = [...benefits, ...studentBenefits].filter(
+    (benefit) => benefit.category
+  );
+
   let searchValue = "";
   /**
    * @type {string[]}
@@ -6,18 +16,42 @@
   let searchResults = [];
 
   const search = () => {
-    // TODO: 검색 로직 구현
     let results = [];
-    if (searchValue === "42") {
-      results.push("answer to life the universe and everything");
+    if (easterEgg(searchValue)) {
+      results.push(easterEgg(searchValue));
     }
-    if (searchValue === "answer to life the universe and everything") {
-      results.push("42");
-    }
+    // TODO: companyName이외에도 다른 내용들도 검색되게 하기
     if (searchValue.length > 0) {
-      results.push("검색기능을 열심히 만들고 있습니다. 조금만 기다려주세요.🚧");
+      showBenefits.forEach((benefit) => {
+        if (benefit.companyName.toLowerCase().includes(searchValue.toLowerCase())) {
+          results.push(benefit.companyName);
+        }
+      });
     }
     searchResults = [...results];
+  };
+
+  // TODO: 추후 링크 바로가기 기능도 제공
+  const easterEgg = (/** @type {string} */ searchValue) => {
+    let result = undefined;
+    if (searchValue === "42") {
+      result = "answer to life the universe and everything";
+    }
+    else if (searchValue === "answer to life the universe and everything") {
+      result = "42";
+    }
+    else if (searchValue === "집현전") {
+      result = "집현전은 모두가 함께 만들어가는 42서울의 도서관입니다. 42library.kr";
+    }
+    else if (searchValue === "모닝글로리") {
+      result = "모닝글로리는 카뎃들이 아침마다 모여 공부를 시작하는 모임입니다. 42mogle.com"
+    }
+    else if (searchValue === "평가")
+    {
+      result = "15 Minutes is Enough! 42peer.com"
+    }
+
+    return result;
   };
 
   const submit = () => {
@@ -52,7 +86,7 @@
 
 <div class="search-results">
   {#each searchResults as result}
-    <p id="search-result">{result}</p>
+    <a href="#{result}" on:click={openModal} id="search-result">{result}</a>
   {/each}
 </div>
 
@@ -75,11 +109,14 @@
     opacity: 0.42;
   }
 
-  .search-results p {
+  .search-results a {
+    all: unset;
+    display: flex;
+    margin: 0.42rem;
     opacity: 0.42;
   }
 
-  .search-results p:hover {
+  .search-results a:hover {
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
   }

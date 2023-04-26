@@ -2,6 +2,7 @@
 	// @ts-nocheck
 
 	import benefits from "../../data/data.json";
+	import studentBenefits from "../../data/student.json";
 	import Benefit from "./Benefit.svelte";
 
 	//TODO: Refactor this code, separate into modules
@@ -79,7 +80,7 @@
 			etc.classList.toggle("text-underlined");
 		}
 	};
-	let showBenefits = benefits
+	let showBenefits = [...benefits, ...studentBenefits]
 		.filter((benefit) => benefit.category)
 		.sort(sortBenefitsListFunction);
 	const educationBenefits = showBenefits.filter(

@@ -139,7 +139,7 @@
     controls.autoRotate = input;
   };
 
-  const openModal = () => {
+ export const openModal = () => {
     updateSun(12, -142);
     document.querySelector(".benefits-wrapper").style.display = "block";
     changeAutoRotate(false);

@@ -60,7 +60,7 @@
 		const colorThief = new ColorThief();
 		const img = document.getElementById(`${benefit.companyName}-logo`);
 		if (img.complete) {
-			const color = await colorThief.getColor(img);
+			const color = await colorThief.getColor(img, 25);
 			const invertedColor = color.map((c) => 255 - c);
     		const gradient = `linear-gradient(242deg ,
 					rgba(${invertedColor[0]}, ${invertedColor[1]}, ${invertedColor[2]}, 0.8) 0%, 
@@ -89,8 +89,10 @@
 		{benefit.content || ""}
 	</div>
 	<div id="date">
+		{#if benefit.startDate || benefit.endDate}
 		{displayDate(benefit.startDate)} ~
 		{displayDate(benefit.endDate)}
+		{/if}
 	</div>
 	<div id="method">
 		<button class="method-toggle" on:click={toggleMethod}>
@@ -98,8 +100,10 @@
 			<p class="triangle" />
 		</button>
 		<ol class="method-list">
-			{#each benefit.method || [] as element}
+			{#each benefit.method as element}
 				<li>{element}</li>
+			{:else}
+				<li>구체적인 신청방법 준비되지 않음. 해당회사에 문의.</li>
 			{/each}
 		</ol>
 	</div>
