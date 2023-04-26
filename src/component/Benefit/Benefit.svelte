@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { afterUpdate } from "svelte";
+	import { onMount, afterUpdate } from "svelte";
 	import dateFormat from "dateformat";
 	import ftLogo from "$lib/images/42logo.svg";
 	import ColorThief from "colorthief";
@@ -37,6 +37,13 @@
 		}
 	};
 
+	onMount(() => {
+		const benefitComponent = document.getElementById(benefit.companyName);
+		if (benefitComponent) {
+			setComponentGradientColor(benefitComponent);
+		}
+	});
+
 	afterUpdate(async () => {
 		const options = {
 			root: document.querySelector("benefits-wrapper"),
@@ -50,24 +57,21 @@
 				observer.observe(element);
 			});
 		}
-		const benefitComponent = document.getElementById(benefit.companyName);
-		if (benefitComponent) {
-			await setComponentGradientColor(benefitComponent);
-		}
 	});
 
 	const setComponentGradientColor = async (benefitComponent) => {
 		const colorThief = new ColorThief();
 		const img = document.getElementById(`${benefit.companyName}-logo`);
+		await img.decode();
 		if (img.complete) {
 			const color = await colorThief.getColor(img, 25);
 			const invertedColor = color.map((c) => 255 - c);
-    		const gradient = `linear-gradient(242deg ,
+			const gradient = `linear-gradient(242deg ,
 					rgba(${invertedColor[0]}, ${invertedColor[1]}, ${invertedColor[2]}, 0.8) 0%, 
 					rgba(0, 0, 0, 0.8) 20%)`;
 			benefitComponent.style.backgroundImage = gradient;
 		}
-	}
+	};
 
 	/**
 	 * @type {{companyName: string, companyDescription: string, logo: string, category: string, content: string, method: string[], startDate: string, endDate: string}}
@@ -75,7 +79,7 @@
 	export let benefit;
 </script>
 
-<section class="benefit scroll" id="{benefit.companyName}">
+<section class="benefit scroll" id={benefit.companyName}>
 	<h1 class="company">
 		<div class="tooltip">
 			{benefit.companyName || ""}
@@ -83,15 +87,19 @@
 				{benefit.companyDescription || ""}
 			</p>
 		</div>
-		<img id="{benefit.companyName}-logo" src={benefit.logo || ftLogo} alt="company logo" />
+		<img
+			id="{benefit.companyName}-logo"
+			src={benefit.logo || ftLogo}
+			alt="company logo"
+		/>
 	</h1>
 	<div id="content">
 		{benefit.content || ""}
 	</div>
 	<div id="date">
 		{#if benefit.startDate || benefit.endDate}
-		{displayDate(benefit.startDate)} ~
-		{displayDate(benefit.endDate)}
+			{displayDate(benefit.startDate)} ~
+			{displayDate(benefit.endDate)}
 		{/if}
 	</div>
 	<div id="method">
