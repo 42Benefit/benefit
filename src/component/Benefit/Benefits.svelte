@@ -16,8 +16,10 @@
 			toggleCategory("education");
 		} else if (category === "cooperation") {
 			toggleCategory("cooperation");
-		} else {
+		} else if (category === "etc") {
 			toggleCategory("etc");
+		} else if (category === "official") {
+			toggleCategory("official");
 		}
 	};
 
@@ -38,6 +40,7 @@
 		const education = document.getElementById("education");
 		const cooperation = document.getElementById("cooperation");
 		const etc = document.getElementById("etc");
+		const official = document.getElementById("official");
 		if (category === "education" && education) {
 			if (education.classList.contains("show")) {
 				showBenefits = showBenefits.filter(
@@ -78,9 +81,54 @@
 			}
 			etc.classList.toggle("show");
 			etc.classList.toggle("text-underlined");
+		} else if (category === "official" && official) {
+			if (official.classList.contains("show")) {
+				showBenefits = showBenefits.filter(
+					(benefit) => benefit.official !== true
+				);
+			} else {
+				const temp = filterOnlyShowBenefits(officialBenefits);
+				showBenefits = [...showBenefits, ...temp].sort(
+					sortBenefitsListFunction
+				);
+			}
+			official.classList.toggle("show");
+			official.classList.toggle("text-underlined");
 		}
 	};
-	let showBenefits = [...benefits, ...studentBenefits]
+
+	const filterOnlyShowBenefits = (benefits) => {
+		if (!education.classList.contains("show")) {
+			benefits = benefits.filter(
+				(benefit) => benefit.category !== "교육"
+			);
+		}
+		if (!cooperation.classList.contains("show")) {
+			benefits = benefits.filter(
+				(benefit) => benefit.category !== "협업"
+			);
+		}
+		if (!etc.classList.contains("show")) {
+			benefits = benefits.filter(
+				(benefit) =>
+					!(
+						benefit.category !== "교육" &&
+						benefit.category !== "협업"
+					)
+			);
+		}
+		return benefits;
+	};
+
+	// TODO: 추후 데이터 가공부 추가해서 refactoring
+	const officialBenefits = benefits
+		.map((benefit) => {
+			benefit.official = true;
+			return benefit;
+		})
+		.filter((benefit) => benefit.category);
+
+	let showBenefits = [...officialBenefits, ...studentBenefits]
 		.filter((benefit) => benefit.category)
 		.sort(sortBenefitsListFunction);
 	const educationBenefits = showBenefits.filter(
@@ -96,13 +144,24 @@
 
 <div class="benefits-wrapper">
 	<header class="category">
-		<button class="show text-underlined" id="education" on:click={changeCategory}
-			>교육</button
+		<button
+			class="show text-underlined"
+			id="education"
+			on:click={changeCategory}>교육</button
 		>
-		<button class="show text-underlined" id="cooperation" on:click={changeCategory}
-			>협업</button
+		<button
+			class="show text-underlined"
+			id="cooperation"
+			on:click={changeCategory}>협업</button
 		>
-		<button class="show text-underlined" id="etc" on:click={changeCategory}>기타</button>
+		<button class="show text-underlined" id="etc" on:click={changeCategory}
+			>기타</button
+		>
+		<button
+			class="show text-underlined"
+			id="official"
+			on:click={changeCategory}>재단공식</button
+		>
 	</header>
 	<div class="benefits-list">
 		{#each showBenefits as benefit}
@@ -121,7 +180,7 @@
 		margin: 1rem;
 		display: none;
 	}
-	
+
 	.benefits-list {
 		margin: 0;
 		padding: 0;
@@ -173,11 +232,9 @@
 		opacity: 0.9 !important;
 	}
 
-		
 	:global(.text-underlined) {
 		text-decoration: underline !important;
 		text-underline-offset: 0.2rem !important;
 		text-decoration-thickness: 0.1rem !important;
 	}
-
 </style>
