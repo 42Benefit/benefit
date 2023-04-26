@@ -43,7 +43,7 @@
 	.app {
 		display: flex;
 		flex-direction: column;
-		font-family: monospace;
+		font-family: sans-serif;
 		margin: 0;
 		padding: 0;
 	}

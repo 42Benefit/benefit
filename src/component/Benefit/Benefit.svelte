@@ -211,6 +211,7 @@
 
 	.method-list {
 		display: none;
+		font-family: monospace;
 	}
 
 	:global(.active) {
