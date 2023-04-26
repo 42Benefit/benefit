@@ -428,5 +428,17 @@
         ],
         "startDate": "",
         "endDate": ""
+    },
+    {
+        "companyName": "42서울 전자도서관",
+        "companyDescription": "42서울 내 전자도서를 빌릴 수 있는 전자도서관",
+        "logo": "",
+        "category": "교육",
+        "content": "42서울이 제공하는 전자도서관, 다양한 개발 서적을 대여 및 열람 가능!",
+        "method": [
+            "슬렉 42전자도서관 참조"
+        ],
+        "startDate": "",
+        "endDate": ""
     }
 ]
