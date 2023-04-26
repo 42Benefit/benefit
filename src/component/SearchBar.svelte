@@ -20,10 +20,17 @@
     if (easterEgg(searchValue)) {
       results.push(easterEgg(searchValue));
     }
-    // TODO: companyName이외에도 다른 내용들도 검색되게 하기
+    // TODO: Refactor this code, using fuzzy search
     if (searchValue.length > 0) {
       showBenefits.forEach((benefit) => {
-        if (benefit.companyName.toLowerCase().includes(searchValue.toLowerCase())) {
+        if (
+          benefit.companyName
+            .toLowerCase()
+            .includes(searchValue.toLowerCase()) ||
+          benefit.companyDescription
+            .toLowerCase()
+            .includes(searchValue.toLowerCase())
+        ) {
           results.push(benefit.companyName);
         }
       });
@@ -36,19 +43,16 @@
     let result = undefined;
     if (searchValue === "42") {
       result = "answer to life the universe and everything";
-    }
-    else if (searchValue === "answer to life the universe and everything") {
+    } else if (searchValue === "answer to life the universe and everything") {
       result = "42";
-    }
-    else if (searchValue === "집현전") {
-      result = "집현전은 모두가 함께 만들어가는 42서울의 도서관입니다. 42library.kr";
-    }
-    else if (searchValue === "모닝글로리") {
-      result = "모닝글로리는 카뎃들이 아침마다 모여 공부를 시작하는 모임입니다. 42mogle.com"
-    }
-    else if (searchValue === "평가")
-    {
-      result = "15 Minutes is Enough! 42peer.com"
+    } else if (searchValue === "집현전") {
+      result =
+        "집현전은 모두가 함께 만들어가는 42서울의 도서관입니다. 42library.kr";
+    } else if (searchValue === "모닝글로리") {
+      result =
+        "모닝글로리는 카뎃들이 아침마다 모여 공부를 시작하는 모임입니다. 42mogle.com";
+    } else if (searchValue === "평가") {
+      result = "15 Minutes is Enough! 42peer.com";
     }
 
     return result;
