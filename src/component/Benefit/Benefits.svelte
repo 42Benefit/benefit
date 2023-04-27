@@ -234,6 +234,8 @@
 		flex-direction: row;
 		justify-content: space-between;
 		margin: 0;
+		margin-left: 0.42rem;
+		margin-right: 0.42rem;
 		color: black;
 	}
 
@@ -258,11 +260,11 @@
 	[type="checkbox"] {
 		appearance: none;
 		position: relative;
-		border: max(2px, 0.1em) solid gray;
-		border-radius: 1.25em;
-		width: 2.25em;
-		height: 1.25em;
-		top: 0.4em;
+		border: max(2px, 0.1rem) solid gray;
+		border-radius: 1.25rem;
+		width: 2.25rem;
+		height: 1.25rem;
+		top: 0.4rem;
 	}
 
 
@@ -270,8 +272,8 @@
 		content: "";
 		position: absolute;
 		left: 0;
-		width: 1em;
-		height: 1em;
+		width: 1rem;
+		height: 1rem;
 		border-radius: 50%;
 		transform: scale(0.8);
 		background-color: gray;
@@ -280,7 +282,7 @@
 
 	[type="checkbox"]:checked::before {
 		background-color: white;
-		left: 1em;
+		left: 1rem;
 	}
 
 	[type="checkbox"]:checked {
@@ -289,8 +291,8 @@
 	}
 
 	[type="checkbox"]:focus-visible {
-		outline-offset: max(2px, 0.1em);
-		outline: max(2px, 0.1em) solid rgb(10, 115, 66);
+		outline-offset: max(2px, 0.1rem);
+		outline: max(2px, 0.1rem) solid rgb(10, 115, 66);
 	}
 
 
