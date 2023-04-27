@@ -63,14 +63,12 @@
 		const colorThief = new ColorThief();
 		const img = document.getElementById(`${benefit.companyName}-logo`);
 		await img.decode();
-		if (img.complete) {
-			const color = await colorThief.getColor(img, 25);
-			const invertedColor = color.map((c) => 255 - c);
-			const gradient = `linear-gradient(242deg ,
+		const color = await colorThief.getColor(img, 25);
+		const invertedColor = color.map((c) => 255 - c);
+		const gradient = `linear-gradient(242deg ,
 					rgba(${invertedColor[0]}, ${invertedColor[1]}, ${invertedColor[2]}, 0.8) 0%, 
 					rgba(0, 0, 0, 0.8) 20%)`;
-			benefitComponent.style.backgroundImage = gradient;
-		}
+		benefitComponent.style.backgroundImage = gradient;
 	};
 
 	/**
