@@ -65,12 +65,18 @@
 		await img.decode();
 		const color = await colorThief.getColor(img, 25);
 		const invertedColor = color.map((c) => 255 - c);
+		let gradientPercent;
+		if (window.innerWidth <= 768){
+			gradientPercent = 42;
+		} else {
+			gradientPercent = 20;
+		}
 		const gradient = `linear-gradient(242deg ,
 					rgba(${invertedColor[0]}, ${invertedColor[1]}, ${invertedColor[2]}, 0.8) 0%, 
-					rgba(0, 0, 0, 0.8) 20%)`;
+					rgba(0, 0, 0, 0.8) ${gradientPercent}%)`;
 		benefitComponent.style.backgroundImage = gradient;
 	};
-
+	
 	/**
 	 * @type {{companyName: string, companyDescription: string, logo: string, category: string, content: string, method: string[], startDate: string, endDate: string}}
 	 */
