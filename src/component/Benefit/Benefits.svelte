@@ -234,8 +234,8 @@
 		flex-direction: row;
 		justify-content: space-between;
 		margin: 0;
-		margin-left: 0.42rem;
-		margin-right: 0.42rem;
+		margin-left: 1rem;
+		margin-right: 1rem;
 		color: black;
 	}
 
@@ -295,7 +295,6 @@
 		outline: max(2px, 0.1rem) solid rgb(10, 115, 66);
 	}
 
-
 	:global(.show) {
 		opacity: 0.9 !important;
 	}
@@ -304,5 +303,11 @@
 		text-decoration: underline !important;
 		text-underline-offset: 0.2rem !important;
 		text-decoration-thickness: 0.1rem !important;
+	}
+
+	@media (max-width: 768px) {
+		.category {
+			margin: 0.42rem;
+		}
 	}
 </style>
