@@ -18,8 +18,6 @@
 			toggleCategory("cooperation");
 		} else if (category === "etc") {
 			toggleCategory("etc");
-		} else if (category === "official") {
-			toggleCategory("official");
 		}
 	};
 
@@ -50,6 +48,11 @@
 				showBenefits = [...showBenefits, ...educationBenefits].sort(
 					sortBenefitsListFunction
 				);
+				if (official.checked) {
+					showBenefits = showBenefits.filter(
+						(benefit) => benefit.official === true
+					);
+				}
 			}
 			education.classList.toggle("show");
 			education.classList.toggle("text-underlined");
@@ -62,6 +65,11 @@
 				showBenefits = [...showBenefits, ...cooperationBenefits].sort(
 					sortBenefitsListFunction
 				);
+				if (official.checked) {
+					showBenefits = showBenefits.filter(
+						(benefit) => benefit.official === true
+					);
+				}
 			}
 			cooperation.classList.toggle("show");
 			cooperation.classList.toggle("text-underlined");
@@ -78,26 +86,29 @@
 				showBenefits = [...showBenefits, ...etcBenefits].sort(
 					sortBenefitsListFunction
 				);
+				if (official.checked) {
+					showBenefits = showBenefits.filter(
+						(benefit) => benefit.official === true
+					);
+				}
 			}
 			etc.classList.toggle("show");
 			etc.classList.toggle("text-underlined");
-		} else if (category === "official" && official) {
-			if (official.classList.contains("show")) {
-				showBenefits = showBenefits.filter(
-					(benefit) => benefit.official !== true
-				);
-			} else {
-				const temp = filterOnlyShowBenefits(officialBenefits);
-				showBenefits = [...showBenefits, ...temp].sort(
-					sortBenefitsListFunction
-				);
-			}
-			official.classList.toggle("show");
-			official.classList.toggle("text-underlined");
 		}
 	};
 
-	const filterOnlyShowBenefits = (benefits) => {
+	const toggleOfficialBenefits = () => {
+		const official = document.getElementById("official");
+		if (official.checked) {
+			showBenefits = showBenefits.filter(
+				(benefit) => benefit.official === true
+			);
+		} else {
+			showBenefits = currentCategoryBenefits(originalBenefits);
+		}
+	};
+
+	const currentCategoryBenefits = (benefits) => {
 		if (!education.classList.contains("show")) {
 			benefits = benefits.filter(
 				(benefit) => benefit.category !== "교육"
@@ -121,14 +132,14 @@
 	};
 
 	// TODO: 추후 데이터 가공부 추가해서 refactoring
-	const officialBenefits = benefits
-		.map((benefit) => {
-			benefit.official = true;
-			return benefit;
-		})
-		.filter((benefit) => benefit.category);
-
-	let showBenefits = [...officialBenefits, ...studentBenefits]
+	const officialBenefits = benefits.map((benefit) => {
+		benefit.official = true;
+		return benefit;
+	}).filter((benefit) => benefit.category);
+	const originalBenefits = [...officialBenefits, ...studentBenefits].filter(
+		(benefit) => benefit.category
+	);
+	let showBenefits = originalBenefits
 		.filter((benefit) => benefit.category)
 		.sort(sortBenefitsListFunction);
 	const educationBenefits = showBenefits.filter(
@@ -144,24 +155,33 @@
 
 <div class="benefits-wrapper">
 	<header class="category">
-		<button
-			class="show text-underlined"
-			id="education"
-			on:click={changeCategory}>교육</button
-		>
-		<button
-			class="show text-underlined"
-			id="cooperation"
-			on:click={changeCategory}>협업</button
-		>
-		<button class="show text-underlined" id="etc" on:click={changeCategory}
-			>기타</button
-		>
-		<button
-			class="show text-underlined"
-			id="official"
-			on:click={changeCategory}>재단공식</button
-		>
+		<div>
+			<button
+				class="show text-underlined"
+				id="education"
+				on:click={changeCategory}>교육</button
+			>
+			<button
+				class="show text-underlined"
+				id="cooperation"
+				on:click={changeCategory}>협업</button
+			>
+			<button
+				class="show text-underlined"
+				id="etc"
+				on:click={changeCategory}>기타</button
+			>
+		</div>
+		<label>
+			<span>
+				official
+			</span>
+			<input
+				type="checkbox"
+				id="official"
+				on:change={toggleOfficialBenefits}
+			/>
+		</label>
 	</header>
 	<div class="benefits-list">
 		{#each showBenefits as benefit}
@@ -212,9 +232,8 @@
 		font-size: large;
 		display: flex;
 		flex-direction: row;
-		justify-content: left;
+		justify-content: space-between;
 		margin: 0;
-		margin-left: 1rem;
 		color: black;
 	}
 
@@ -224,9 +243,56 @@
 		opacity: 0.42;
 	}
 
-	.category button:hover {
+	.category label {
+		color: gray;
+	}
+
+	.category span {
+		all: unset;
+	}
+
+	.category label:hover {
 		cursor: pointer;
 	}
+
+	[type="checkbox"] {
+		appearance: none;
+		position: relative;
+		border: max(2px, 0.1em) solid gray;
+		border-radius: 1.25em;
+		width: 2.25em;
+		height: 1.25em;
+		top: 0.4em;
+	}
+
+
+	[type="checkbox"]::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 1em;
+		height: 1em;
+		border-radius: 50%;
+		transform: scale(0.8);
+		background-color: gray;
+		transition: left 250ms linear;
+	}
+
+	[type="checkbox"]:checked::before {
+		background-color: white;
+		left: 1em;
+	}
+
+	[type="checkbox"]:checked {
+		background-color: rgb(10, 115, 66);
+		border-color: rgb(10, 115, 66);
+	}
+
+	[type="checkbox"]:focus-visible {
+		outline-offset: max(2px, 0.1em);
+		outline: max(2px, 0.1em) solid rgb(10, 115, 66);
+	}
+
 
 	:global(.show) {
 		opacity: 0.9 !important;
