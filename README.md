@@ -55,6 +55,26 @@ rollthebryce에 의해 만들어진 [Message in a Bottle](https://skfb.ly/6YYwn)
 3. 작업이 완료되면 풀 리퀘스트를 생성합니다.
 4. 코드 리뷰를 기다린 후, 변경 사항이 승인되면 브랜치가 병합됩니다.
 
+### 베네핏을 추가하거나 수정하고 싶어요.
+
+`src/data/student.json`를 수정후에 PR날려주세요. PR시 아래와 같이 데이터형식을 지켜주세요.
+
+```
+{
+        "companyName": "GitHub",
+        "companyDescription": "GitHub는 강력한 협업, 코드 검토 및 코드 관리 기능을 제공합니다.",
+        "logo": "base64로 인코딩된 이미지파일 없다면 생략",
+        "category": "교육",
+        "content": "학생인 동안 무료로 GitHub Pro를 사용하세요.",
+        "method": [
+            "GitHub 웹사이트에서 바로 접근",
+            "GitHub 지원에서 도움 받기"
+        ],
+        "startDate": "YYYY.MM.DD", (없으면 빈문자열)
+        "endDate": "YYYY.MM.DD" (없으면 빈문자열)
+    },
+```
+
 ## 기여자
 
 <a href="https://github.com/42Benefit/benefit/graphs/contributors">
