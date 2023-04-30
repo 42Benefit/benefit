@@ -309,5 +309,10 @@
 		.category {
 			margin: 0.42rem;
 		}
+
+		.no-benefit {
+			margin: 0.42rem;
+		}
 	}
+	
 </style>
