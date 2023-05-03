@@ -4,6 +4,7 @@
 	import benefits from "../../data/data.json";
 	import studentBenefits from "../../data/student.json";
 	import Benefit from "./Benefit.svelte";
+	import NoBenefit from "./NoBenefit.svelte";
 
 	//TODO: Refactor this code, separate into modules
 
@@ -132,10 +133,12 @@
 	};
 
 	// TODO: 추후 데이터 가공부 추가해서 refactoring
-	const officialBenefits = benefits.map((benefit) => {
-		benefit.official = true;
-		return benefit;
-	}).filter((benefit) => benefit.category);
+	const officialBenefits = benefits
+		.map((benefit) => {
+			benefit.official = true;
+			return benefit;
+		})
+		.filter((benefit) => benefit.category);
 	const originalBenefits = [...officialBenefits, ...studentBenefits].filter(
 		(benefit) => benefit.category
 	);
@@ -173,9 +176,7 @@
 			>
 		</div>
 		<label>
-			<span>
-				official
-			</span>
+			<span> official </span>
 			<input
 				type="checkbox"
 				id="official"
@@ -187,10 +188,7 @@
 		{#each showBenefits as benefit}
 			<Benefit {benefit} />
 		{:else}
-			<section class="no-benefit">
-				<i>여행은 언제나 고독한 법이죠...</i>
-				<i>베네핏 없이도 항해를 이어나갈 당신을 응원합니다.</i>
-			</section>
+			<NoBenefit />
 		{/each}
 	</div>
 </div>
@@ -213,19 +211,6 @@
 
 	.benefits-list::-webkit-scrollbar {
 		display: none;
-	}
-
-	.no-benefit {
-		display: flex;
-		flex-direction: column;
-		background-color: rgba(0, 0, 0, 0.8);
-		border-radius: 0.5rem;
-		margin: 1rem;
-		box-shadow: 0px 0.42rem 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
-	}
-
-	.no-benefit i {
-		margin: 1rem;
 	}
 
 	.category {
@@ -266,7 +251,6 @@
 		height: 1.25rem;
 		top: 0.4rem;
 	}
-
 
 	[type="checkbox"]::before {
 		content: "";
@@ -309,10 +293,5 @@
 		.category {
 			margin: 0.42rem;
 		}
-
-		.no-benefit {
-			margin: 0.42rem;
-		}
 	}
-	
 </style>
