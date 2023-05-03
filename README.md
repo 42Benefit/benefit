@@ -24,9 +24,10 @@ benefit는 42서울 카뎃들을 위한 혜택들을 모아놓은 사이트입�
 
 제휴기업들이 `은하수를 여행하고 있는 히치하치하이커`들에게 제공하는 혜택과 이용밥법을 참고해보세요! 
 
-|<img src="./docs/images/demo_mobile.gif" height=200> |<img src="./docs/images/demo_web.gif" height=200 > |
-| :--: | :--: |
-| mobile view | web view |
+### OverView
+|<img src="./docs/images/demo_mobile.gif" height=200> |<img src="./docs/images/demo_web.gif" height=200 > | <img src="./docs/images/typing_effect.gif" height=200> | 
+| :--: | :--: | :--: |
+| mobile overview | web overview | typing effect |
 ## 기술 스택
 
 <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=#000000">
