@@ -22,7 +22,8 @@
 		"dateformat": "^5.0.3",
 		"dotenv": "^16.0.3",
 		"googleapis": "^114.0.0",
-		"three": "^0.150.1"
+		"three": "^0.150.1",
+		"typeit": "^8.7.1"
 	},
 	"licenses": [
 		{

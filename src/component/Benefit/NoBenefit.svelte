@@ -1,6 +1,30 @@
+<script>
+	import { onMount } from "svelte";
+
+	import TypeIt from "typeit";
+
+	onMount(() => {
+		// @ts-ignore
+		new TypeIt(".no-benefit #first", {
+			speed: 42,
+			waitUntilVisible: true,
+			startDelay: 1000,
+			cursor: false,
+		}).go();
+
+		// @ts-ignore
+		new TypeIt(".no-benefit #second", {
+			speed: 42,
+			waitUntilVisible: true,
+			startDelay: 2000,
+			cursor: false,
+		}).go();
+	});
+</script>
+
 <section class="no-benefit">
-	<i>여행은 언제나 고독한 법이죠...</i>
-	<i>베네핏 없이도 항해를 이어나갈 당신을 응원합니다.</i>
+	<i id="first">여행은 언제나 고독한 법이죠...</i>
+	<i id="second">베네핏 없이도 항해를 이어나갈 당신을 응원합니다.</i>
 </section>
 
 <style>
