@@ -7,12 +7,14 @@
 
 	// for easter egg
 	console.log("Don't Panic!")
+
 	/**
-	 * @type {HTMLCanvasElement}
-	 */
-	let canvas_name;
+	 * @description create canvas and renderer
+	 * @info this function is called only once, when the component is mounted
+	 * @warning this function create canvas DOM element
+	*/
 	onMount(() => {
-		createScene(canvas_name);
+		createScene();
 	});
 
 </script>
@@ -33,7 +35,6 @@
 	<main>
 		<slot />
 	</main>
-	<canvas bind:this={canvas_name} />
 	<Footer />
 </div>
 
@@ -55,14 +56,5 @@
 		margin: 0 auto;
 		padding: 0;
 		box-sizing: border-box;
-	}
-
-	canvas {
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: -1;
-		width: 100vw;
-		height: 100vh;
 	}
 </style>

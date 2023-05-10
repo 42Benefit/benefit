@@ -213,10 +213,12 @@
     spotLight = null;
   };
 
-  export const createScene = (canvas_name) => {
+  export const createScene = () => {
+    const canvas = document.createElement("canvas");
+    document.querySelector(".app").append(canvas);
     renderer = new THREE.WebGLRenderer({
       antialias: true,
-      canvas: canvas_name,
+      canvas,
       alpha: true,
     });
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -233,3 +235,14 @@
     }
   });
 </script>
+
+<style>
+  :global(canvas) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		width: 100vw;
+		height: 100vh;
+  }
+</style>
