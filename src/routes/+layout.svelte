@@ -4,6 +4,7 @@
 	import Loading from "../component/Loading.svelte";
 	import { onMount } from "svelte";
 	import { createScene } from "../lib/three/scene.svelte";
+	import "./global.css";
 
 	// for easter egg
 	console.log("Don't Panic!")
