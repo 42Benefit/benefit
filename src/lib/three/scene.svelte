@@ -64,7 +64,7 @@
     }
   };
 
-  const controls = new OrbitControls(camera, document.body);
+  const controls = new OrbitControls(camera, renderer.domElement);
 
   const initControls = (controls) => {
     controls.target.set(0, 10, 0);
@@ -132,7 +132,7 @@
     animate();
   };
 
-  window.addEventListener("resize", resize);
+  window.addEventListener("resize", ()=>{resize(renderer, camera)});
   document.addEventListener("mousemove", onDocumentMouseMove);
   document.addEventListener("mousedown", onDocumentMouseDown);
   document.addEventListener("keydown", (e) => {
