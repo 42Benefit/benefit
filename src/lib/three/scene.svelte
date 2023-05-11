@@ -12,6 +12,7 @@
   import { SunFactory } from "./Factory/Sun.svelte";
   import { RendererFactory } from "./Factory/Render.svelte";
   import { openModal, closeModal } from "./Util/Modal.svelte";
+  import { resize } from "./Util/resize.svelte";
 
   const scene = new THREE.Scene();
   const camera = CameraFactory();
@@ -49,6 +50,7 @@
     requestAnimationFrame(animate);
     water.material.uniforms["time"].value += 1.0 / 60.0;
     controlCamera();
+    resize(renderer, camera);
     renderer.render(scene, camera);
     const position = scene?.getObjectByName("message_in_a_bottle")?.position;
     const rotation = scene?.getObjectByName("message_in_a_bottle")?.rotation;
@@ -59,13 +61,6 @@
       rotation.x = Math.sin(time) * 0.42;
       rotation.z = Math.sin(2 * time) * 0.042;
     }
-  };
-
-  const resize = () => {
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
   };
 
   const controls = new OrbitControls(camera, document.body);
@@ -140,7 +135,7 @@
 
   export const createScene = () => {
     document.querySelector(".app").append(renderer.domElement);
-    resize();
+    resize(renderer, camera);
     sun.darken();
     animate();
   };
