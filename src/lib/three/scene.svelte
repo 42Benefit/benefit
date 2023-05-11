@@ -91,14 +91,14 @@
   };
 
  export const openModal = () => {
-    sun.update(12, -142);
+    sun.lighten();
     document.querySelector(".benefits-wrapper").style.display = "block";
     changeAutoRotate(false);
   };
 
   const closeModal = () => {
     document.querySelector(".benefits-wrapper").style.display = "none";
-    sun.update(1, -142);
+    sun.darken();
     changeAutoRotate(true);
   };
 
@@ -153,7 +153,7 @@
   export const createScene = () => {
     document.querySelector(".app").append(renderer.domElement);
     resize();
-    sun.update(1, -142);
+    sun.darken();
     animate();
   };
   window.addEventListener("resize", resize);

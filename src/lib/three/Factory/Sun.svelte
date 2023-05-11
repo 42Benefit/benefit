@@ -8,7 +8,7 @@
       this.sky = sky;
       this.water = water;
       this.sun = new THREE.Vector3();
-	  this.pmremGenerator = pmremGenerator;
+      this.pmremGenerator = pmremGenerator;
 
       this.sun.setFromSphericalCoords(
         1,
@@ -21,6 +21,10 @@
         .normalize();
     }
 
+    /**
+     * @param {number} elevation
+     * @param {number} azimuth
+     */
     update(elevation, azimuth) {
       let renderTarget;
       const parameters = {
@@ -32,12 +36,30 @@
 
       this.sun.setFromSphericalCoords(1, phi, theta);
       this.sky.material.uniforms["sunPosition"].value.copy(this.sun);
-      this.water.material.uniforms["sunDirection"].value.copy(this.sun).normalize();
+      this.water.material.uniforms["sunDirection"].value
+        .copy(this.sun)
+        .normalize();
       if (renderTarget !== undefined) {
         renderTarget.dispose();
       }
       renderTarget = this.pmremGenerator.fromScene(this.sky);
       this.scene.environment = renderTarget.texture;
     }
+
+    remove() {
+      this.scene.remove(this.sun);
+    }
+
+    add() {
+      this.scene.add(this.sun);
+    }
+
+    lighten() {
+      this.update(12, -142);
+    }
+
+	darken() {
+	  this.update(1, -142);
+	}
   }
 </script>
