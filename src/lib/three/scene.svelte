@@ -13,6 +13,7 @@
   import { RendererFactory } from "./Factory/Render.svelte";
   import { openModal, closeModal } from "./Util/Modal.svelte";
   import { resize } from "./Util/resize.svelte";
+  import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper.svelte";
 
   const scene = new THREE.Scene();
   const camera = CameraFactory();
@@ -86,16 +87,6 @@
     controls.autoRotate = input;
   };
 
-  const isMouseOverBenefitsWrapper = (event) => {
-    const benefitsWrapper = document.querySelector(".benefits-wrapper");
-    const rect = benefitsWrapper.getBoundingClientRect();
-    return (
-      event.clientX >= rect.left &&
-      event.clientX <= rect.right &&
-      event.clientY >= rect.top &&
-      event.clientY <= rect.bottom
-    );
-  };
   // TODO: 추후 이벤트 핸들러 분리
   const onDocumentMouseDown = (event) => {
     let ray = new THREE.Raycaster();
@@ -114,6 +105,7 @@
   };
 
   const spotLight = new SpotLightFactory(scene);
+
   const onDocumentMouseMove = (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
