@@ -90,6 +90,7 @@
 </div>
 
  <!--TODO: openModal 구조 리팩토링-->
+ <!--TODO: 화살표 키보드로 이동-->
 <div class="search-results">
   {#each searchResults as result}
     <a href="#{result}" on:click={()=>{openModal(sun)}} id="search-result">{result}</a>
