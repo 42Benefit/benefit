@@ -2,7 +2,8 @@
   // @ts-nocheck
   import benefits from "../data/data.json";
   import studentBenefits from "../data/student.json";
-  import { openModal } from "$lib/three/scene.svelte";
+  import { openModal } from "$lib/three/Util/Modal.svelte";
+  import { sun } from "$lib/three/scene.svelte";
 
   // TODO: Refactor this code, using svelte store
   let showBenefits = [...benefits, ...studentBenefits].filter(
@@ -88,9 +89,10 @@
   />
 </div>
 
+ <!--TODO: openModal 구조 리팩토링-->
 <div class="search-results">
   {#each searchResults as result}
-    <a href="#{result}" on:click={openModal} id="search-result">{result}</a>
+    <a href="#{result}" on:click={()=>{openModal(sun)}} id="search-result">{result}</a>
   {/each}
 </div>
 

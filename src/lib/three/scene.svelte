@@ -11,6 +11,7 @@
   import { SpotLightFactory } from "./Factory/SpotLight.svelte";
   import { SunFactory } from "./Factory/Sun.svelte";
   import { RendererFactory } from "./Factory/Render.svelte";
+  import { openModal, closeModal } from "./Util/Modal.svelte";
 
   const scene = new THREE.Scene();
   const camera = CameraFactory();
@@ -38,7 +39,7 @@
   scene.add(sky);
 
   const renderer = RendererFactory();
-  const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
+  export const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
   
   let mouse = new THREE.Vector2();
 
@@ -86,20 +87,8 @@
    * @summary - change autoRotate to parameter `input` , which is used to rotate camera automatically
    * @param bool {boolean} - true: rotate camera automatically, false: stop rotating camera automatically
    */
-  const changeAutoRotate = (input) => {
+  export const changeAutoRotate = (input) => {
     controls.autoRotate = input;
-  };
-
- export const openModal = () => {
-    sun.lighten();
-    document.querySelector(".benefits-wrapper").style.display = "block";
-    changeAutoRotate(false);
-  };
-
-  const closeModal = () => {
-    document.querySelector(".benefits-wrapper").style.display = "none";
-    sun.darken();
-    changeAutoRotate(true);
   };
 
   const isMouseOverBenefitsWrapper = (event) => {
@@ -122,16 +111,15 @@
       intersects[0].object.name === "defaultMaterial_1"
     ) {
       // 병 클릭시
-      openModal();
+      openModal(sun);
     } else if (isMouseOverBenefitsWrapper(event) === false) {
       // 병 외부 클릭시
-      closeModal();
+      closeModal(sun);
     }
   };
 
   const spotLight = new SpotLightFactory(scene);
   const onDocumentMouseMove = (event) => {
-
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     let ray = new THREE.Raycaster();
@@ -156,12 +144,13 @@
     sun.darken();
     animate();
   };
+
   window.addEventListener("resize", resize);
   document.addEventListener("mousemove", onDocumentMouseMove);
   document.addEventListener("mousedown", onDocumentMouseDown);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      closeModal();
+      closeModal(sun);
     }
   });
 </script>
