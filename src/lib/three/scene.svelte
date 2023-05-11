@@ -5,17 +5,12 @@
   import * as THREE from "three";
   import { WaterFactory } from "./Factory/Water.svelte";
   import { SkyFactory } from "./Factory/Sky.svelte";
+  import { CameraFactory } from "./Factory/Camera.svelte";
   import { OrbitControls } from "three/addons/controls/OrbitControls.js";
   import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    55,
-    window.innerWidth / window.innerHeight,
-    1,
-    20000
-  );
-  camera.position.set(30, 30, 100);
+  const camera = CameraFactory();
 
   const loader = new GLTFLoader();
   loader.load(
