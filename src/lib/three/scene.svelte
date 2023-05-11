@@ -3,8 +3,8 @@
   // TODO: refactor this code for better readability and performance
 
   import * as THREE from "three";
-  import { Water } from "three/addons/objects/Water.js";
-  import { Sky } from "three/addons/objects/Sky.js";
+  import { WaterFactory } from "./Factory/Water.svelte";
+  import { SkyFactory } from "./Factory/Sky.svelte";
   import { OrbitControls } from "three/addons/controls/OrbitControls.js";
   import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
@@ -33,38 +33,11 @@
       console.error(error);
     }
   );
-
-  const waterGeometry = new THREE.PlaneGeometry(5000, 5000);
-  const waterMaterial = {
-    textureWidth: 512,
-    textureHeight: 512,
-    waterNormals: new THREE.TextureLoader().load(
-      "/images/waternormals.jpeg",
-      function (texture) {
-        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-      }
-    ),
-    alpha: 1.0,
-    sunDirection: new THREE.Vector3(),
-    sunColor: 0xffffff,
-    waterColor: 0x001e0f,
-    distortionScale: 3.7,
-    fog: scene.fog !== undefined,
-  };
-  const water = new Water(waterGeometry, waterMaterial);
-  water.rotation.x = -Math.PI / 2;
+  const water = WaterFactory(scene);
   scene.add(water);
 
-  const sky = new Sky();
-  sky.scale.setScalar(10000);
+  const sky = SkyFactory();
   scene.add(sky);
-
-  const skyUniforms = sky.material.uniforms;
-
-  skyUniforms["turbidity"].value = 10;
-  skyUniforms["rayleigh"].value = 2;
-  skyUniforms["mieCoefficient"].value = 0.005;
-  skyUniforms["mieDirectionalG"].value = 0.8;
 
   let sun;
   sun = new THREE.Vector3();
