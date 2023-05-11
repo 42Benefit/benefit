@@ -8,6 +8,7 @@
   import { CameraFactory } from "./Factory/Camera.svelte";
   import { OrbitControls } from "three/addons/controls/OrbitControls.js";
   import { LoaderFactory } from "./Factory/Loader.svelte";
+  import { SpotLightFactory } from "./Factory/SpotLight.svelte";
 
   const scene = new THREE.Scene();
   const camera = CameraFactory();
@@ -146,7 +147,9 @@
     }
   };
 
+  const spotLight = new SpotLightFactory(scene);
   const onDocumentMouseMove = (event) => {
+
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     let ray = new THREE.Raycaster();
@@ -158,27 +161,11 @@
       isMouseOverBenefitsWrapper(event) === false
     ) {
       document.body.style.cursor = "pointer";
-      addSpotLight();
+      spotLight.add();
     } else {
       document.body.style.cursor = "auto";
-      removeSpotLight();
+      spotLight.remove();
     }
-  };
-
-  let spotLight = null;
-  const addSpotLight = () => {
-    if (spotLight === null) {
-      spotLight = new THREE.SpotLight(0xffffff, 42);
-      spotLight.position.set(0, 42, -10);
-      spotLight.castShadow = true;
-      scene.add(spotLight);
-    }
-  };
-
-  const removeSpotLight = () => {
-    if (spotLight === null) return;
-    scene.remove(spotLight);
-    spotLight = null;
   };
 
   export const createScene = () => {
