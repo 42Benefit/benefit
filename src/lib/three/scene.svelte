@@ -17,8 +17,16 @@
 
   const scene = new THREE.Scene();
   const camera = CameraFactory();
-
   const loader = LoaderFactory();
+  const water = WaterFactory(scene);
+  const sky = SkyFactory();
+  const renderer = RendererFactory();
+  const spotLight = new SpotLightFactory(scene);
+  export const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
+
+  let mouse = new THREE.Vector2();
+  const controls = new OrbitControls(camera, renderer.domElement);
+
   loader.load(
     "/models/message_in_a_bottle.glb",
     (model) => {
@@ -34,20 +42,14 @@
       console.error(error);
     }
   );
-  const water = WaterFactory(scene);
   scene.add(water);
-
-  const sky = SkyFactory();
   scene.add(sky);
 
-  const renderer = RendererFactory();
-  export const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
   
-  let mouse = new THREE.Vector2();
-
+  
   const animate = () => {
     const time = performance.now() * 0.001;
-
+    
     requestAnimationFrame(animate);
     water.material.uniforms["time"].value += 1.0 / 60.0;
     controlCamera();
@@ -64,16 +66,15 @@
     }
   };
 
-  const controls = new OrbitControls(camera, renderer.domElement);
-
+  
   const initControls = (controls) => {
     controls.target.set(0, 10, 0);
     controls.autoRotate = true;
     controls.autoRotateSpeed = 0.42;
     controls.dispose();
   };
-
   initControls(controls);
+
 
   const controlCamera = () => {
     controls.update();
@@ -104,7 +105,6 @@
     }
   };
 
-  const spotLight = new SpotLightFactory(scene);
 
   const onDocumentMouseMove = (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
