@@ -2,7 +2,7 @@
   // @ts-nocheck
   import benefits from "../data/data.json";
   import studentBenefits from "../data/student.json";
-  import { openModal } from "../lib/scene.svelte";
+  import { openModal } from "$lib/three/scene.svelte";
 
   // TODO: Refactor this code, using svelte store
   let showBenefits = [...benefits, ...studentBenefits].filter(

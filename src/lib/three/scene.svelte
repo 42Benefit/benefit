@@ -120,7 +120,7 @@
 
   const initControls = (controls) => {
     controls.target.set(0, 10, 0);
-    controls.autoRotate = true;
+    //controls.autoRotate = true;
     controls.autoRotateSpeed = 0.42;
     controls.dispose();
   };

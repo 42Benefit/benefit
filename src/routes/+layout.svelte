@@ -3,7 +3,7 @@
 	import Footer from "../component/Footer.svelte";
 	import Loading from "../component/Loading.svelte";
 	import { onMount } from "svelte";
-	import { createScene } from "../lib/scene.svelte";
+	import { createScene } from "../lib/three/scene.svelte";
 
 	// for easter egg
 	console.log("Don't Panic!")
