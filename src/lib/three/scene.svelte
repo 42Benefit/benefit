@@ -9,6 +9,8 @@
   import { OrbitControls } from "three/addons/controls/OrbitControls.js";
   import { LoaderFactory } from "./Factory/Loader.svelte";
   import { SpotLightFactory } from "./Factory/SpotLight.svelte";
+  import { SunFactory } from "./Factory/Sun.svelte";
+  import { RendererFactory } from "./Factory/Render.svelte";
 
   const scene = new THREE.Scene();
   const camera = CameraFactory();
@@ -35,29 +37,9 @@
   const sky = SkyFactory();
   scene.add(sky);
 
-  let sun;
-  sun = new THREE.Vector3();
-  const updateSun = (elevation, azimuth) => {
-    let renderTarget;
-    const parameters = {
-      elevation,
-      azimuth,
-    };
-    const pmremGenerator = new THREE.PMREMGenerator(renderer);
-    const phi = THREE.MathUtils.degToRad(90 - parameters.elevation);
-    const theta = THREE.MathUtils.degToRad(parameters.azimuth);
-
-    sun.setFromSphericalCoords(1, phi, theta);
-    sky.material.uniforms["sunPosition"].value.copy(sun);
-    water.material.uniforms["sunDirection"].value.copy(sun).normalize();
-    if (renderTarget !== undefined) {
-      renderTarget.dispose();
-    }
-    renderTarget = pmremGenerator.fromScene(sky);
-    scene.environment = renderTarget.texture;
-  };
-
-  let renderer;
+  const renderer = RendererFactory();
+  const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
+  
   let mouse = new THREE.Vector2();
 
   const animate = () => {
@@ -109,14 +91,14 @@
   };
 
  export const openModal = () => {
-    updateSun(12, -142);
+    sun.update(12, -142);
     document.querySelector(".benefits-wrapper").style.display = "block";
     changeAutoRotate(false);
   };
 
   const closeModal = () => {
     document.querySelector(".benefits-wrapper").style.display = "none";
-    updateSun(1, -142);
+    sun.update(1, -142);
     changeAutoRotate(true);
   };
 
@@ -169,16 +151,9 @@
   };
 
   export const createScene = () => {
-    const canvas = document.createElement("canvas");
-    document.querySelector(".app").append(canvas);
-    renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      canvas,
-      alpha: true,
-    });
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    document.querySelector(".app").append(renderer.domElement);
     resize();
-    updateSun(1, -142);
+    sun.update(1, -142);
     animate();
   };
   window.addEventListener("resize", resize);
