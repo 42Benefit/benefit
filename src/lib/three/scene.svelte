@@ -7,12 +7,12 @@
   import { SkyFactory } from "./Factory/Sky.svelte";
   import { CameraFactory } from "./Factory/Camera.svelte";
   import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-  import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+  import { LoaderFactory } from "./Factory/Loader.svelte";
 
   const scene = new THREE.Scene();
   const camera = CameraFactory();
 
-  const loader = new GLTFLoader();
+  const loader = LoaderFactory();
   loader.load(
     "/models/message_in_a_bottle.glb",
     (model) => {
