@@ -50,7 +50,7 @@
     const time = performance.now() * 0.001;
     
     requestAnimationFrame(animate);
-    water.material.uniforms["time"].value += 1.0 / 60.0;
+    water.wave();
     controlCamera();
     resize(renderer, camera);
     renderer.render(scene, camera);

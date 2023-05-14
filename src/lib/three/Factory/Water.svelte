@@ -23,6 +23,10 @@
     };
     const water = new Water(waterGeometry, waterMaterial);
     water.rotation.x = -Math.PI / 2;
+
+    water.wave = () => {
+      water.material.uniforms["time"].value += 1.0 / 60.0;
+    };
     
     return water;
   };
