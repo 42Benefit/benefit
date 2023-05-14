@@ -42,10 +42,9 @@
       console.error(error);
     }
   );
+
   scene.add(water);
   scene.add(sky);
-
-  
   
   const animate = () => {
     const time = performance.now() * 0.001;
