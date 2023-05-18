@@ -24,6 +24,11 @@ benefit는 42서울 카뎃들을 위한 혜택들을 모아놓은 사이트입�
 
 제휴기업들이 `은하수를 여행하고 있는 히치하치하이커`들에게 제공하는 혜택과 이용밥법을 참고해보세요! 
 
+### 광고
+
+| [![advertiese 1](http://img.youtube.com/vi/Oi8xf-m5zAo/0.jpg)](http://www.youtube.com/watch?v=Oi8xf-m5zAo) | [![advertise 2](http://img.youtube.com/vi/-HCu_mi_mmk/0.jpg)](http://www.youtube.com/watch?v=-HCu_mi_mmk)|
+| :--: | :--: |
+
 ### OverView
 |<img src="./docs/images/demo_mobile.gif" height=200> |<img src="./docs/images/demo_web.gif" height=200 > | <img src="./docs/images/typing_effect.gif" height=200> | 
 | :--: | :--: | :--: |
