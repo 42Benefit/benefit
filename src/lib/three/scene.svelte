@@ -34,7 +34,7 @@
       object.rotation.x = -Math.PI / 2;
       object.scale.set(22, 22, 22);
       object.name = "message_in_a_bottle";
-      scene.add(object);
+      //scene.add(object);
       document.querySelector(".loading-container").style.display = "none";
     },
     undefined,
@@ -50,7 +50,7 @@
     const time = performance.now() * 0.001;
     
     requestAnimationFrame(animate);
-    water.wave();
+    //water.wave();
     controlCamera();
     resize(renderer, camera);
     renderer.render(scene, camera);
@@ -68,7 +68,7 @@
   
   const initControls = (controls) => {
     controls.target.set(0, 10, 0);
-    controls.autoRotate = true;
+    //controls.autoRotate = true;
     controls.autoRotateSpeed = 0.42;
     controls.dispose();
   };
@@ -84,7 +84,8 @@
    * @param bool {boolean} - true: rotate camera automatically, false: stop rotating camera automatically
    */
   export const changeAutoRotate = (input) => {
-    controls.autoRotate = input;
+    //controls.autoRotate = input;
+    controls.autoRotate = false;
   };
 
   // TODO: 추후 이벤트 핸들러 분리
@@ -92,6 +93,10 @@
     let ray = new THREE.Raycaster();
     ray.setFromCamera(mouse, camera);
     let intersects = ray.intersectObjects(scene.children);
+    if (intersects[0].object.isWater === true)
+    {
+      water.activeWave();
+    }
     if (
       intersects.length > 0 &&
       intersects[0].object.name === "defaultMaterial_1"
