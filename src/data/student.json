@@ -19,8 +19,7 @@
         "category": "교육",
         "content": "학생인 동안 무료로 GitHub Pro를 사용하세요.",
         "method": [
-            "GitHub 웹사이트에서 바로 접근",
-            "GitHub 지원에서 도움 받기"
+            "https://github-portal.42.fr/login"
         ],
         "startDate": "",
         "endDate": ""
