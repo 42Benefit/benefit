@@ -3,6 +3,7 @@
 	import { onMount, afterUpdate } from "svelte";
 	import dateFormat from "dateformat";
 	import ftLogo from "$lib/images/42logo.svg";
+	import { isURL } from 'validator';
 	import ColorThief from "colorthief";
 
 	/**
@@ -113,7 +114,11 @@
 		</button>
 		<ol class="method-list">
 			{#each benefit.method as element}
-				<li>{element}</li>
+				{#if isURL(element)}
+					<a href={element}><li>{element}</li></a>
+				{:else}
+					<li>{element}</li>
+				{/if}
 			{:else}
 				<li>구체적인 신청방법 준비되지 않음. 해당회사에 문의.</li>
 			{/each}
@@ -122,6 +127,10 @@
 </section>
 
 <style>
+
+	a {
+		color: inherit;
+	}
 	.benefit {
 		display: flex;
 		flex-direction: column;
