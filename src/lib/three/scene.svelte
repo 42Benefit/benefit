@@ -50,7 +50,8 @@
     const time = performance.now() * 0.001;
     
     requestAnimationFrame(animate);
-    //water.wave();
+    // water.wave();
+    water.activeWave(new THREE.Vector3(0, 1, 3));
     controlCamera();
     resize(renderer, camera);
     renderer.render(scene, camera);
@@ -68,9 +69,9 @@
   
   const initControls = (controls) => {
     controls.target.set(0, 10, 0);
-    //controls.autoRotate = true;
+    // controls.autoRotate = true;
     controls.autoRotateSpeed = 0.42;
-    controls.dispose();
+    // controls.dispose();
   };
   initControls(controls);
 
@@ -95,7 +96,7 @@
     let intersects = ray.intersectObjects(scene.children);
     if (intersects[0].object.isWater === true)
     {
-      water.activeWave();
+      // water.activeWave(intersects[0].point);
     }
     if (
       intersects.length > 0 &&
@@ -132,7 +133,8 @@
   export const createScene = () => {
     document.querySelector(".app").append(renderer.domElement);
     resize(renderer, camera);
-    sun.darken();
+    // sun.darken();
+    sun.lighten();
     animate();
   };
 
