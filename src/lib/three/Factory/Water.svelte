@@ -35,16 +35,12 @@
       const position = water.geometry.attributes.position;
         for (let i = 0; i < position.count; i++) {
           const vector = new THREE.Vector3();
-          const height = 1;
+          const height = 0.5;
           vector.fromBufferAttribute(position, i);
           const distance = vector.distanceTo(hitPoint);
-          const effectedDistance = 10;
-          const waveX = 0.2 * Math.sin(vector.x / 3 + deltaTime);
-          const waveX2 = 0.42 * Math.sin(vector.x / 5 + deltaTime);
-          const waveY = 0.2 * Math.sin(vector.y / 3 + deltaTime);
-          const waveY2 = 0.42 * Math.sin(vector.y / 5 + deltaTime);
-          const alpha = Math.max(effectedDistance - (distance / 2), 0);
-          vector.z = height * alpha * (waveX + waveY + waveX2 + waveY2);
+          const effectedDistance = 6;
+          const wave = Math.cos(deltaTime + distance / 2);
+          vector.z = height * Math.max(effectedDistance - (distance / 2), 0) * wave;
           position.setXYZ(i, vector.x, vector.y, vector.z);
         }
         position.needsUpdate = true;
