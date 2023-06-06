@@ -57,7 +57,7 @@ for values in data[1:]:
 company_data = [dict(zip(keys, values)) for values in data[1:]]
 
 for index, link in enumerate(company_data):
-    if link["logo"]:
+    if "logo" in link and link["logo"]:
         file_path = "src/data/images/" + link["companyName"]
         urllib.request.urlretrieve(link["logo"], file_path) # 링크에서 파일 다운로드
         with open(file_path, "rb") as image_file:
