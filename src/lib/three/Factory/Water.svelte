@@ -2,7 +2,6 @@
   // @ts-nocheck
   import * as THREE from "three";
   import { Water } from "three/examples/jsm/objects/Water.js";
-  import Page from "../../../routes/+page.svelte";
 
   export const WaterFactory = (scene) => {
     const waterGeometry = new THREE.PlaneGeometry(50, 50, 100, 100);
