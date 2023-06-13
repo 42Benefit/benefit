@@ -29,12 +29,15 @@
       water.material.uniforms["time"].value += 1.0 / 60.0;
     };
     
-    water.activeWave = (hitPoint) => {
+    water.activeWave = (hitPoint, hitTime) => {
       const deltaTime = performance.now() * 0.01;
+      if (deltaTime - hitTime > 50) {
+        return ;
+      }
       const position = water.geometry.attributes.position;
         for (let i = 0; i < position.count; i++) {
           const vector = new THREE.Vector3();
-          const height = 0.5;
+          const height = Math.exp(-((deltaTime - hitTime) * 0.1));
           vector.fromBufferAttribute(position, i);
           const distance = vector.distanceTo(hitPoint);
           const effectedDistance = 6;

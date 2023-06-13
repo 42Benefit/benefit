@@ -26,6 +26,7 @@
 
   let mouse = new THREE.Vector2();
   let hitPoint = new THREE.Vector3();
+  let hitTime = performance.now() * 0.01;
 
   const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -53,7 +54,7 @@
     
     requestAnimationFrame(animate);
     water.wave();
-    water.activeWave(hitPoint);
+    water.activeWave(hitPoint, hitTime);
     controlCamera();
     resize(renderer, camera);
     renderer.render(scene, camera);
@@ -100,6 +101,7 @@
     {
       // TODO: decrease active effect through time
       hitPoint = new THREE.Vector3(water.geometry.parameters.width * (intersects[0].uv.x - 0.5), water.geometry.parameters.height * (intersects[0].uv.y - 0.5), 0);
+      hitTime = performance.now() * 0.01;
     }
     if (
       intersects.length > 0 &&
