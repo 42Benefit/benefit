@@ -25,6 +25,7 @@
   export const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
 
   let mouse = new THREE.Vector2();
+  export let hitPoint = new THREE.Vector3();
   const controls = new OrbitControls(camera, renderer.domElement);
 
   loader.load(
@@ -50,8 +51,8 @@
     const time = performance.now() * 0.001;
     
     requestAnimationFrame(animate);
-    // water.wave();
-    water.activeWave(new THREE.Vector3(0, 1, 3));
+    water.wave();
+    water.activeWave(hitPoint);
     controlCamera();
     resize(renderer, camera);
     renderer.render(scene, camera);
@@ -96,7 +97,10 @@
     let intersects = ray.intersectObjects(scene.children);
     if (intersects[0].object.isWater === true)
     {
-      // water.activeWave(intersects[0].point);
+      // TODO: dynamic water size
+      // TODO: decrease active effect through time
+      const waterSize = 50;
+      hitPoint = new THREE.Vector3(waterSize * (intersects[0].uv.x - 0.5), waterSize * (intersects[0].uv.y - 0.5), 0);
     }
     if (
       intersects.length > 0 &&
