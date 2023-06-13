@@ -97,10 +97,8 @@
     let intersects = ray.intersectObjects(scene.children);
     if (intersects[0].object.isWater === true)
     {
-      // TODO: dynamic water size
       // TODO: decrease active effect through time
-      const waterSize = 50;
-      hitPoint = new THREE.Vector3(waterSize * (intersects[0].uv.x - 0.5), waterSize * (intersects[0].uv.y - 0.5), 0);
+      hitPoint = new THREE.Vector3(water.geometry.parameters.width * (intersects[0].uv.x - 0.5), water.geometry.parameters.height * (intersects[0].uv.y - 0.5), 0);
     }
     if (
       intersects.length > 0 &&
