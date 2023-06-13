@@ -25,7 +25,8 @@
   export const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
 
   let mouse = new THREE.Vector2();
-  export let hitPoint = new THREE.Vector3();
+  let hitPoint = new THREE.Vector3();
+
   const controls = new OrbitControls(camera, renderer.domElement);
 
   loader.load(
