@@ -4,7 +4,7 @@
   import { Water } from "three/examples/jsm/objects/Water.js";
 
   export const WaterFactory = (scene) => {
-    const waterGeometry = new THREE.PlaneGeometry(5000, 5000);
+    const waterGeometry = new THREE.PlaneGeometry(1000, 1000, 500, 500);
     const waterMaterial = {
       textureWidth: 512,
       textureHeight: 512,
@@ -22,10 +22,30 @@
       fog: scene.fog !== undefined,
     };
     const water = new Water(waterGeometry, waterMaterial);
+    water.name = "ocean"
     water.rotation.x = -Math.PI / 2;
 
     water.wave = () => {
       water.material.uniforms["time"].value += 1.0 / 60.0;
+    };
+    
+    water.activeWave = (hitPoint, hitTime) => {
+      const deltaTime = performance.now() * 0.01;
+      if (deltaTime - hitTime > 50) {
+        return ;
+      }
+      const position = water.geometry.attributes.position;
+        for (let i = 0; i < position.count; i++) {
+          const vector = new THREE.Vector3();
+          const height = Math.exp(-((deltaTime - hitTime) * 0.1));
+          vector.fromBufferAttribute(position, i);
+          const distance = vector.distanceTo(hitPoint);
+          const effectedDistance = 10;
+          const wave = Math.cos(deltaTime + distance / 2);
+          vector.z = height * Math.max(effectedDistance - (distance / 2), 0) * wave;
+          position.setXYZ(i, vector.x, vector.y, vector.z);
+        }
+        position.needsUpdate = true;
     };
     
     return water;

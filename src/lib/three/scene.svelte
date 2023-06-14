@@ -25,6 +25,9 @@
   export const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
 
   let mouse = new THREE.Vector2();
+  let hitPoint = new THREE.Vector3();
+  let hitTime = performance.now() * 0.01;
+
   const controls = new OrbitControls(camera, renderer.domElement);
 
   loader.load(
@@ -51,6 +54,7 @@
     
     requestAnimationFrame(animate);
     water.wave();
+    water.activeWave(hitPoint, hitTime);
     controlCamera();
     resize(renderer, camera);
     renderer.render(scene, camera);
@@ -92,6 +96,11 @@
     let ray = new THREE.Raycaster();
     ray.setFromCamera(mouse, camera);
     let intersects = ray.intersectObjects(scene.children);
+    if (intersects[0].object.isWater === true)
+    {
+      hitPoint = new THREE.Vector3(water.geometry.parameters.width * (intersects[0].uv.x - 0.5), water.geometry.parameters.height * (intersects[0].uv.y - 0.5), 0);
+      hitTime = performance.now() * 0.01;
+    }
     if (
       intersects.length > 0 &&
       intersects[0].object.name === "defaultMaterial_1"
@@ -127,7 +136,8 @@
   export const createScene = () => {
     document.querySelector(".app").append(renderer.domElement);
     resize(renderer, camera);
-    sun.darken();
+    // sun.darken();
+    sun.lighten();
     animate();
   };
 
