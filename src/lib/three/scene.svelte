@@ -37,7 +37,7 @@
       object.rotation.x = -Math.PI / 2;
       object.scale.set(22, 22, 22);
       object.name = "message_in_a_bottle";
-      //scene.add(object);
+      scene.add(object);
       document.querySelector(".loading-container").style.display = "none";
     },
     undefined,
@@ -72,9 +72,9 @@
   
   const initControls = (controls) => {
     controls.target.set(0, 10, 0);
-    // controls.autoRotate = true;
+    controls.autoRotate = true;
     controls.autoRotateSpeed = 0.42;
-    // controls.dispose();
+    controls.dispose();
   };
   initControls(controls);
 
@@ -88,8 +88,7 @@
    * @param bool {boolean} - true: rotate camera automatically, false: stop rotating camera automatically
    */
   export const changeAutoRotate = (input) => {
-    //controls.autoRotate = input;
-    controls.autoRotate = false;
+    controls.autoRotate = input;
   };
 
   // TODO: 추후 이벤트 핸들러 분리
@@ -99,7 +98,6 @@
     let intersects = ray.intersectObjects(scene.children);
     if (intersects[0].object.isWater === true)
     {
-      // TODO: decrease active effect through time
       hitPoint = new THREE.Vector3(water.geometry.parameters.width * (intersects[0].uv.x - 0.5), water.geometry.parameters.height * (intersects[0].uv.y - 0.5), 0);
       hitTime = performance.now() * 0.01;
     }

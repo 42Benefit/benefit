@@ -4,7 +4,7 @@
   import { Water } from "three/examples/jsm/objects/Water.js";
 
   export const WaterFactory = (scene) => {
-    const waterGeometry = new THREE.PlaneGeometry(50, 50, 100, 100);
+    const waterGeometry = new THREE.PlaneGeometry(1000, 1000, 500, 500);
     const waterMaterial = {
       textureWidth: 512,
       textureHeight: 512,
@@ -40,7 +40,7 @@
           const height = Math.exp(-((deltaTime - hitTime) * 0.1));
           vector.fromBufferAttribute(position, i);
           const distance = vector.distanceTo(hitPoint);
-          const effectedDistance = 6;
+          const effectedDistance = 10;
           const wave = Math.cos(deltaTime + distance / 2);
           vector.z = height * Math.max(effectedDistance - (distance / 2), 0) * wave;
           position.setXYZ(i, vector.x, vector.y, vector.z);
