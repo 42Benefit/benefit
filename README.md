@@ -33,9 +33,9 @@ benefit는 42서울 카뎃들을 위한 혜택들을 모아놓은 사이트입�
 | :--: | :--: |
 
 ### OverView
-|<img src="./docs/images/demo_mobile.gif" height=200> |<img src="./docs/images/demo_web.gif" height=200 > | <img src="./docs/images/typing_effect.gif" height=200> | 
-| :--: | :--: | :--: |
-| mobile overview | web overview | typing effect |
+|<img src="./docs/images/demo_mobile.gif" height=200> |<img src="./docs/images/demo_web.gif" height=200 > | <img src="./docs/images/typing_effect.gif" height=200> | <img src="./docs/images/activeWave.gif" height=200>|
+| :--: | :--: | :--: | :--: |
+| mobile overview | web overview | typing effect | mouse effect |
 ### 기술 스택
 
 <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=#000000">
