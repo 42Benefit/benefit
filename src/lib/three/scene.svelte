@@ -1,12 +1,11 @@
-<script context="module">
-  // @ts-nocheck
+<script context="module" lang="ts">
   // TODO: refactor this code for better readability and performance
 
   import * as THREE from "three";
   import { WaterFactory } from "./Factory/Water.svelte";
   import { SkyFactory } from "./Factory/Sky.svelte";
   import { CameraFactory } from "./Factory/Camera.svelte";
-  import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+  import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
   import { LoaderFactory } from "./Factory/Loader.svelte";
   import { SpotLightFactory } from "./Factory/SpotLight.svelte";
   import { SunFactory } from "./Factory/Sun.svelte";
@@ -48,10 +47,10 @@
 
   scene.add(water);
   scene.add(sky);
-  
+
   const animate = () => {
     const time = performance.now() * 0.001;
-    
+
     requestAnimationFrame(animate);
     water.wave();
     water.activeWave(hitPoint, hitTime);
@@ -69,8 +68,7 @@
     }
   };
 
-  
-  const initControls = (controls) => {
+  const initControls = (controls: OrbitControls) => {
     controls.target.set(0, 10, 0);
     controls.autoRotate = true;
     controls.autoRotateSpeed = 0.42;
@@ -87,12 +85,12 @@
    * @summary - change autoRotate to parameter `input` , which is used to rotate camera automatically
    * @param bool {boolean} - true: rotate camera automatically, false: stop rotating camera automatically
    */
-  export const changeAutoRotate = (input) => {
+  export const changeAutoRotate = (input: boolean) => {
     controls.autoRotate = input;
   };
 
   // TODO: 추후 이벤트 핸들러 분리
-  const onDocumentMouseDown = (event) => {
+  const onDocumentMouseDown = (event: MouseEvent) => {
     let ray = new THREE.Raycaster();
     ray.setFromCamera(mouse, camera);
     let intersects = ray.intersectObjects(scene.children);
@@ -114,7 +112,7 @@
   };
 
 
-  const onDocumentMouseMove = (event) => {
+  const onDocumentMouseMove = (event: MouseEvent) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     let ray = new THREE.Raycaster();
@@ -134,7 +132,7 @@
   };
 
   export const createScene = () => {
-    document.querySelector(".app").append(renderer.domElement);
+    document.querySelector(".app")!.append(renderer.domElement);
     resize(renderer, camera);
     // sun.darken();
     sun.lighten();
