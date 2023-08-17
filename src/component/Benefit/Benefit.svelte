@@ -3,7 +3,7 @@
 	import { onMount, afterUpdate } from "svelte";
 	import dateFormat from "dateformat";
 	import ftLogo from "$lib/images/42logo.svg";
-	import { isURL } from 'validator';
+	import { isURL } from "validator";
 	import ColorThief from "colorthief";
 
 	/**
@@ -60,21 +60,17 @@
 		}
 	});
 
+	const colorThief = new ColorThief();
+
 	const setComponentGradientColor = async (benefitComponent) => {
-		const colorThief = new ColorThief();
 		const img = document.getElementById(`${benefit.companyName}-logo`);
-		await img.decode();
-		const color = await colorThief.getColor(img, 25);
-		const invertedColor = color.map((c) => 255 - c);
-		let gradientPercent;
-		if (window.innerWidth <= 768) {
-			gradientPercent = 42;
-		} else {
-			gradientPercent = 20;
+		if (img.width === 0 || img.height === 0) {
+			return;
 		}
-		const gradient = `linear-gradient(242deg ,
-					rgba(${invertedColor[0]}, ${invertedColor[1]}, ${invertedColor[2]}, 0.8) 0%, 
-					rgba(0, 0, 0, 0.8) ${gradientPercent}%)`;
+		const [r, g, b] = colorThief.getColor(img, 25).map((c) => 255 - c);
+		const gradientPercent = window.innerWidth <= 768 ? 42 : 20;
+
+		const gradient = `linear-gradient(242deg, rgba(${r}, ${g}, ${b}, 0.8) 0%, rgba(0, 0, 0, 0.8) ${gradientPercent}%)`;
 		benefitComponent.style.backgroundImage = gradient;
 	};
 
@@ -127,7 +123,6 @@
 </section>
 
 <style>
-
 	a {
 		color: inherit;
 	}
