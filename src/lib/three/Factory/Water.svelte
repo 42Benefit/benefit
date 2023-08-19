@@ -1,11 +1,14 @@
-<script context="module">
-  // @ts-nocheck
+<script context="module" lang="ts">
   import * as THREE from "three";
-  import { Water } from "three/examples/jsm/objects/Water.js";
+  import { Water, type WaterOptions } from "three/examples/jsm/objects/Water.js";
 
-  export const WaterFactory = (scene) => {
-    const waterGeometry = new THREE.PlaneGeometry(1000, 1000, 500, 500);
-    const waterMaterial = {
+  export const WaterFactory = (scene: THREE.Scene) => {
+    const waterGeometry = new THREE.PlaneGeometry(1000, 1000, 300, 300);
+    const prevAttributes = waterGeometry.attributes;
+    const newPosition = new THREE.Float32BufferAttribute( prevAttributes.position.array, 3 ).setUsage(THREE.DynamicDrawUsage);
+    waterGeometry.setAttribute('position', newPosition);
+
+    const waterOptions = {
       textureWidth: 512,
       textureHeight: 512,
       waterNormals: new THREE.TextureLoader().load(
@@ -20,34 +23,34 @@
       waterColor: 0x001e0f,
       distortionScale: 3.7,
       fog: scene.fog !== undefined,
-    };
-    const water = new Water(waterGeometry, waterMaterial);
+    } satisfies WaterOptions;
+    const water = new Water(waterGeometry, waterOptions);
     water.name = "ocean"
     water.rotation.x = -Math.PI / 2;
 
-    water.wave = () => {
+    const wave = () => {
       water.material.uniforms["time"].value += 1.0 / 60.0;
     };
-    
-    water.activeWave = (hitPoint, hitTime) => {
+
+    const effectedDistance = 10;
+    const vector = new THREE.Vector3();
+    const position = water.geometry.attributes.position;
+
+    const activeWave = (hitPoint: THREE.Vector3, hitTime: number) => {
       const deltaTime = performance.now() * 0.01;
       if (deltaTime - hitTime > 50) {
         return ;
       }
-      const position = water.geometry.attributes.position;
-        for (let i = 0; i < position.count; i++) {
-          const vector = new THREE.Vector3();
-          const height = Math.exp(-((deltaTime - hitTime) * 0.1));
-          vector.fromBufferAttribute(position, i);
-          const distance = vector.distanceTo(hitPoint);
-          const effectedDistance = 10;
-          const wave = Math.cos(deltaTime + distance / 2);
-          vector.z = height * Math.max(effectedDistance - (distance / 2), 0) * wave;
-          position.setXYZ(i, vector.x, vector.y, vector.z);
-        }
-        position.needsUpdate = true;
+      const height = Math.exp(-((deltaTime - hitTime) * 0.1));
+      for (let i = 0; i < position.count; i++) {
+        vector.fromBufferAttribute(position, i);
+        const distance = vector.distanceTo(hitPoint);
+        const wave = Math.cos(deltaTime + distance / 2);
+        position.setZ(i, height * Math.max(effectedDistance - (distance / 2), 0) * wave)
+      }
+      position.needsUpdate = true;
     };
-    
-    return water;
+
+    return { water, wave, activeWave };
   };
 </script>

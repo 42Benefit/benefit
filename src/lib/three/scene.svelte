@@ -20,9 +20,7 @@
   document.body.appendChild(stats.dom);
 
   const scene = new THREE.Scene();
-  const camera = CameraFactory();
-  const loader = LoaderFactory();
-  const water = WaterFactory(scene);
+  const { water, wave, activeWave } = WaterFactory(scene);
   const sky = SkyFactory();
   const renderer = RendererFactory();
   const spotLight = new SpotLightFactory(scene);
@@ -32,6 +30,8 @@
   let hitPoint = new THREE.Vector3();
   let hitTime = performance.now() * 0.01;
 
+  const camera = CameraFactory();
+  const loader = LoaderFactory();
   const controls = new OrbitControls(camera, renderer.domElement);
 
   loader.load(
@@ -58,8 +58,8 @@
     const time = performance.now() * 0.001;
 
     requestAnimationFrame(animate);
-    water.wave();
-    water.activeWave(hitPoint, hitTime);
+    wave();
+    activeWave(hitPoint, hitTime);
     controlCamera();
     resize(renderer, camera);
     renderer.render(scene, camera);
