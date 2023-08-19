@@ -4,7 +4,6 @@
   import * as THREE from "three";
   import { WaterFactory } from "./Factory/Water.svelte";
   import { SkyFactory } from "./Factory/Sky.svelte";
-  import { CameraFactory } from "./Factory/Camera.svelte";
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
   import { LoaderFactory } from "./Factory/Loader.svelte";
   import { SunFactory } from "./Factory/Sun.svelte";
@@ -14,6 +13,7 @@
   import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper.svelte";
   import Stats from "three/examples/jsm/libs/stats.module.js";
   import { spotLight } from "./Factory/spotLight"
+  import { camera } from "./Factory/camera.js"
 
   const stats = new Stats();
   stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
@@ -29,7 +29,6 @@
   let hitPoint = new THREE.Vector3();
   let hitTime = performance.now() * 0.01;
 
-  const camera = CameraFactory();
   const loader = LoaderFactory();
   const controls = new OrbitControls(camera, renderer.domElement);
 
