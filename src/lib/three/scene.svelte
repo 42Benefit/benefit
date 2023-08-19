@@ -24,23 +24,27 @@
   const sky = SkyFactory();
   export const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
 
-  let mouse = new THREE.Vector2();
+  const mouse = new THREE.Vector2();
+  const raycaster = new THREE.Raycaster();
   let hitPoint = new THREE.Vector3();
   let hitTime = performance.now() * 0.01;
 
   const loader = LoaderFactory();
   const controls = new OrbitControls(camera, renderer.domElement);
 
+  let bottle: THREE.Object3D;
   loader.load(
     "/models/message_in_a_bottle.glb",
     (model) => {
-      let object = model.scene;
-      object.rotation.x = -Math.PI / 2;
-      object.scale.set(22, 22, 22);
-      object.name = "message_in_a_bottle";
-      scene.add(object);
+      bottle = model.scene.children[0].children[0];
+      bottle.rotation.x = -Math.PI / 2;
+      bottle.scale.setScalar(22);
+      bottle.name = "message_in_a_bottle";
+      scene.add(bottle);
       scene.add(spotLight);
       document.querySelector(".loading-container").style.display = "none";
+      document.addEventListener("mousemove", highlightBottle);
+      document.addEventListener("mousedown", toggleBottleModal);
     },
     undefined,
     (error) => {
@@ -59,17 +63,14 @@
     wave();
     activeWave(hitPoint, hitTime);
     controlCamera();
-    resize(renderer, camera);
     renderer.render(scene, camera);
-    const position = scene?.getObjectByName("message_in_a_bottle")?.position;
-    const rotation = scene?.getObjectByName("message_in_a_bottle")?.rotation;
-    if (position) {
-      position.y = Math.sin(time) * 4;
+
+    if (!bottle) {
+      return;
     }
-    if (rotation) {
-      rotation.x = Math.sin(time) * 0.42;
-      rotation.z = Math.sin(2 * time) * 0.042;
-    }
+    bottle.position.y = Math.sin(time) * 4;
+    bottle.rotation.x = Math.sin(time) * 0.42;
+    bottle.rotation.z = Math.sin(2 * time) * 0.042;
   };
 
   const initControls = (controls: OrbitControls) => {
@@ -93,24 +94,22 @@
     controls.autoRotate = input;
   };
 
+  const createRipple = () => {
+    const intersect = raycaster.intersectObject(water)[0];
+    if (!intersect?.uv) return;
+
+    const parameters = (water.geometry as THREE.PlaneGeometry).parameters;
+    hitPoint.x = parameters.width * (intersect.uv.x - 0.5);
+    hitPoint.y = parameters.height * (intersect.uv.y - 0.5);
+    hitTime = performance.now() * 0.01;
+  };
+
   // TODO: 추후 이벤트 핸들러 분리
-  const onDocumentMouseDown = (event: MouseEvent) => {
-    let ray = new THREE.Raycaster();
-    ray.setFromCamera(mouse, camera);
-    let intersects = ray.intersectObjects(scene.children);
-    if (intersects[0].object.isWater === true)
-    {
-      hitPoint = new THREE.Vector3(water.geometry.parameters.width * (intersects[0].uv.x - 0.5), water.geometry.parameters.height * (intersects[0].uv.y - 0.5), 0);
-      hitTime = performance.now() * 0.01;
-    }
-    if (
-      intersects.length > 0 &&
-      intersects[0].object.name === "defaultMaterial_1"
-    ) {
-      // 병 클릭시
+  const toggleBottleModal = (event: MouseEvent) => {
+    const bottleIntersect = raycaster.intersectObject(bottle);
+    if (bottleIntersect.length !== 0) {
       openModal(sun);
     } else if (isMouseOverBenefitsWrapper(event) === false) {
-      // 병 외부 클릭시
       closeModal(sun);
     }
   };
@@ -119,16 +118,16 @@
   const onDocumentMouseMove = (event: MouseEvent) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    let ray = new THREE.Raycaster();
-    ray.setFromCamera(mouse, camera);
-    let intersects = ray.intersectObjects(scene.children);
-    if (
-      intersects.length > 0 &&
-      intersects[0].object.name === "defaultMaterial_1" &&
-      isMouseOverBenefitsWrapper(event) === false
-    ) {
-      document.body.style.cursor = "pointer";
-      spotLight.visible = true;
+    raycaster.setFromCamera(mouse, camera);
+  };
+
+  const highlightBottle = (event: MouseEvent) => {
+    const intersect = raycaster.intersectObject(bottle)[0];
+    if (intersect) {
+      if (isMouseOverBenefitsWrapper(event) === false) {
+        document.body.style.cursor = "pointer";
+        spotLight.visible = true;
+      }
     } else {
       document.body.style.cursor = "auto";
       spotLight.visible = false;
@@ -145,7 +144,7 @@
 
   window.addEventListener("resize", ()=>{resize(renderer, camera)});
   document.addEventListener("mousemove", onDocumentMouseMove);
-  document.addEventListener("mousedown", onDocumentMouseDown);
+  document.addEventListener("mousedown", createRipple);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeModal(sun);
