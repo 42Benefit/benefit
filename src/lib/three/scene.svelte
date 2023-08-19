@@ -7,13 +7,13 @@
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
   import { LoaderFactory } from "./Factory/Loader.svelte";
   import { SunFactory } from "./Factory/Sun.svelte";
-  import { RendererFactory } from "./Factory/Render.svelte";
   import { openModal, closeModal } from "./Util/Modal.svelte";
   import { resize } from "./Util/resize.svelte";
   import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper.svelte";
   import Stats from "three/examples/jsm/libs/stats.module.js";
   import { spotLight } from "./Factory/spotLight"
   import { camera } from "./Factory/camera.js"
+  import { renderer } from "./Factory/renderer"
 
   const stats = new Stats();
   stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
@@ -22,7 +22,6 @@
   const scene = new THREE.Scene();
   const { water, wave, activeWave } = WaterFactory(scene);
   const sky = SkyFactory();
-  const renderer = RendererFactory();
   export const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
 
   let mouse = new THREE.Vector2();
