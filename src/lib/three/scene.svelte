@@ -7,13 +7,13 @@
   import { CameraFactory } from "./Factory/Camera.svelte";
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
   import { LoaderFactory } from "./Factory/Loader.svelte";
-  import { SpotLightFactory } from "./Factory/SpotLight.svelte";
   import { SunFactory } from "./Factory/Sun.svelte";
   import { RendererFactory } from "./Factory/Render.svelte";
   import { openModal, closeModal } from "./Util/Modal.svelte";
   import { resize } from "./Util/resize.svelte";
   import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper.svelte";
   import Stats from "three/examples/jsm/libs/stats.module.js";
+  import { spotLight } from "./Factory/spotLight"
 
   const stats = new Stats();
   stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
@@ -23,7 +23,6 @@
   const { water, wave, activeWave } = WaterFactory(scene);
   const sky = SkyFactory();
   const renderer = RendererFactory();
-  const spotLight = new SpotLightFactory(scene);
   export const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
 
   let mouse = new THREE.Vector2();
@@ -42,6 +41,7 @@
       object.scale.set(22, 22, 22);
       object.name = "message_in_a_bottle";
       scene.add(object);
+      scene.add(spotLight);
       document.querySelector(".loading-container").style.display = "none";
     },
     undefined,
@@ -130,10 +130,10 @@
       isMouseOverBenefitsWrapper(event) === false
     ) {
       document.body.style.cursor = "pointer";
-      spotLight.add();
+      spotLight.visible = true;
     } else {
       document.body.style.cursor = "auto";
-      spotLight.remove();
+      spotLight.visible = false;
     }
   };
 
