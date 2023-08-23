@@ -5,7 +5,7 @@
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
   import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
   import { SunFactory } from "./Factory/Sun.js";
-  import { openModal, closeModal } from "./Util/Modal.svelte";
+  import { openModal, closeModal } from "./Util/modal.js";
   import { resize } from "./Util/resize";
   import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper";
   import { spotLight } from "./Factory/spotLight";
