@@ -2,22 +2,26 @@
   // TODO: refactor this code for better readability and performance
 
   import * as THREE from "three";
-  import { WaterFactory } from "./Factory/Water.svelte";
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
   import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
   import { SunFactory } from "./Factory/Sun.svelte";
   import { openModal, closeModal } from "./Util/Modal.svelte";
   import { resize } from "./Util/resize.svelte";
   import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper.svelte";
-  import { spotLight } from "./Factory/spotLight"
-  import { camera } from "./Factory/camera.js"
-  import { renderer } from "./Factory/renderer"
+  import { spotLight } from "./Factory/spotLight";
+  import { camera } from "./Factory/camera.js";
+  import { renderer } from "./Factory/renderer";
   import { stats } from "./Factory/stats";
   import { sky } from "./Factory/sky";
+  import { activeWave, water, wave } from "./Factory/water";
 
   const scene = new THREE.Scene();
-  const { water, wave, activeWave } = WaterFactory(scene);
-  export const sun = new SunFactory(scene, sky, water, new THREE.PMREMGenerator(renderer));
+  export const sun = new SunFactory(
+    scene,
+    sky,
+    water,
+    new THREE.PMREMGenerator(renderer),
+  );
 
   const mouse = new THREE.Vector2();
   const raycaster = new THREE.Raycaster();
