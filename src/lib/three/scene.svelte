@@ -5,7 +5,7 @@
   import { WaterFactory } from "./Factory/Water.svelte";
   import { SkyFactory } from "./Factory/Sky.svelte";
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-  import { LoaderFactory } from "./Factory/Loader.svelte";
+  import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
   import { SunFactory } from "./Factory/Sun.svelte";
   import { openModal, closeModal } from "./Util/Modal.svelte";
   import { resize } from "./Util/resize.svelte";
@@ -29,7 +29,6 @@
   let hitPoint = new THREE.Vector3();
   let hitTime = performance.now() * 0.01;
 
-  const loader = LoaderFactory();
   const controls = new OrbitControls(camera, renderer.domElement);
 
   let bottle: THREE.Object3D;
