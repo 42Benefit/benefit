@@ -6,7 +6,7 @@
   import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
   import { SunFactory } from "./Factory/Sun.svelte";
   import { openModal, closeModal } from "./Util/Modal.svelte";
-  import { resize } from "./Util/resize.svelte";
+  import { resize } from "./Util/resize";
   import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper.svelte";
   import { spotLight } from "./Factory/spotLight";
   import { camera } from "./Factory/camera.js";
