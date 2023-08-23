@@ -4,7 +4,7 @@
   import * as THREE from "three";
   import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
   import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-  import { SunFactory } from "./Factory/Sun.svelte";
+  import { SunFactory } from "./Factory/Sun.js";
   import { openModal, closeModal } from "./Util/Modal.svelte";
   import { resize } from "./Util/resize";
   import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper";
