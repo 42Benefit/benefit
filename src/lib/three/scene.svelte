@@ -28,24 +28,24 @@
   const controls = new OrbitControls(camera, renderer.domElement);
 
   let bottle: THREE.Object3D;
-  loader.load(
-    "/models/message_in_a_bottle.glb",
-    (model) => {
-      bottle = model.scene.children[0].children[0];
-      bottle.rotation.x = -Math.PI / 2;
-      bottle.scale.setScalar(22);
-      bottle.name = "message_in_a_bottle";
-      scene.add(bottle);
-      scene.add(spotLight);
-      document.querySelector(".loading-container").style.display = "none";
-      document.addEventListener("mousemove", highlightBottle);
-      document.addEventListener("mousedown", toggleBottleModal);
-    },
-    undefined,
-    (error) => {
-      console.error(error);
-    }
-  );
+  const loader = new GLTFLoader();
+  loader.loadAsync("/models/message_in_a_bottle.glb").then((model) => {
+    bottle = model.scene.children[0].children[0];
+    bottle.rotation.x = -Math.PI / 2;
+    bottle.scale.setScalar(22);
+    bottle.name = "message_in_a_bottle";
+
+    const bottleCollision = bottle.children[1].children[0] as THREE.Mesh;
+    bottleCollision.geometry.computeBoundingBox();
+    bottle.raycast = (raycaster, intersects) =>
+      bottleCollision.raycast(raycaster, intersects);
+
+    scene.add(bottle);
+    scene.add(spotLight);
+    document.querySelector(".loading-container")!.style.display = "none";
+    document.addEventListener("mousemove", highlightBottle);
+    document.addEventListener("mousedown", toggleBottleModal);
+  });
 
   scene.add(water);
   scene.add(sky);
@@ -75,7 +75,6 @@
     controls.dispose();
   };
   initControls(controls);
-
 
   const controlCamera = () => {
     controls.update();
@@ -109,7 +108,6 @@
     }
   };
 
-
   const onDocumentMouseMove = (event: MouseEvent) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -117,8 +115,7 @@
   };
 
   const highlightBottle = (event: MouseEvent) => {
-    const intersect = raycaster.intersectObject(bottle)[0];
-    if (intersect) {
+    if (raycaster.intersectObject(bottle, false).length !== 0) {
       if (isMouseOverBenefitsWrapper(event) === false) {
         document.body.style.cursor = "pointer";
         spotLight.visible = true;
@@ -137,7 +134,9 @@
     animate();
   };
 
-  window.addEventListener("resize", ()=>{resize(renderer, camera)});
+  window.addEventListener("resize", () => {
+    resize(renderer, camera);
+  });
   document.addEventListener("mousemove", onDocumentMouseMove);
   document.addEventListener("mousedown", createRipple);
   document.addEventListener("keydown", (e) => {
