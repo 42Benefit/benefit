@@ -1,68 +1,58 @@
-<script>
-  // @ts-nocheck
+<script lang="ts">
   import benefits from "../data/data.json";
   import studentBenefits from "../data/student.json";
-  import { openModal } from "$lib/three/Util/Modal.svelte";
+  import { openModal } from "$lib/three/Util/modal";
   import { sun } from "$lib/three/scene.svelte";
 
   // TODO: Refactor this code, using svelte store
   let showBenefits = [...benefits, ...studentBenefits].filter(
-    (benefit) => benefit.category
+    ({ category }) => category,
   );
 
   let searchValue = "";
-  /**
-   * @type {string[]}
-   */
-  let searchResults = [];
+  let searchResults: string[] = [];
+
+  const benefitsSearch = showBenefits.map((x) => ({
+    name: x.companyName.toLowerCase(),
+    desc: x.companyDescription?.toLowerCase(),
+  }));
 
   const search = () => {
-    let results = [];
-    if (easterEgg(searchValue)) {
-      results.push(easterEgg(searchValue));
+    if (searchValue.length === 0) {
+      return (searchResults = []);
     }
+
+    const easter = easterEgg(searchValue);
+    const lowerSearch = searchValue.toLowerCase();
+
     // TODO: Refactor this code, using fuzzy search
-    if (searchValue.length > 0) {
-      showBenefits.forEach((benefit) => {
-        if (
-          benefit.companyName
-            .toLowerCase()
-            .includes(searchValue.toLowerCase()) ||
-          benefit.companyDescription
-            .toLowerCase()
-            .includes(searchValue.toLowerCase())
-        ) {
-          results.push(benefit.companyName);
-        }
-      });
-    }
-    searchResults = [...results];
+    const results = benefitsSearch
+      .filter(
+        ({ name, desc }) =>
+          name.includes(lowerSearch) || desc?.includes(lowerSearch),
+      )
+      .map(({ name }) => name);
+
+    searchResults = [...(easter ? [easter] : []), ...results];
   };
 
   // TODO: 추후 링크 바로가기 기능도 제공
-  const easterEgg = (/** @type {string} */ searchValue) => {
-    let result = undefined;
-    if (searchValue === "42") {
-      result = "answer to life the universe and everything";
-    } else if (searchValue === "answer to life the universe and everything") {
-      result = "42";
-    } else if (searchValue === "집현전") {
-      result =
-        "집현전은 모두가 함께 만들어가는 42서울의 도서관입니다. 42library.kr";
-    } else if (searchValue === "모닝글로리") {
-      result =
-        "모닝글로리는 카뎃들이 아침마다 모여 공부를 시작하는 모임입니다. 42mogle.com";
-    } else if (searchValue === "평가") {
-      result = "15 Minutes is Enough! 42peer.com";
+  const easterEgg = (searchValue: string) => {
+    switch (searchValue) {
+      case "42":
+        return "answer to life the universe and everything";
+      case "answer to life the universe and everything":
+        return "42";
+      case "집현전":
+        return "집현전은 모두가 함께 만들어가는 42서울의 도서관입니다. 42library.kr";
+      case "모닝글로리":
+        return "모닝글로리는 카뎃들이 아침마다 모여 공부를 시작하는 모임입니다. 42mogle.com";
+      case "평가":
+        return "15 Minutes is Enough! 42peer.com";
     }
-
-    return result;
   };
 
   const submit = () => {
-    /**
-     * @type {HTMLElement | null}
-     */
     const result = document.getElementById("search-result");
     if (result) {
       result.style.opacity = "1";
@@ -70,10 +60,7 @@
     }
   };
 
-  /**
-   * @param {KeyboardEvent} e
-   */
-  const onKeyPress = (e) => {
+  const onKeyPress = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       submit();
     }
@@ -89,11 +76,17 @@
   />
 </div>
 
- <!--TODO: openModal 구조 리팩토링-->
- <!--TODO: 화살표 키보드로 이동-->
+<!--TODO: openModal 구조 리팩토링-->
+<!--TODO: 화살표 키보드로 이동-->
 <div class="search-results">
   {#each searchResults as result}
-    <a href="#{result}" on:click={()=>{openModal(sun)}} id="search-result">{result}</a>
+    <a
+      href="#{result}"
+      on:click={() => {
+        openModal(sun);
+      }}
+      id="search-result">{result}</a
+    >
   {/each}
 </div>
 
