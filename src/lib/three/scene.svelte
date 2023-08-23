@@ -7,7 +7,7 @@
   import { SunFactory } from "./Factory/Sun.svelte";
   import { openModal, closeModal } from "./Util/Modal.svelte";
   import { resize } from "./Util/resize";
-  import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper.svelte";
+  import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper";
   import { spotLight } from "./Factory/spotLight";
   import { camera } from "./Factory/camera.js";
   import { renderer } from "./Factory/renderer";
