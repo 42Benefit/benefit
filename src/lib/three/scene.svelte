@@ -10,14 +10,10 @@
   import { openModal, closeModal } from "./Util/Modal.svelte";
   import { resize } from "./Util/resize.svelte";
   import { isMouseOverBenefitsWrapper } from "$lib/three/Util/isMouseOverBenefitsWrapper.svelte";
-  import Stats from "three/examples/jsm/libs/stats.module.js";
   import { spotLight } from "./Factory/spotLight"
   import { camera } from "./Factory/camera.js"
   import { renderer } from "./Factory/renderer"
-
-  const stats = new Stats();
-  stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
-  document.body.appendChild(stats.dom);
+  import { stats } from "./Factory/stats";
 
   const scene = new THREE.Scene();
   const { water, wave, activeWave } = WaterFactory(scene);
@@ -55,7 +51,7 @@
   scene.add(sky);
 
   const animate = () => {
-    stats.update();
+    stats?.update();
     const time = performance.now() * 0.001;
 
     requestAnimationFrame(animate);
