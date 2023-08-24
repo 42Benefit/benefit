@@ -52,9 +52,9 @@ benefit는 42서울 카뎃들을 위한 혜택들을 모아놓은 사이트입�
 rollthebryce에 의해 만들어진 [Message in a Bottle](https://skfb.ly/6YYwn)는 [Creative Commons Attribution](http://creativecommons.org/licenses/by/4.0/)을 따르고 있습니다.
 
 ## 개발자
-|<img src="https://avatars.githubusercontent.com/u/62806979" height=80>|<img src="https://avatars.githubusercontent.com/u/38645951?v=4" height=80>
-|:-:|:-:|
-|[seongyle](https://github.com/YeonSeong-Lee)|[susong](https://github.com/SeungWoonSong)|
+|<img src="https://avatars.githubusercontent.com/u/62806979" height=80>|<img src="https://avatars.githubusercontent.com/u/38645951?v=4" height=80>|<img src="https://avatars.githubusercontent.com/u/54838975?v=4" height=80>| 
+|:-:|:-:| :--: |
+|[seongyle](https://github.com/YeonSeong-Lee)|[susong](https://github.com/SeungWoonSong)|[youkim](https://github.com/scarf005) |
 
 
 ## 기여 방법
