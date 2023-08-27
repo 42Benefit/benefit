@@ -9,7 +9,7 @@
 		>
 	</p>
 	<p>
-		Contributed by <a href="https://github.com/scarf005>">youkim</a>
+		Contributed by <a href="https://github.com/scarf005">youkim</a>
 	</p>
 </footer>
 
