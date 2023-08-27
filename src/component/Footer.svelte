@@ -4,9 +4,12 @@
 		&amp; <a href="https://github.com/SeungWoonSong">susong</a>
 	</p>
 	<p>
-		Source code available on <a
-			href="https://github.com/42Benefit/benefit/">GitHub</a
+		Source code available on <a href="https://github.com/42Benefit/benefit/"
+			>GitHub</a
 		>
+	</p>
+	<p>
+		Contributed by <a href="https://github.com/scarf005>">youkim</a>
 	</p>
 </footer>
 
